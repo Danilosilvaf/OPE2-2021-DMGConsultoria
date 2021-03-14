@@ -1,21 +1,56 @@
-<form>
-    <div class="container">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+         
+    <span class="border">
+    <div class="ol-sm-9 col-md-7 col-lg-5 mx-auto ">
+        
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <br>
+                    <span class="profile-img">
+                        <img class=" img-fluid img-logo" src="/assets/imagens/ecommerce-logo.png" align-content="center" >
+                    </span>
+                    <h4 class="card-title text-center">Login</h4>
 
-        <div class="row">
-            <div class="row"></div>
-            <div class="col">
-                <input type="text" placeholder="login">
-            
-            
-                <input type="text" placeholder="senha">
-            
-            
-            
-                <button (click)="login()">Logar</button>
+                    <!-- Mensagem de erro caso o usuario não seja autenticado -->
+                    <!-- <app-msg-erro [isError]="isErrorLogin()" mensagem="Senha ou login Inválidos"></app-msg-erro> -->
+                    
+                    <label for="login" >Login:</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input  type="text" class="form-control" placeholder="Insira o login " formControlName="login">
+                    </div>
 
+                    
+
+                    <!-- Mensagem de erro para quando os campos não são preenchidos corretamente -->
+                    <!-- <app-msg-erro [isError]="isErrorCampo('login')" mensagem="Campo obrigatorio"></app-msg-erro> -->
+
+
+                    <label for="senha" >Senha:</label>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" placeholder="Insira a senha" formControlName="senha">
+                    </div>
+
+                    <!-- <app-msg-erro [isError]="isErrorCampo('senha')" mensagem="Campo obrigatorio"></app-msg-erro> -->
+
+                    <!-- botão para realizar o login e habilitar se os dados forem válidos -->
+                    
+                    <br>
+                    <button type="submit" class="btn btn-dark float-right login_btn"
+                    [disabled]="loginForm.valid? false : true">Entrar</button>
+                    <br><br>
+                    
+                   
+                </div>
+                
             </div>
-
         </div>
-
     </div>
+</span>
 </form>
