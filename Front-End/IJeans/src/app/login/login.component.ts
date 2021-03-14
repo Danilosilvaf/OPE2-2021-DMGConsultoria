@@ -37,7 +37,7 @@ export class LoginComponent{
     //Verifica ao enviar se os dados informados são validos
     let login = {login : this.loginForm.value.login, senha : this.loginForm.value.senha};
     
-    return  'Login feito com sucesso!'//this.serviceLogin.fazerLogin(login);
+    return  console.log(this.loginForm.get("senha").value)//this.serviceLogin.fazerLogin(login);
   }
 
   //campo para validar se os campos forem devidamente preenchidos para habilitação do botão
@@ -46,7 +46,7 @@ export class LoginComponent{
   }
   //metodo para verificar se os dados de Autenticidade estão de acordo, recebe um boolean
   isErrorLogin(){
-    return 'Login feito com sucesso!' //this.serviceLogin.isAutenticado();
+    return console.log('Login feito com sucesso!') //this.serviceLogin.isAutenticado();
           
   }
 

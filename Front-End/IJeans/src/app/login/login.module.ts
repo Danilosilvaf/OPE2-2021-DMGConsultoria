@@ -20,12 +20,13 @@ import { LoginComponent } from "./login.component";
         AppRoutingModule,
         LoginRoutingModule,
         HttpClientModule,
-        SharedModule
-       
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule
     ],
-   
+
     providers: []
-    
+
 })
 
 export class LoginModule {
