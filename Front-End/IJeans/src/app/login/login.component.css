@@ -1,0 +1,72 @@
+.container-main {
+    background-color: #017EEC;
+    height: 100%;
+    width: 100%;
+}
+
+.main {
+    background-color: #017EEC;
+    height: 100%;
+    width: 100%;
+}
+
+.logo {
+   height: 50%;
+   /* width: 90%; */
+   margin: 0;
+   position: relative;            
+   top: 50%;                      
+   transform: translate(0, -50%);
+}
+
+.formulario {
+    width: 50%;
+    height: 50%;
+    margin: 0;
+    position: relative;            
+    top: 50%;
+    bottom: 50%;
+    transform: translate(0, -50%);
+}
+
+.card-main {
+    background-color: #FFFFFF;
+    filter: opacity(95%);
+    width: 45%;
+    height: 100%;
+    transform: translate(50%, 0);
+    font-family: 'Segoe UI';
+    padding: 5% 5% 10% 5%;
+    border-radius: 3%;
+}
+
+.cabecalho {
+    font-weight: bold;
+    letter-spacing: -1px;
+    font-size: 30px;
+}
+
+.corpo {
+    padding-top: 18%;
+    letter-spacing: -1px;
+}
+
+.corpo-fonte {
+    font-size: 20px;
+    font-weight: 600;
+    padding-left: 3%;
+}
+
+.campos {
+    background-color: #F3F3F3;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 13%;
+    font-size: 20px;
+    margin-top: 20%;
+    font-weight: 600;
+    color: #FFFF;
+    background-color: #0067C5;
+}

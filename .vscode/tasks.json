@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "Front-End/IJeans/",
+			"problemMatcher": [],
+			"label": "npm: start - Front-End/IJeans",
+			"detail": "ng serve"
+		}
+	]
+}
