@@ -32,17 +32,15 @@ export class ServiceLoginService {
 
     //console.log(login);
 
+    this.router.navigateByUrl("/home");
 
-    this.http.post<LocalUserModel>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
-      (data) => {
+    // this.http.post<LocalUserModel>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
+    //   (data) => {
 
-        console.log("data : ", data);
-
-        
-       
-
-      }
-    );
+    //     this.router.navigateByUrl("/home");
+    //     console.log("data : ", data);
+    //   }
+    // );
   }
 
   isAutenticado() {
