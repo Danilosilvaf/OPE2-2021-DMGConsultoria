@@ -24,14 +24,15 @@ public class ProdutoServiceImpl implements ProdutosService {
 	}
 
 	@Override
-	public void cadastrar(ProdutoModel produto) {
+	public void cadastrar(ProdutoModel produto) throws Exception {
+		ProdutoModel produtoretorno = produtoRepository.findByNome(produto.getDescricao());
+		
+		if(produtoretorno == null) {
+			throw new Exception("asdas");
+		}
+		
 		produtoRepository.save(produto);
 	}
 
-	@Override
-	public Page<ProdutoModel> FindAllPages(int pagina, int qtdLinhas, String direcao, String campo) {
-		PageRequest pageRequest = PageRequest.of(pagina, qtdLinhas, Direction.valueOf(direcao), campo);
-        return produtoRepository.findAll(pageRequest);
-	}
 	
 }

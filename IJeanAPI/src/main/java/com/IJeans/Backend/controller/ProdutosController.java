@@ -36,15 +36,5 @@ public class ProdutosController {
 		}
 	}
 	
-	@RequestMapping(value = "/pages",method = RequestMethod.GET)
-	public ResponseEntity<Page<ProdutoModel>> findPage(@RequestParam(value = "pagina", defaultValue = "0") int pagina,
-            @RequestParam(value = "qtdLinhas", defaultValue = "10") int qtdLinhas,
-            @RequestParam(value = "direcao", defaultValue = "ASC") String direcao,
-            @RequestParam(value = "campo", defaultValue = "idProduto") String campo){
-		
-		Page<ProdutoModel> pageProdutos = produtoService.FindAllPages(pagina, qtdLinhas, direcao, campo);
-		return ResponseEntity.ok().body(pageProdutos);
-	}
-	
 	
 }

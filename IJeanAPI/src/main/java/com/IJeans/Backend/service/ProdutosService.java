@@ -10,8 +10,7 @@ public interface ProdutosService {
 
 	List<ProdutoModel> findAll();
 	
-	void cadastrar(ProdutoModel produto);
+	void cadastrar(ProdutoModel produto) throws Exception;
 	
-	Page<ProdutoModel> FindAllPages( int pagina, int qtdLinhas,
-            String direcao, String campo);
+
 }

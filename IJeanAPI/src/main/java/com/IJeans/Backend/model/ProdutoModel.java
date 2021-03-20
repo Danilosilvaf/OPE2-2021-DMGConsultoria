@@ -1,6 +1,5 @@
 package com.IJeans.Backend.model;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,20 +8,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name= "produto")
-public class ProdutoModel implements Serializable {
+public class ProdutoModel  {
 
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
-	@Column(name = "descricao")
-	private String descricao;
+	@Column(name = "nome")
+	private String nome;
 	
 	@Column(name = "preco_atual")
 	private double preco_atual;
@@ -75,11 +73,11 @@ public class ProdutoModel implements Serializable {
 	}
 
 	public String getDescricao() {
-		return descricao;
+		return nome;
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+		this.nome = descricao;
 	}
 
 	public double getPreco_atual() {
