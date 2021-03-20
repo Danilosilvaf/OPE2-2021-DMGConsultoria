@@ -20,11 +20,11 @@ import com.IJeans.Backend.service.AutenticacaoService;
 public class AutenticacaoController {
 	
 	@Autowired
-	AutenticacaoService autService;
+	private AutenticacaoService autService;
 	
 	
 	@RequestMapping(value = "/autenticacao",method = RequestMethod.POST)
-	public ResponseEntity<String> getAll(@RequestBody FuncionarioModel model) {
+	public ResponseEntity<String> validarLogin(@RequestBody FuncionarioModel model) {
 
 		return ResponseEntity.ok().body(autService.doLogin(model.getLogin(), model.getSenha()));
 	}

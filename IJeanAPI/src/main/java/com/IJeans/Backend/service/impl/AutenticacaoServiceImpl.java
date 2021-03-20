@@ -19,13 +19,19 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 	public String doLogin(String usuario, String senha)  {
 		
 		
-		FuncionarioModel lst = repository.findByLogin(usuario);
+		FuncionarioModel login = repository.findByLogin(usuario);
 		
-		if(lst.equals("") || lst.equals(null))
-			return "Usuario invalido";
-		else
-			return "Usuario logado";
-				
+		if(login == null) {
+			return "Usuário Inválido";
+		}else {
+			if(login.getLogin().equals(usuario) && login.getSenha().equals(senha)) {
+				return "Usuário Logado com sucesso!";	
+			}else {
+				return "Usuário Inválido";
+			}
+	
+		}
+		
 		
 		
 	}

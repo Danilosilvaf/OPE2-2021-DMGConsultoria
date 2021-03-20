@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +14,8 @@ public class FuncionarioModel {
 	
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FUNCIONARIO_NAME_SEQ")
+    @SequenceGenerator(sequenceName = "funcionario_seq", allocationSize = 1, name = "FUNCIONARIO_NAME_SEQ")
 	private String id;
 	
 	@Column(name = "login")
@@ -23,8 +25,7 @@ public class FuncionarioModel {
 	private String senha;
 	
 	@Column(name = "nome")
-	private String nome;
-	
+	private String nome;	
 	
 	public String getId() {
 		return id;
