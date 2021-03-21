@@ -27,6 +27,22 @@ public class FuncionarioModel {
 	@Column(name = "nome")
 	private String nome;	
 	
+	@Column(name="email")
+	private String email;
+	
+	
+	
+	public FuncionarioModel() {}
+	
+	
+	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getId() {
 		return id;
 	}
