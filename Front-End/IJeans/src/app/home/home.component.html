@@ -27,8 +27,8 @@
     <button type="submit" class="btn btn-block btn-lg text-left submit-btn" (click)="fonecedores()"><i class="fas fa-truck icons"></i>Fornecedores</button>
     <button type="submit" class="btn btn-block btn-lg text-left submit-btn" (click)="funcionarios()"><i class="fas fa-address-card icons"></i>Funcionários</button>
 </div>
-
-<!-- Page content -->
 <div class="main">
-    AAAAAAAAAAAAAAASDASD
+    <app-produto [ngStyle]="{'display': displayProduto}" ></app-produto>
+    <app-fornecedor [ngStyle]="{'display': displayFornecedor}" ></app-fornecedor>
+    <app-funcionario [ngStyle]="{'display': displayFuncionario}"></app-funcionario>
 </div>
