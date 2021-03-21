@@ -11,7 +11,7 @@ export class HomeComponent {
     constructor(private router: Router) {
         
     }
-
+    produtoBol = false
 
 
 
