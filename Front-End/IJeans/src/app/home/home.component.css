@@ -8,12 +8,6 @@
     margin-right: auto;
 }
 
-.sidebar {
-    background-color: #017EEC;
-    height: 100%;
-    width: 15%;
-}
-
 .submit-btn {
     width: 80%;
     height: 5%;
@@ -24,7 +18,12 @@
     margin-left: auto;
     margin-right: auto;
     color: #000000;
-    background-color: #ffffff;
+    background-color: #F2F2F2;
+}
+
+.submit-btn:hover {
+    background-color: #004886;
+    color: #ffff;
 }
 
 .icons {
@@ -32,6 +31,37 @@
     text-align: left;
 }
 
+.sidenav {
+    height: 100%;
+    width: 15%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #017EEC;
+    overflow-x: hidden;
+    padding-top: 20px;
+    display: block;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
 .main {
-    background-color: red;
+    margin-left: 160px;
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
 }
