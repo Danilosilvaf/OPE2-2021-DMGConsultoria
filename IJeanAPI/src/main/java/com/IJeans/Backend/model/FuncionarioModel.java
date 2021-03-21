@@ -14,8 +14,7 @@ public class FuncionarioModel {
 	
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FUNCIONARIO_NAME_SEQ")
-    @SequenceGenerator(sequenceName = "funcionario_seq", allocationSize = 1, name = "FUNCIONARIO_NAME_SEQ")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
 	@Column(name = "login")
@@ -30,13 +29,17 @@ public class FuncionarioModel {
 	@Column(name="email")
 	private String email;
 	
-	
-	
 	public FuncionarioModel() {}
 	
-	
-	
-	
+	public FuncionarioModel(String id, String login, String senha, String nome, String email) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.senha = senha;
+		this.nome = nome;
+		this.email = email;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -67,7 +70,5 @@ public class FuncionarioModel {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
 
 }
