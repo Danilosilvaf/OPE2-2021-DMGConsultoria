@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './login/login.module';
+import { HomeModule } from './home/home.module';
 
 
 
@@ -25,6 +26,7 @@ import { LoginModule } from './login/login.module';
     FormsModule,
     ReactiveFormsModule,
     LoginModule,
+    HomeModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
