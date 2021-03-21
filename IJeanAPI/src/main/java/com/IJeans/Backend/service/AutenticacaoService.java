@@ -1,5 +1,7 @@
 package com.IJeans.Backend.service;
 
+import com.IJeans.Backend.model.FuncionarioModel;
+
 public interface AutenticacaoService {
-	public String doLogin(String usuario, String senha) ;
+	public FuncionarioModel doLogin(String usuario, String senha)  ;
 }

@@ -1,5 +1,6 @@
 package com.IJeans.Backend.model;
 
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "produto")
-public class ProdutoModel  {
+public class ProdutoModel implements Serializable {
 
 	@Id
 	@Column(name = "id")
@@ -72,12 +73,12 @@ public class ProdutoModel  {
 		this.tipo_produto = tipo_produto;
 	}
 
-	public String getDescricao() {
+	public String getNome() {
 		return nome;
 	}
 
-	public void setDescricao(String descricao) {
-		this.nome = descricao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public double getPreco_atual() {
