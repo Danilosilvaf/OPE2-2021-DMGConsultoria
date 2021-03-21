@@ -30,17 +30,17 @@ export class ServiceLoginService {
 
   fazerLogin(login: { login: string, senha: string }) {
 
-    //console.log(login);
 
-    this.router.navigateByUrl("/home");
+     this.http.post<LocalUserModel>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
+      (data) => {
+        if(data.login != null){
+          this.router.navigateByUrl("/home");
 
-    // this.http.post<LocalUserModel>(`${this.envService.urlAPI}/autenticacao`, login).subscribe(
-    //   (data) => {
-
-    //     this.router.navigateByUrl("/home");
-    //     console.log("data : ", data);
-    //   }
-    // );
+        }else{
+          alert("Usuario ou senha incorreta");
+        }
+      }
+    );
   }
 
   isAutenticado() {

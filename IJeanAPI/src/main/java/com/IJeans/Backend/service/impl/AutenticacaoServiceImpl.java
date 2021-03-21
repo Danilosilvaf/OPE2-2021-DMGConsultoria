@@ -1,7 +1,5 @@
 package com.IJeans.Backend.service.impl;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +14,18 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 	FuncionarioRepository repository;
 	
 		 
-	public String doLogin(String usuario, String senha)  {
+	public FuncionarioModel doLogin(String usuario, String senha)  {
 		
 		
 		FuncionarioModel login = repository.findByLogin(usuario);
 		
 		if(login == null) {
-			return "Usuário Inválido";
+			return new FuncionarioModel();
 		}else {
 			if(login.getLogin().equals(usuario) && login.getSenha().equals(senha)) {
-				return "Usuário Logado com sucesso!";	
+				return login;	
 			}else {
-				return "Usuário Inválido";
+				return new FuncionarioModel();
 			}
 	
 		}

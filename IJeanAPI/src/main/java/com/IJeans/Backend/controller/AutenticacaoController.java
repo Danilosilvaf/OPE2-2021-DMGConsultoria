@@ -24,8 +24,8 @@ public class AutenticacaoController {
 	
 	
 	@RequestMapping(value = "/autenticacao",method = RequestMethod.POST)
-	public ResponseEntity<String> validarLogin(@RequestBody FuncionarioModel model) {
-
-		return ResponseEntity.ok().body(autService.doLogin(model.getLogin(), model.getSenha()));
+	public ResponseEntity<FuncionarioModel> validarLogin(@RequestBody FuncionarioModel model) {
+				return ResponseEntity.ok().body(autService.doLogin(model.getLogin(), model.getSenha()));
+		
 	}
 }
