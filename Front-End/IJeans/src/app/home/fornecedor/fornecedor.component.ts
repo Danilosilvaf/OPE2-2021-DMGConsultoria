@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FornecedorModel } from 'src/app/shared/model/fornecedor.model';
+import { FornecedorService } from './service/fornecedor.service';
 
 @Component({
   selector: 'app-fornecedor',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FornecedorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:FornecedorService) { }
 
+  fornecedores:Array<FornecedorModel>
   ngOnInit(): void {
+    this.service.findAll().subscribe(data => {
+      this.fornecedores=data
+    })
   }
 
 }

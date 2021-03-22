@@ -1,1 +1,37 @@
-<p>produto works!</p>
+
+<div>
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control"> 
+        </div>
+        
+        <div class="col"><button class="btn">search</button></div>
+        <div class="col"><button class="btn">novoProduto</button></div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col">ID</div>
+        <div class="col">Nome</div>
+        <div class="col">Marca</div>
+        <div class="col">Tamanho</div>
+        <div class="col">Valor</div>
+        <div class="col">Estoque</div>
+        <div class="col"></div>
+        <div class="col"></div>
+        
+    </div>
+    <div class="row" *ngFor="let produto of produtos">
+        <div class="col">{{produto.id}}</div>
+        <div class="col">{{produto.nome}}</div>
+        <div class="col">{{produto.marca.nome}}</div>
+        <div class="col">{{produto.tamanho.id}}</div>
+        <div class="col">{{produto.preco_atual}}</div>
+        <div class="col">{{produto.quantidade_estoque}}</div>
+        <div class="col">{{produto.quantidade_estoque}}</div>
+        <div class="col"><button class="btn">Edit</button></div>
+        <div class="col"><button class="btn">delet</button></div>
+    </div>
+
+  
+</div>
