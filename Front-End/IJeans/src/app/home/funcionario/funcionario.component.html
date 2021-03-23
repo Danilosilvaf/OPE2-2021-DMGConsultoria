@@ -13,30 +13,15 @@
             <th>Login</th>
             <th>E-mail</th>
         </tr>
-        <tr>
-            <td>0001</td>
-            <td>Queridão</td>
-            <td>login</td>
-            <td>queridao@bol.com</td>
+        <tr *ngFor="let funcionario of funcionarios">
+            <td>{{funcionario.id}}</td>
+            <td>{{funcionario.nome}}</td>
+            <td>{{funcionario.login}}</td>
+            <td>{{funcionario.email}}</td>
             <td><button class="btn fas fa-pen fa-lg"></button></td>
             <td><button class="btn fas fa-trash fa-lg"></button></td>
         </tr>
-        <tr>
-            <td>0002</td>
-            <td>Marcão</td>
-            <td>login</td>
-            <td>itysaboy@bol.com</td>
-            <td><button class="btn fas fa-pen fa-lg"></button></td>
-            <td><button class="btn fas fa-trash fa-lg"></button></td>
-        </tr>
-        <tr>
-            <td>0003</td>
-            <td>Gui</td>
-            <td>login</td>
-            <td>oelias@bol.com</td>
-            <td><button class="btn fas fa-pen fa-lg"></button></td>
-            <td><button class="btn fas fa-trash fa-lg"></button></td>
-        </tr>
+        
     </table>
 </div>
 

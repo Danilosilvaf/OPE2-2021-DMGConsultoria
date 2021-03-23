@@ -13,30 +13,15 @@
             <th>E-mail</th>
             <th>Telefone</th>
         </tr>
-        <tr>
-            <td>0001</td>
-            <td>Nike</td>
-            <td>nike@nike.com</td>
-            <td>+55 (11) 91234-5678</td>
+        <tr *ngFor="let fornecedor of fornecedores">
+            <td>{{fornecedor.id}}</td>
+            <td>{{fornecedor.nome}}</td>
+            <td>{{fornecedor.email}}</td>
+            <td>{{fornecedor.telefone}}</td>
             <td><button class="btn fas fa-pen fa-lg"></button></td>
             <td><button class="btn fas fa-trash fa-lg"></button></td>
         </tr>
-        <tr>
-            <td>0002</td>
-            <td>Puma</td>
-            <td>puma@puma.com</td>
-            <td>+55 (11) 91234-5678</td>
-            <td><button class="btn fas fa-pen fa-lg"></button></td>
-            <td><button class="btn fas fa-trash fa-lg"></button></td>
-        </tr>
-        <tr>
-            <td>0003</td>
-            <td>Adidas</td>
-            <td>adidas@adidas.com</td>
-            <td>+55 (11) 91234-5678</td>
-            <td><button class="btn fas fa-pen fa-lg"></button></td>
-            <td><button class="btn fas fa-trash fa-lg"></button></td>
-        </tr>
+       
     </table>
 </div>
 
