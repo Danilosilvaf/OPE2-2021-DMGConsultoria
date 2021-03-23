@@ -1,5 +1,65 @@
+<div class="main">
+    <h2>Produtos</h2>
 
-<div>
+    <!-- <tr class="cabecalho"> -->
+        <!-- <i class="fas fa-pen fa-lg"></i><input type="text" class="form-control fas fa-pen fa-sm" style="width: 80%;">
+        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm">Novo Produto</button> -->
+    <!-- </tr> -->
+
+
+    <div class="row">
+        <div class="col input-group-prepend">
+            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control busca">
+        </div>
+        
+        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm">Novo Produto</button>
+        
+    </div>
+
+    <table class="tabela">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Marca</th>
+            <th>Tamanho</th>
+            <th>Valor</th>
+            <th>Estoque</th>
+        </tr>
+        <tr>
+            <td>0001</td>
+            <td>Camiseta Preta</td>
+            <td>Nike</td>
+            <td>G</td>
+            <td>R$ 89,90</td>
+            <td>142</td>
+            <td><button class="btn fas fa-pen fa-lg"></button></td>
+            <td><button class="btn fas fa-trash fa-lg"></button></td>
+        </tr>
+        <tr>
+            <td>0002</td>
+            <td>Camiseta Branca</td>
+            <td>DC Shoes</td>
+            <td>G</td>
+            <td>R$ 89,90</td>
+            <td>82</td>
+            <td><button class="btn fas fa-pen fa-lg"></button></td>
+            <td><button class="btn fas fa-trash fa-lg"></button></td>
+        </tr>
+        <tr>
+            <td>0003</td>
+            <td>Camiseta Cinza</td>
+            <td>Adidas</td>
+            <td>G</td>
+            <td>R$ 79,90</td>
+            <td>175</td>
+            <td><button class="btn fas fa-pen fa-lg"></button></td>
+            <td><button class="btn fas fa-trash fa-lg"></button></td>
+        </tr>
+    </table>
+</div>
+
+<!-- <div>
     <div class="row">
         <div class="col">
             <input type="text" class="form-control"> 
@@ -21,7 +81,30 @@
         <div class="col"></div>
         
     </div>
-    <div class="row" *ngFor="let produto of produtos">
+    <div class="row tabela">
+        <div class="col">0001</div>
+        <div class="col">Camiseta Preta</div>
+        <div class="col">Nike</div>
+        <div class="col">G</div>
+        <div class="col">R$ 89,90</div>
+        <div class="col">142</div>
+        <div class="col"><button class="btn">Edit</button></div>
+        <div class="col"><button class="btn">delet</button></div>
+    </div>
+    <div class="row tabela">
+        <div class="col">0001</div>
+        <div class="col">Camiseta Preta</div>
+        <div class="col">Nike</div>
+        <div class="col">G</div>
+        <div class="col">R$ 89,90</div>
+        <div class="col">142</div>
+        <div class="col"><button class="btn">Edit</button></div>
+        <div class="col"><button class="btn">delet</button></div>
+    </div> -->
+
+
+
+<!-- <div class="row" *ngFor="let produto of produtos">
         <div class="col">{{produto.id}}</div>
         <div class="col">{{produto.nome}}</div>
         <div class="col">{{produto.marca.nome}}</div>
@@ -31,7 +114,7 @@
         <div class="col">{{produto.quantidade_estoque}}</div>
         <div class="col"><button class="btn">Edit</button></div>
         <div class="col"><button class="btn">delet</button></div>
-    </div>
+    </div> -->
 
-  
-</div>
+
+<!-- </div> -->
