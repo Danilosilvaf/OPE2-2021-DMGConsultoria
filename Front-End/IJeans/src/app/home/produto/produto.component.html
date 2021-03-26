@@ -1,100 +1,13 @@
 <div class="main">
-    <h2>Produtos</h2>
+    <h2>Novo Produto</h2>
 
-    <!-- <tr class="cabecalho"> -->
-        <!-- <i class="fas fa-pen fa-lg"></i><input type="text" class="form-control fas fa-pen fa-sm" style="width: 80%;">
-        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm">Novo Produto</button> -->
-    <!-- </tr> -->
-
-
-    <div class="row">
-        <div class="col input-group-prepend">
-            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
-            <input type="text" class="form-control busca">
-        </div>
-        
-        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm">Novo Produto</button>
-        
-    </div>
-
-    <table class="tabela">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Marca</th>
-            <th>Tamanho</th>
-            <th>Valor</th>
-            <th>Estoque</th>
-        </tr>
-        <tr *ngFor="let produto of produtos">
-            <td>{{produto.id}}</td>
-            <td>{{produto.nome}}</td>
-            <td>{{produto.marca.nome}}</td>
-            <td>{{produto.tamanho.id}}</td>
-            <td>{{produto.preco_atual}}</td>
-            <td>{{produto.quantidade_estoque}}</td>
-            <td><button class="btn fas fa-pen fa-lg"></button></td>
-            <td><button class="btn fas fa-trash fa-lg"></button></td>
-        </tr>
-    </table>
+    <form method="get" action="envio_dados.php" style="margin-top: 50px;">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <label for="Nome"></label>
+        <input type="text" name="marca" placeholder="Marca">
+        <input type="text" name="tamanho" placeholder="Tamanho">
+        <input type="text" name="valor" placeholder="Valor">
+        <input type="text" name="quantidade" placeholder="Quantidade">
+        <input type="button" id="cadastrar" name="cadastrar" value="Cadastrar">
+    </form>
 </div>
-
-<!-- <div>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control"> 
-        </div>
-        
-        <div class="col"><button class="btn">search</button></div>
-        <div class="col"><button class="btn">novoProduto</button></div>
-        
-    </div>
-
-    <div class="row">
-        <div class="col">ID</div>
-        <div class="col">Nome</div>
-        <div class="col">Marca</div>
-        <div class="col">Tamanho</div>
-        <div class="col">Valor</div>
-        <div class="col">Estoque</div>
-        <div class="col"></div>
-        <div class="col"></div>
-        
-    </div>
-    <div class="row tabela">
-        <div class="col">0001</div>
-        <div class="col">Camiseta Preta</div>
-        <div class="col">Nike</div>
-        <div class="col">G</div>
-        <div class="col">R$ 89,90</div>
-        <div class="col">142</div>
-        <div class="col"><button class="btn">Edit</button></div>
-        <div class="col"><button class="btn">delet</button></div>
-    </div>
-    <div class="row tabela">
-        <div class="col">0001</div>
-        <div class="col">Camiseta Preta</div>
-        <div class="col">Nike</div>
-        <div class="col">G</div>
-        <div class="col">R$ 89,90</div>
-        <div class="col">142</div>
-        <div class="col"><button class="btn">Edit</button></div>
-        <div class="col"><button class="btn">delet</button></div>
-    </div> -->
-
-
-
-<!-- <div class="row" *ngFor="let produto of produtos">
-        <div class="col">{{produto.id}}</div>
-        <div class="col">{{produto.nome}}</div>
-        <div class="col">{{produto.marca.nome}}</div>
-        <div class="col">{{produto.tamanho.id}}</div>
-        <div class="col">{{produto.preco_atual}}</div>
-        <div class="col">{{produto.quantidade_estoque}}</div>
-        <div class="col">{{produto.quantidade_estoque}}</div>
-        <div class="col"><button class="btn">Edit</button></div>
-        <div class="col"><button class="btn">delet</button></div>
-    </div> -->
-
-
-<!-- </div> -->
