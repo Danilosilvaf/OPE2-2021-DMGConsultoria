@@ -5,17 +5,22 @@ import { HomeComponent } from "./home.component";
 import { ProdutoComponent } from './produto/produto.component';
 import { FuncionarioComponent } from './funcionario/funcionario.component';
 import { FornecedorComponent } from './fornecedor/fornecedor.component';
+import { CadastrarProdutosComponent } from "./produto/cadastro/cadastro-produto.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
         HomeComponent,
         ProdutoComponent,
         FuncionarioComponent,
-        FornecedorComponent
+        FornecedorComponent,
+        CadastrarProdutosComponent
     ],
     imports: [
         CommonModule,
-        HomeRoutingModule
+        HomeRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
     ],
 
     providers: []

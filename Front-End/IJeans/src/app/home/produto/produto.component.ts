@@ -9,13 +9,20 @@ import { ProdutoService } from './service/service-produto.service';
 })
 export class ProdutoComponent implements OnInit {
 
+  displayProdutos='block'
+  displayCadastroProduto = 'none'
+
   constructor(private service:ProdutoService) { }
   produtos:Array<ProdutoModel>;
   ngOnInit(): void {
-    
      this.service.findAll().subscribe(data => {
       this.produtos = data
     });
+  }
+
+  cadastrarProduto(){
+    this.displayProdutos='none'
+    this.displayCadastroProduto = 'block'
   }
 
 }

@@ -1,0 +1,29 @@
+.main {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 70%;
+}
+
+input {
+    background-color: #E1E1E1;
+    border: none;
+    width: 80%;
+    height: 50px;
+    padding-left: 15px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+#cadastrar {
+    background-color: #017EEC;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 100px;
+}

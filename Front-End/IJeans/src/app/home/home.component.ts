@@ -11,11 +11,9 @@ export class HomeComponent {
     constructor(private router: Router) {
         
     }
-    produtoBoolean = true
-    fornecedorBoolean = false
-    funcionarioBoolean = false
-
+    
     displayProduto = 'block'
+    
     displayFornecedor = 'none'
     displayFuncionario = 'none'
 

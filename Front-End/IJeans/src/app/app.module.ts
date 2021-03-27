@@ -30,7 +30,7 @@ import { HomeModule } from './home/home.module';
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

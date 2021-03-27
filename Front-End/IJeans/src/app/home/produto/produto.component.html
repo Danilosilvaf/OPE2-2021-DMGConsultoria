@@ -1,13 +1,39 @@
-<div class="main">
-    <h2>Novo Produto</h2>
 
-    <form method="get" action="envio_dados.php" style="margin-top: 50px;">
-        <input type="text" name="nome" placeholder="Nome" required>
-        <label for="Nome"></label>
-        <input type="text" name="marca" placeholder="Marca">
-        <input type="text" name="tamanho" placeholder="Tamanho">
-        <input type="text" name="valor" placeholder="Valor">
-        <input type="text" name="quantidade" placeholder="Quantidade">
-        <input type="button" id="cadastrar" name="cadastrar" value="Cadastrar">
-    </form>
+<div class="main"[ngStyle]="{'display': displayProdutos}" >
+    <h2>Produtos</h2>
+
+    <div class="row">
+        <div class="col input-group-prepend">
+            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control busca">
+        </div>
+        
+        <button onclick="cadastrar-produto.component.html" class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="cadastrarProduto()" >Novo Produto</button>
+        
+    </div>
+
+    <table class="tabela">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Marca</th>
+            <th>Tamanho</th>
+            <th>Valor</th>
+            <th>Estoque</th>
+        </tr>
+        <tr *ngFor="let produto of produtos">
+            <td>{{produto.id}}</td>
+            <td>{{produto.nome}}</td>
+            <td>{{produto.marca.nome}}</td>
+            <td>{{produto.tamanho.id}}</td>
+            <td>{{produto.preco_atual}}</td>
+            <td>{{produto.quantidade_estoque}}</td>
+            <td><button class="btn fas fa-pen fa-lg"></button></td>
+            <td><button class="btn fas fa-trash fa-lg"></button></td>
+        </tr>
+    </table>
 </div>
+
+<app-cadastraproduto [ngStyle]="{'display': displayCadastroProduto}"></app-cadastraproduto>
+
+
