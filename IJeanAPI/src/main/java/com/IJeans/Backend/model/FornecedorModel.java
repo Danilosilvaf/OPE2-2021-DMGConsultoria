@@ -39,8 +39,6 @@ public class FornecedorModel implements Serializable{
 		this.telefone = telefone;
 	}
 
-
-
 	public String getId() {
 		return id;
 	}
