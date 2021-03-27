@@ -17,6 +17,17 @@ input {
     margin-top: 30px;
 }
 
+select {
+    background-color: #E1E1E1;
+    border: none;
+    width: 80%;
+    height: 50px;
+    padding-left: 15px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #cadastrar {
     background-color: #017EEC;
     color: #FFFFFF;

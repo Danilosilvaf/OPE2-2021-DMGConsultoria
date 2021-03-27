@@ -1,10 +1,15 @@
 <div class="main" [ngStyle]="{'display': displayFuncionarios}">
     <h2>Funcionários</h2>
 
-    <tr class="cabecalho">
-        <td><input type="text" class="form-control">
-        <td><button class="btn fas fa-plus-circle fa-sm" (click)="CadastrarFuncionario()">Novo Funcionário</button></td>
-    </tr>
+    <div class="row">
+        <div class="col input-group-prepend">
+            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control busca">
+        </div>
+        
+        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="CadastrarFuncionario()" >Novo Funcionário</button>
+        
+    </div>
 
     <table class="tabela">
         <tr>
@@ -25,38 +30,4 @@
     </table>
 </div>
 
-
 <app-cadastrafuncionario [ngStyle]="{'display': displayCadastroFuncionario}"></app-cadastrafuncionario>
-
-
-<!-- <div>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control"> 
-        </div>
-        
-        <div class="col"><button class="btn">search</button></div>
-        <div class="col"><button class="btn">novofuncionario</button></div>
-        
-    </div>
-
-    <div class="row">
-        <div class="col">ID</div>
-        <div class="col">Nome</div>
-        <div class="col">Login</div>
-        <div class="col">Email</div>
-        <div class="col"></div>
-        <div class="col"></div>
-        
-    </div>
-    <div class="row" *ngFor="let funcionario of funcionarios">
-        <div class="col">{{funcionario.id}}</div>
-        <div class="col">{{funcionario.nome}}</div>
-        <div class="col">{{funcionario.login}}</div>
-        <div class="col">{{funcionario.email}}</div>
-        <div class="col"><button class="btn">Edit</button></div>
-        <div class="col"><button class="btn">delet</button></div>
-    </div>
-
-  
-</div> -->

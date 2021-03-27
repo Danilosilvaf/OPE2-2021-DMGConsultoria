@@ -1,16 +1,3 @@
-<!-- <div class="main">
-    <h2>Novo Produto</h2>
-
-    <form [formGroup]="cadastraProdutoForm" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
-        <input type="text" formControlName="nome" placeholder="Nome" required>
-        <label for="Nome"></label>
-        <input type="text"  formControlName="marca" placeholder="Marca">
-        <input type="text"  formControlName="tamanho" placeholder="Tamanho">
-        <input type="text"  formControlName="valor" placeholder="Valor">
-        <input type="text"  formControlName="quantidade" placeholder="Quantidade">
-        <input type="button" type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
-    </form>
-</div> -->
 <div class="main">
     <h2>Novo Produto</h2>
 
@@ -18,7 +5,7 @@
         <input type="text" formControlName="nome" placeholder="Nome" required>
         <label for="Nome"></label>
         <div>
-            <label>Marca</label>
+            <label>Marca</label><br>
             <select class="form-select form-select-lg mb-3" (change)=selectMarca($event.target.value) >
                 <option *ngFor="let marca of marcas"  [value]="marca">
                     {{marca.nome}}
@@ -26,7 +13,7 @@
             </select>
         </div>
         <div>
-            <label>Tamanho</label>
+            <label>Tamanho</label><br>
             <select class="form-select form-select-lg mb-3" (change)=selectTamanho($event.target.value) >
                 <option *ngFor="let tamanho of tamanhos"  [value]="tamanho">
                     {{tamanho.id}}
@@ -34,7 +21,7 @@
             </select>
         </div>
         <div>
-            <label>tipoProduto</label>
+            <label>Produto</label><br>
             <select class="form-select form-select-lg mb-3" (change)=selectTipoProduto($event.target.value) >
                 <option *ngFor="let tipoProduto of tipoProdutos"  [value]="tipoProduto">
                     {{tipoProduto.nome}}
@@ -42,7 +29,6 @@
             </select>
         </div>
             
-        
         <input type="text"  formControlName="valor" placeholder="Valor">
         <input type="text"  formControlName="quantidade" placeholder="Quantidade">
         <input type="button" type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
