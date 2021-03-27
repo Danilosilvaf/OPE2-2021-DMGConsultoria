@@ -11,11 +11,19 @@ export class FuncionarioComponent implements OnInit {
 
   constructor(private service: FuncionarioService) { }
 
+  displayCadastroFuncionario = 'none'
+  displayFuncionarios= 'block'
   funcionarios:Array<FuncionarioModel>;
+
   ngOnInit(): void {
     this.service.findAll().subscribe(data => {
       this.funcionarios=data
     });
+  }
+
+  CadastrarFuncionario(){
+    this.displayCadastroFuncionario = 'block'
+    this.displayFuncionarios= 'none'
   }
 
 }

@@ -20,7 +20,7 @@ export class ProdutoService {
     return this.http.get<Array<ProdutoModel>>("http://localhost:8080/produtos");
   }
   cadastrarProduto(body){
-    return this.http.post<String>("http://localhost:8080/produtos",body);
+    return this.http.post<ProdutoModel>("http://localhost:8080/produtos",body);
   }
   
   findAllMarcas(){

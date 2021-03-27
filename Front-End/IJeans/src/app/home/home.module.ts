@@ -9,6 +9,7 @@ import { CadastrarProdutosComponent } from "./produto/cadastro/cadastro-produto.
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserModule } from "@angular/platform-browser";
+import { CadastrarFuncionarioComponent } from "./funcionario/cadastro/cadastro-funcionario.component";
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { BrowserModule } from "@angular/platform-browser";
         ProdutoComponent,
         FuncionarioComponent,
         FornecedorComponent,
+        CadastrarFuncionarioComponent,
         CadastrarProdutosComponent
     ],
     imports: [

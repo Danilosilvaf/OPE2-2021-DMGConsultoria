@@ -24,7 +24,7 @@ public class ProdutoServiceImpl implements ProdutosService {
 	}
 
 	@Override
-	public void cadastrar(ProdutoModel produto) throws Exception {
+	public ProdutoModel cadastrar(ProdutoModel produto) throws Exception {
 		ProdutoModel produtoretorno = produtoRepository.findByNome(produto.getNome());
 		
 		if(produtoretorno != null) {
@@ -32,6 +32,7 @@ public class ProdutoServiceImpl implements ProdutosService {
 		}
 		
 		produtoRepository.save(produto);
+		return produto;
 	}
 
 	

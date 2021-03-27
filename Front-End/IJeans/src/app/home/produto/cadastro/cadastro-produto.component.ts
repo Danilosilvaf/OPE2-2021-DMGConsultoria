@@ -33,8 +33,6 @@ export class CadastrarProdutosComponent{
     
     this.cadastraProdutoForm = this.formBuilder.group( { 
       nome : [ '',[Validators.required]  ], 
-      // marca : [ '' , [Validators.required] ],
-      // tamanho : [ '' , [Validators.required] ],
       valor : [ '' , [Validators.required] ],
       quantidade : [ '' , [Validators.required] ]
 
@@ -67,18 +65,18 @@ export class CadastrarProdutosComponent{
 
   onSubmit(){
     // Verifica ao enviar se os dados informados são validos
-    console.log(this.cadastraProdutoForm.value.marca.nome)
     let produto =  {
       nome:this.cadastraProdutoForm.value.nome,
       preco_atual:this.cadastraProdutoForm.value.valor,
       quantidade_estoque:this.cadastraProdutoForm.value.quantidade,
       marca:this.marca,
       tipo_produto:this.tipoProduto,
-      tamanho:this.tamanho
+      tamanho:this.tamanho.id
       }
+      console.log(produto)
       this.service.cadastrarProduto(produto).subscribe(data => {
-        if(data != 'Erro ao Cadastrar Produtoproduto ja existente' ){
-          this.router.navigateByUrl("/home");
+        if(data.id != null){
+          alert("produto cadastrado")
         }else{
           alert("produto ja cadastrado");
         }

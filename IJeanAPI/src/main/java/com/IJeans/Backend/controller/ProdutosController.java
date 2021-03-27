@@ -26,12 +26,12 @@ public class ProdutosController {
 	}
 	
 	@RequestMapping(value = "",method = RequestMethod.POST)
-	public ResponseEntity<String> cadastrar(@RequestBody ProdutoModel produto){
+	public ResponseEntity<ProdutoModel> cadastrar(@RequestBody ProdutoModel produto){
 		try {
-			produtoService.cadastrar(produto);
-			return ResponseEntity.ok().body("Produto Cadastrado");
+			;
+			return ResponseEntity.ok().body(produtoService.cadastrar(produto));
 		}catch (Exception e){
-			return ResponseEntity.ok().body("Erro ao Cadastrar Produto" + e.getMessage());
+			return ResponseEntity.ok().body(new ProdutoModel());
 		}
 	}
 	

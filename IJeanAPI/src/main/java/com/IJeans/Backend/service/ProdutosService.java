@@ -10,7 +10,7 @@ public interface ProdutosService {
 
 	List<ProdutoModel> findAll();
 	
-	void cadastrar(ProdutoModel produto) throws Exception;
+	ProdutoModel cadastrar(ProdutoModel produto) throws Exception;
 	
 
 }

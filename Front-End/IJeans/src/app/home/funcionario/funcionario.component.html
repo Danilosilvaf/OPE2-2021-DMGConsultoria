@@ -1,9 +1,9 @@
-<div class="main">
+<div class="main" [ngStyle]="{'display': displayFuncionarios}">
     <h2>Funcionários</h2>
 
     <tr class="cabecalho">
         <td><input type="text" class="form-control">
-        <td><button class="btn fas fa-plus-circle fa-sm">Novo Funcionário</button></td>
+        <td><button class="btn fas fa-plus-circle fa-sm" (click)="CadastrarFuncionario()">Novo Funcionário</button></td>
     </tr>
 
     <table class="tabela">
@@ -25,6 +25,8 @@
     </table>
 </div>
 
+
+<app-cadastrafuncionario [ngStyle]="{'display': displayCadastroFuncionario}"></app-cadastrafuncionario>
 
 
 <!-- <div>
