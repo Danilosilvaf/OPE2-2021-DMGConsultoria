@@ -29,7 +29,15 @@
             <label>Tamanho</label>
             <select class="form-select form-select-lg mb-3" (change)=selectTamanho($event.target.value) >
                 <option *ngFor="let tamanho of tamanhos" formControlName="tamanho" [value]="tamanho">
-                    {{tamanho.nome}}
+                    {{tamanho.id}}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label>tipoProduto</label>
+            <select class="form-select form-select-lg mb-3" (change)=selectTipoProduto($event.target.value) >
+                <option *ngFor="let tipoProduto of tipoProdutos" formControlName="tipoProduto" [value]="tipoProduto">
+                    {{tipoProduto.nome}}
                 </option>
             </select>
         </div>

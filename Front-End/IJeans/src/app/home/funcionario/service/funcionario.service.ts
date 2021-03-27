@@ -16,5 +16,8 @@ export class FuncionarioService {
   findAll(){
     return this.http.get<Array<FuncionarioModel>>("http://localhost:8080/funcionarios");
   }
+  cadastraFuncionario(funcionario){
+    return this.http.post<String>("http://localhost:8080/funcionarios",funcionario);
+  }
   
 }

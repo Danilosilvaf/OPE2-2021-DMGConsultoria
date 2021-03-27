@@ -1,8 +1,10 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { MarcaModel } from "src/app/shared/model/marca.model";
 import { ProdutoModel } from "src/app/shared/model/produto.model";
 import { TamanhoModel } from "src/app/shared/model/tamanho.model";
+import { TipoProduto } from "src/app/shared/model/tipo.model";
 import { ProdutoService } from "../service/service-produto.service";
 
 
@@ -17,13 +19,15 @@ export class CadastrarProdutosComponent{
 
   cadastraProdutoForm : FormGroup;
 
-  constructor(private formBuilder :  FormBuilder, private service : ProdutoService) {
+  constructor(private formBuilder :  FormBuilder, private service : ProdutoService,private router: Router) {
   }
 
   marcas: Array<MarcaModel>
+  marca:MarcaModel
   tamanhos:Array<TamanhoModel>
   tamanho:TamanhoModel
-  marca:MarcaModel
+  tipoProdutos:Array<TipoProduto>
+  tipoProduto:TipoProduto
 
   ngOnInit() {
     
@@ -39,6 +43,14 @@ export class CadastrarProdutosComponent{
       this.marcas =  data
       this.marca = data[0]
     })
+    this.service.findAllTamanhos().subscribe(data => {
+      this.tamanhos = data
+      this.tamanho= data[0]
+    })
+    this.service.findAllTipoProduto().subscribe(data => {
+      this.tipoProdutos = data
+      this.tipoProduto = data[0]
+    })
 
   }
   
@@ -49,23 +61,27 @@ export class CadastrarProdutosComponent{
   selectTamanho(tamanho){
     this.tamanho=tamanho
   }
+  selectTipoProduto(tamanho){
+    this.tamanho=tamanho
+  }
 
   onSubmit(){
     // Verifica ao enviar se os dados informados são validos
-    // let login = {login : this.loginForm.value.login, senha : this.loginForm.value.senha};
     console.log(this.cadastraProdutoForm.value.marca.nome)
     let produto =  {
       nome:this.cadastraProdutoForm.value.nome,
       preco_atual:this.cadastraProdutoForm.value.valor,
       quantidade_estoque:this.cadastraProdutoForm.value.quantidade,
       marca:this.marca,
-        tipo_produto:{
-          "id":1,
-          "nome":"Camiseta"
-        },tamanho:this.tamanho
+      tipo_produto:this.tipoProduto,
+      tamanho:this.tamanho
       }
       this.service.cadastrarProduto(produto).subscribe(data => {
-        console.log(data)
+        if(data != 'Erro ao Cadastrar Produtoproduto ja existente' ){
+          this.router.navigateByUrl("/home");
+        }else{
+          alert("produto ja cadastrado");
+        }
       })
     }
     
