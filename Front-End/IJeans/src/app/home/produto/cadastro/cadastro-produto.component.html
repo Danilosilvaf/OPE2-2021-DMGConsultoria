@@ -2,10 +2,11 @@
     <h2>Novo Produto</h2>
 
     <form [formGroup]="cadastraProdutoForm" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
-        <input type="text" formControlName="nome" placeholder="Nome" required>
+        <label class="label-title">Nome</label><br>
+        <input type="text" formControlName="nome">
         <label for="Nome"></label>
         <div>
-            <label>Marca</label><br>
+            <label class="label-title">Marca</label><br>
             <select class="form-select form-select-lg mb-3" (change)=selectMarca($event.target.value) >
                 <option *ngFor="let marca of marcas"  [value]="marca">
                     {{marca.nome}}
@@ -13,7 +14,7 @@
             </select>
         </div>
         <div>
-            <label>Tamanho</label><br>
+            <label class="label-title">Tamanho</label><br>
             <select class="form-select form-select-lg mb-3" (change)=selectTamanho($event.target.value) >
                 <option *ngFor="let tamanho of tamanhos"  [value]="tamanho">
                     {{tamanho.id}}
@@ -21,7 +22,7 @@
             </select>
         </div>
         <div>
-            <label>Produto</label><br>
+            <label class="label-title">Produto</label><br>
             <select class="form-select form-select-lg mb-3" (change)=selectTipoProduto($event.target.value) >
                 <option *ngFor="let tipoProduto of tipoProdutos"  [value]="tipoProduto">
                     {{tipoProduto.nome}}
@@ -29,8 +30,12 @@
             </select>
         </div>
             
-        <input type="text"  formControlName="valor" placeholder="Valor">
-        <input type="text"  formControlName="quantidade" placeholder="Quantidade">
-        <input type="button" type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
+        <label class="label-title">Valor</label><br>
+        <input type="text" formControlName="valor"><br>
+
+        <label class="label-title">Quantidade</label><br>
+        <input type="text"  formControlName="quantidade">
+
+        <input type="button" class="botao-cadastrar" type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
     </form>
 </div>

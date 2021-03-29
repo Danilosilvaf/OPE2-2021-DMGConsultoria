@@ -14,7 +14,7 @@ input {
     border-radius: 8px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 select {
@@ -28,7 +28,7 @@ select {
     margin-right: auto;
 }
 
-#cadastrar {
+.botao-cadastrar {
     background-color: #017EEC;
     color: #FFFFFF;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -37,4 +37,9 @@ select {
     font-weight: 600;
     text-transform: uppercase;
     margin-top: 100px;
+}
+
+.label-title {
+    padding-bottom: 0;
+    margin-left: 10px;
 }
