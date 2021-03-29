@@ -77,6 +77,7 @@ export class CadastrarProdutosComponent{
       this.service.cadastrarProduto(produto).subscribe(data => {
         if(data.id != null){
           alert("produto cadastrado")
+          this.router.navigateByUrl('home');
         }else{
           alert("produto ja cadastrado");
         }

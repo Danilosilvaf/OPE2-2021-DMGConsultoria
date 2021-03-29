@@ -1,0 +1,16 @@
+<div class="main">
+    <h2>Novo Fornecedor</h2>
+
+    <form [formGroup]="cadastraFornecedorForm" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
+        <label class="label-title">Nome</label><br>
+        <input type="text" formControlName="nome">
+
+        <br><label class="label-title">E-mail</label><br>
+        <input type="email"  formControlName="email">
+
+        <br><label class="label-title">telefone</label><br>
+        <input type="text"  formControlName="telefone">
+        
+        <input type="button" class="botao-cadastrar" type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
+    </form>
+</div>

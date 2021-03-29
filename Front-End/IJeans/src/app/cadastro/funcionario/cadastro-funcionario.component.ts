@@ -38,8 +38,9 @@ export class CadastrarFuncionarioComponent{
           email: this.cadastraFuncionarioForm.value.email
       }
       this.service.cadastraFuncionario(funcionario).subscribe(data =>{
-        if(data == "Funcionario Cadastrado com Sucesso"){
-          
+        if(data.id != null  ){
+          alert('funcionario cadastrada com sucesso')
+          this.router.navigateByUrl('home');
         }else{
           alert("funcionario ja cadastrado")
         }

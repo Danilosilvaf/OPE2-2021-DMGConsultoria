@@ -16,5 +16,8 @@ export class FornecedorService {
   findAll(){
     return this.http.get<Array<FornecedorModel>>("http://localhost:8080/fornecedor");
   }
+  cadastrarFornecedor(fornecedor){
+    return this.http.post<FornecedorModel>('http://localhost:8080/fornecedor',fornecedor);
+  }
   
 }
