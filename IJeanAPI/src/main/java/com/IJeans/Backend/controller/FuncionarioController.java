@@ -25,12 +25,8 @@ public class FuncionarioController {
 	}
 	
 	@RequestMapping(value = "",method = RequestMethod.POST)
-	public ResponseEntity<String> cadastrarFuncionario(@RequestBody FuncionarioModel funcionario){
-		try {
+	public ResponseEntity<FuncionarioModel> cadastrarFuncionario(@RequestBody FuncionarioModel funcionario){
 			funcionarioService.cadastrarFuncionario(funcionario);
-			return ResponseEntity.ok().body("Funcionario Cadastrado com Sucesso");
-		}catch (Exception e){
-			return ResponseEntity.ok().body("Erro ao Cadastrar Funcionario" + e.getMessage());
+			return ResponseEntity.ok().body(funcionario);
 		}
 	}
-}
