@@ -12,6 +12,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
+import { CadastroFuncionarioModule } from './cadastro/funcionario/cadastro-funcionario.module';
+import { CadastroProdutoModule } from './cadastro/produto/cadastro-produto.module';
+import { CadastroFornecedorModule } from './cadastro/fornecedor/fornecedor-cadastro.module';
+
 
 
 
@@ -23,10 +27,13 @@ import { HomeModule } from './home/home.module';
     BrowserModule,
     CommonModule,
     HttpClientModule,
+    CadastroFuncionarioModule,
     FormsModule,
     ReactiveFormsModule,
     LoginModule,
     HomeModule,
+    CadastroFornecedorModule,
+    CadastroProdutoModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),

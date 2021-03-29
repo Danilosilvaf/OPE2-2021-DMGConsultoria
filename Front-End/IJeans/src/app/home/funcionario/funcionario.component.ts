@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FuncionarioModel } from 'src/app/shared/model/funcionario.model';
 import { FuncionarioService } from './service/funcionario.service';
 
@@ -7,12 +8,14 @@ import { FuncionarioService } from './service/funcionario.service';
   templateUrl: './funcionario.component.html',
   styleUrls: ['./funcionario.component.css']
 })
+
+
+
 export class FuncionarioComponent implements OnInit {
 
-  constructor(private service: FuncionarioService) { }
+  constructor(private service: FuncionarioService, private router:Router) { }
 
-  displayCadastroFuncionario = 'none'
-  displayFuncionarios= 'block'
+  
   funcionarios:Array<FuncionarioModel>;
 
   ngOnInit(): void {
@@ -22,8 +25,7 @@ export class FuncionarioComponent implements OnInit {
   }
 
   CadastrarFuncionario(){
-    this.displayCadastroFuncionario = 'block'
-    this.displayFuncionarios= 'none'
+    this.router.navigateByUrl('cadastrofuncionario')
   }
 
 }

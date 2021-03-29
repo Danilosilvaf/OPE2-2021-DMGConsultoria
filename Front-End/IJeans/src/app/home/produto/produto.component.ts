@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProdutoModel } from 'src/app/shared/model/produto.model';
 import { ProdutoService } from './service/service-produto.service';
 
@@ -9,11 +10,11 @@ import { ProdutoService } from './service/service-produto.service';
 })
 export class ProdutoComponent implements OnInit {
 
-  displayProdutos='block'
-  displayCadastroProduto = 'none'
+  
 
-  constructor(private service:ProdutoService) { }
+  constructor(private service:ProdutoService, private router:Router) { }
   produtos:Array<ProdutoModel>;
+  
   ngOnInit(): void {
      this.service.findAll().subscribe(data => {
       this.produtos = data
@@ -21,8 +22,7 @@ export class ProdutoComponent implements OnInit {
   }
 
   cadastrarProduto(){
-    this.displayProdutos='none'
-    this.displayCadastroProduto = 'block'
+    this.router.navigateByUrl('cadastroproduto')
   }
 
 }

@@ -5,7 +5,7 @@ import { MarcaModel } from "src/app/shared/model/marca.model";
 import { ProdutoModel } from "src/app/shared/model/produto.model";
 import { TamanhoModel } from "src/app/shared/model/tamanho.model";
 import { TipoProduto } from "src/app/shared/model/tipo.model";
-import { ProdutoService } from "../service/service-produto.service";
+import { ProdutoService } from "../../home/produto/service/service-produto.service";
 
 
 @Component({

@@ -5,21 +5,18 @@ import { HomeComponent } from "./home.component";
 import { ProdutoComponent } from './produto/produto.component';
 import { FuncionarioComponent } from './funcionario/funcionario.component';
 import { FornecedorComponent } from './fornecedor/fornecedor.component';
-import { CadastrarProdutosComponent } from "./produto/cadastro/cadastro-produto.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserModule } from "@angular/platform-browser";
-import { CadastrarFuncionarioComponent } from "./funcionario/cadastro/cadastro-funcionario.component";
+
 
 @NgModule({
     declarations: [
         HomeComponent,
         ProdutoComponent,
         FuncionarioComponent,
-        FornecedorComponent,
-        CadastrarFuncionarioComponent,
-        CadastrarProdutosComponent
-    ],
+        FornecedorComponent
+        ],
     imports: [
         CommonModule,
         HomeRoutingModule,

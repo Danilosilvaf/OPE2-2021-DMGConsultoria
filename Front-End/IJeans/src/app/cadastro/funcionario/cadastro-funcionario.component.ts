@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
-import { FuncionarioService } from "../service/funcionario.service";
+import { FuncionarioService } from "src/app/home/funcionario/service/funcionario.service";
+
 
 @Component({
     selector: 'app-cadastrafuncionario',
@@ -38,7 +39,7 @@ export class CadastrarFuncionarioComponent{
       }
       this.service.cadastraFuncionario(funcionario).subscribe(data =>{
         if(data == "Funcionario Cadastrado com Sucesso"){
-          this.router.navigateByUrl("/home");
+          
         }else{
           alert("funcionario ja cadastrado")
         }
