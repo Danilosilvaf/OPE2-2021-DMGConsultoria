@@ -42,4 +42,8 @@ export class CadastroFornecedorComponent {
 
   }
 
+  voltarHome() {
+    this.router.navigateByUrl("home")
+  }
+  
 }

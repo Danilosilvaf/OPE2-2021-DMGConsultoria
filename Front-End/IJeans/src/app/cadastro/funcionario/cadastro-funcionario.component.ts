@@ -48,4 +48,8 @@ export class CadastrarFuncionarioComponent{
     }
 
   }
+
+  voltarHome() {
+    this.router.navigateByUrl("home")
+  }
 }
