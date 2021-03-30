@@ -46,3 +46,16 @@ select {
     margin-left: 10px;
 }
 
+.botao-voltar {
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    border: none;
+    color: #017EEC;
+}
+
+.titulo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+}
