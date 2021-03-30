@@ -1,5 +1,9 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
 <div class="main">
-    <h2>Novo Produto</h2>
+    <button class="botao-voltar fas fa-chevron-circle-left fa-2x" (click)="voltarHome()"></button>
+    <label class="titulo">Novo Produto</label>
 
     <form [formGroup]="cadastraProdutoForm" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
         <label class="label-title">Nome</label><br>

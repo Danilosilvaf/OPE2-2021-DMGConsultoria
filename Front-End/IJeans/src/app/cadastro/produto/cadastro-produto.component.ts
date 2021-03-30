@@ -84,6 +84,9 @@ export class CadastrarProdutosComponent{
       })
     }
     
+    voltarHome() {
+      this.router.navigateByUrl("home")
+    }
    
   }
 
