@@ -33,8 +33,8 @@ export class CadastrarProdutosComponent{
     
     this.cadastraProdutoForm = this.formBuilder.group( { 
       nome : [ '',[Validators.required]  ], 
-      valor : [ '' , [Validators.required] ],
-      quantidade : [ '' , [Validators.required] ]
+      valor : [ '' , [Validators.required,Validators.pattern('^[0-9]')] ],
+      quantidade : [ '' , [Validators.required,Validators.pattern('^[0-9]')], ]
 
     });
     this.service.findAllMarcas().subscribe(data =>{
@@ -65,29 +65,43 @@ export class CadastrarProdutosComponent{
 
   onSubmit(){
     // Verifica ao enviar se os dados informados são validos
-    let produto =  {
-      nome:this.cadastraProdutoForm.value.nome,
-      preco_atual:this.cadastraProdutoForm.value.valor,
-      quantidade_estoque:this.cadastraProdutoForm.value.quantidade,
-      marca:this.marca,
-      tipo_produto:this.tipoProduto,
-      tamanho:this.tamanho.id
-      }
-      console.log(produto)
-      this.service.cadastrarProduto(produto).subscribe(data => {
-        if(data.id != null){
-          alert("produto cadastrado")
-          this.router.navigateByUrl('home');
-        }else{
-          alert("produto ja cadastrado");
+   if(
+     this.cadastraProdutoForm.get('nome').valid &&
+     this.cadastraProdutoForm.get('valor').valid &&
+     this.cadastraProdutoForm.get('quantidade').valid
+    ){
+      let produto =  {
+        nome:this.cadastraProdutoForm.value.nome,
+        preco_atual:this.cadastraProdutoForm.value.valor,
+        quantidade_estoque:this.cadastraProdutoForm.value.quantidade,
+        marca:this.marca,
+        tipo_produto:this.tipoProduto,
+        tamanho:this.tamanho.id
         }
-      })
+  
+  
+        this.service.cadastrarProduto(produto).subscribe(data => {
+          if(data.id != null){
+            alert("produto cadastrado com sucesso")
+            this.router.navigateByUrl('home');
+          }else{
+            alert("produto ja cadastrado");
+          }
+        })
+      }else{
+        alert('Dados Incorretos')
+      }
     }
+   
+    
     
     voltarHome() {
       this.router.navigateByUrl("home")
     }
    
+    isErrorCampo(nomeCampo){
+      return (!this.cadastraProdutoForm.get(nomeCampo).valid && this.cadastraProdutoForm.get(nomeCampo).touched ); 
+    }
   }
 
 

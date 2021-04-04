@@ -20,9 +20,9 @@ export class CadastrarFuncionarioComponent{
     let regexEmail = 
     this.cadastraFuncionarioForm = this.formBuilder.group( { 
       login : [ '',[Validators.required,Validators.minLength(4)]  ], 
-      nome : [ '',[Validators.required,Validators.minLength(4)]  ], 
-      senha : [ '' , [Validators.required,Validators.minLength(5)] ],
-      resenha : [ '' , [Validators.required,Validators.minLength(5)] ],
+      nome : [ '',[Validators.required]  ], 
+      senha : [ '' , [Validators.required,Validators.minLength(8)] ],
+      resenha : [ '' , [Validators.required,Validators.minLength(8)] ],
       email : [ '' , [Validators.required,Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)] ]
           });
   }

@@ -21,7 +21,7 @@ export class CadastroFornecedorComponent {
   ngOnInit() {
 
     this.cadastraFornecedorForm = this.formBuilder.group({
-      nome: ['', [Validators.required,Validators.minLength(4)]],
+      nome: ['', [Validators.required]],
       telefone: ['', [Validators.required]],
       email: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)] ]
     });
