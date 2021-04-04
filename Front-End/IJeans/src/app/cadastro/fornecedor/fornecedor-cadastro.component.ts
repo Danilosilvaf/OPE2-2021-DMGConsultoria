@@ -21,25 +21,35 @@ export class CadastroFornecedorComponent {
   ngOnInit() {
 
     this.cadastraFornecedorForm = this.formBuilder.group({
-      nome: ['', [Validators.required]],
+      nome: ['', [Validators.required,Validators.minLength(4)]],
       telefone: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required,Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)] ]
     });
   }
 
   onSubmit() {
-    let fornecedor = {
-      nome: this.cadastraFornecedorForm.value.nome,
-      email: this.cadastraFornecedorForm.value.email,
-      telefone: this.cadastraFornecedorForm.value.telefone
+
+    if(this.cadastraFornecedorForm.get('nome').valid && this.cadastraFornecedorForm.get('email').valid  && this.cadastraFornecedorForm.get('telefone').valid ){
+      let fornecedor = {
+        nome: this.cadastraFornecedorForm.value.nome,
+        email: this.cadastraFornecedorForm.value.email,
+        telefone: this.cadastraFornecedorForm.value.telefone
+      }
+      
+  
+      this.service.cadastrarFornecedor(fornecedor).subscribe(data => {
+          alert('Fornecedor Cadastrado')
+          this.router.navigateByUrl('home');
+      });
+    }else{
+      alert('Dados Incorretos')
     }
 
+   
 
-    this.service.cadastrarFornecedor(fornecedor).subscribe(data => {
-        alert('Fornecedor Cadastrado')
-        this.router.navigateByUrl('home');
-    });
-
+  }
+  isErrorCampo(nomeCampo){
+    return (!this.cadastraFornecedorForm.get(nomeCampo).valid && this.cadastraFornecedorForm.get(nomeCampo).touched ); 
   }
 
   voltarHome() {
