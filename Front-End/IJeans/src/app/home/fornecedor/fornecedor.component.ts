@@ -23,4 +23,11 @@ export class FornecedorComponent implements OnInit {
     this.router.navigateByUrl('cadastrofornecedor')
   }
 
+  delete(fornecedor:FornecedorModel){
+    console.log(fornecedor)
+  }
+
+  edit(fornecedor:FornecedorModel){
+    console.log(fornecedor)
+  }
 }
