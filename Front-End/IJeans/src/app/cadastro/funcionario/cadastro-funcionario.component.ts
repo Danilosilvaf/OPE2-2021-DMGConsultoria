@@ -17,39 +17,59 @@ export class CadastrarFuncionarioComponent{
 
   constructor(private formBuilder :  FormBuilder, private service: FuncionarioService,private router: Router){}
   ngOnInit() {
-    
+    let regexEmail = 
     this.cadastraFuncionarioForm = this.formBuilder.group( { 
-      login : [ '',[Validators.required]  ], 
+      login : [ '',[Validators.required,Validators.minLength(4)]  ], 
       nome : [ '',[Validators.required]  ], 
-      senha : [ '' , [Validators.required] ],
-      resenha : [ '' , [Validators.required] ],
-      email : [ '' , [Validators.required,Validators.email] ]
+      senha : [ '' , [Validators.required,Validators.minLength(8)] ],
+      resenha : [ '' , [Validators.required,Validators.minLength(8)] ],
+      email : [ '' , [Validators.required,Validators.pattern(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)] ]
           });
   }
   onSubmit(){
 
-    if( this.cadastraFuncionarioForm.value.senha != this.cadastraFuncionarioForm.value.resenha){
-      alert("senhas devem ser iguais");
-    }else{
-      let funcionario = {
-          login: this.cadastraFuncionarioForm.value.login ,
-          senha: this.cadastraFuncionarioForm.value.senha,
-          nome: this.cadastraFuncionarioForm.value.nome,
-          email: this.cadastraFuncionarioForm.value.email
-      }
-      this.service.cadastraFuncionario(funcionario).subscribe(data =>{
-        if(data.id != null  ){
-          alert('funcionario cadastrada com sucesso')
-          this.router.navigateByUrl('home');
+    if(
+      this.cadastraFuncionarioForm.get('login').valid &&
+      this.cadastraFuncionarioForm.get('senha').valid &&
+      this.cadastraFuncionarioForm.get('nome').valid &&
+      this.cadastraFuncionarioForm.get('resenha').valid &&
+      this.cadastraFuncionarioForm.get('email').valid){
+        if( this.cadastraFuncionarioForm.value.senha != this.cadastraFuncionarioForm.value.resenha){
+          this.isErrorCampo('senha')
+          this.isErrorCampo('resenha')
         }else{
-          alert("funcionario ja cadastrado")
+         
+          let funcionario = {
+              login: this.cadastraFuncionarioForm.value.login ,
+              senha: this.cadastraFuncionarioForm.value.senha,
+              nome: this.cadastraFuncionarioForm.value.nome,
+              email: this.cadastraFuncionarioForm.value.email
+          }
+          this.service.cadastraFuncionario(funcionario).subscribe(data =>{
+            if(data.id != null  ){
+              alert('funcionario cadastrada com sucesso')
+              this.router.navigateByUrl('home');
+            }else{
+              alert("funcionario ja cadastrado")
+            }
+          })
         }
-      })
-    }
+
+      }else{
+        alert('Dados incorretos')
+      }
+
+    
 
   }
 
   voltarHome() {
     this.router.navigateByUrl("home")
   }
+
+
+  isErrorCampo(nomeCampo){
+    return (!this.cadastraFuncionarioForm.get(nomeCampo).valid && this.cadastraFuncionarioForm.get(nomeCampo).touched ); 
+  }
+ 
 }

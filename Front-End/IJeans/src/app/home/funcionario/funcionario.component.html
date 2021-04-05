@@ -23,8 +23,8 @@
             <td>{{funcionario.nome}}</td>
             <td>{{funcionario.login}}</td>
             <td>{{funcionario.email}}</td>
-            <td><button class="btn fas fa-pen fa-lg"></button></td>
-            <td><button class="btn fas fa-trash fa-lg"></button></td>
+            <td><button class="btn fas fa-pen fa-lg" (click)="edit(funcionario)"></button></td>
+            <td><button class="btn fas fa-trash fa-lg" (click)="delete(funcionario)"></button></td>
         </tr>
         
     </table>

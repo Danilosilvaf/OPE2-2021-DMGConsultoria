@@ -24,5 +24,12 @@ export class ProdutoComponent implements OnInit {
   cadastrarProduto(){
     this.router.navigateByUrl('cadastroproduto')
   }
+  delete(produto:ProdutoModel){
+    console.log(produto)
+  }
+
+  edit(produto:ProdutoModel){
+    console.log(produto)
+  }
 
 }

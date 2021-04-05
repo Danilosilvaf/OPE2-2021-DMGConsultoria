@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
+import { SharedModule } from "src/app/shared/shared.module";
 import { CadastroProdutoRoutingModule } from "./cadastro-produto-routing.module";
 import { CadastrarProdutosComponent } from "./cadastro-produto.component";
 
@@ -15,7 +16,8 @@ import { CadastrarProdutosComponent } from "./cadastro-produto.component";
         ReactiveFormsModule,
         BrowserModule,
         CadastroProdutoRoutingModule,
-        FormsModule
+        FormsModule,
+        SharedModule
     ],
 
     providers: []

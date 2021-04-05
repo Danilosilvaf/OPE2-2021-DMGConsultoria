@@ -9,6 +9,9 @@
         <label class="label-title">Nome</label><br>
         <input type="text" formControlName="nome">
         <label for="Nome"></label>
+
+        <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Campo incorreto"></app-msg-erro>
+
         <div>
             <label class="label-title">Marca</label><br>
             <select class="form-select form-select-lg mb-3" (change)=selectMarca($event.target.value) >
@@ -37,8 +40,12 @@
         <label class="label-title">Valor</label><br>
         <input type="text" formControlName="valor"><br>
 
+        <app-msg-erro [isError]="isErrorCampo('valor')" mensagem="Campo incorreto"></app-msg-erro>
+
         <label class="label-title">Quantidade</label><br>
         <input type="text"  formControlName="quantidade">
+
+        <app-msg-erro [isError]="isErrorCampo('quantidade')" mensagem="Campo incorreto"></app-msg-erro>
 
         <input type="button" class="botao-cadastrar" type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
     </form>

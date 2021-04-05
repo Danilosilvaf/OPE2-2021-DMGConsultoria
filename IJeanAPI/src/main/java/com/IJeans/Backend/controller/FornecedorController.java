@@ -25,12 +25,9 @@ public class FornecedorController {
 	}
 	
 	@RequestMapping(value = "",method = RequestMethod.POST)
-	public ResponseEntity<String> cadastrar(@RequestBody FornecedorModel fornecedor){
-		try {
+	public ResponseEntity<FornecedorModel> cadastrar(@RequestBody FornecedorModel fornecedor){
 			fornecedorService.cadastrarFornecedor(fornecedor);
-			return ResponseEntity.ok().body("Fornecedor Cadastrado com Sucesso");
-		}catch (Exception e){
-			return ResponseEntity.badRequest().body("Erro ao Cadastrar Fornecedor" + e.getMessage());
-		}
+			return ResponseEntity.ok().body(fornecedor);
+		
 	}
 }

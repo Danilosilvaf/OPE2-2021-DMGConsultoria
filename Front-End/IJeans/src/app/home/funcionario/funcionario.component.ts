@@ -27,5 +27,11 @@ export class FuncionarioComponent implements OnInit {
   CadastrarFuncionario(){
     this.router.navigateByUrl('cadastrofuncionario')
   }
+  delete(funcionario:FuncionarioModel){
+    console.log(funcionario)
+  }
 
+  edit(funcionario:FuncionarioModel){
+    console.log(funcionario)
+  }
 }

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MsgErroComponent } from './components/msg-erro/msg-erro.component';
+import { MsgErroComponent } from './components/msg-erro/erro/msg-erro.component';
 
 @NgModule({
   declarations: [MsgErroComponent],

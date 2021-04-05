@@ -9,17 +9,32 @@
         <label class="label-title">Nome</label><br>
         <input type="text" formControlName="nome">
 
+        <!-- Mensagem de erro para quando os campos não são preenchidos corretamente -->
+        <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Campo incorreto"></app-msg-erro>
+
         <br><label class="label-title">Usuário</label><br>
         <input type="text"  formControlName="login">
+
+        <!-- Mensagem de erro para quando os campos não são preenchidos corretamente -->
+        <app-msg-erro [isError]="isErrorCampo('login')" mensagem="Campo incorreto"></app-msg-erro>
 
         <br><label class="label-title">Senha</label><br>
         <input type="password"  formControlName="senha">
 
-        <br><label class="label-title">Repetir Senha</label><br>
-        <input type="password"  formControlName="resenha">
+        <app-msg-erro [isError]="isErrorCampo('senha')" mensagem="Campo incorreto"></app-msg-erro>
 
+        <br><label class="label-title">Repetir Senha</label><br>
+
+
+        <input type="password"  formControlName="resenha">
+        
+        <app-msg-erro [isError]="isErrorCampo('resenha')" mensagem="Campo incorreto"></app-msg-erro>
+       
         <br><label class="label-title">E-mail</label><br>
         <input type="text"  formControlName="email">
+        
+        <app-msg-erro [isError]="isErrorCampo('email')" mensagem="Campo incorreto"></app-msg-erro>
+
         <input type="button" class="botao-cadastrar" type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
     </form>
 </div>
