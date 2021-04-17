@@ -33,12 +33,18 @@ public class ProdutoModel implements Serializable {
 	@JoinColumn(name = "id_marca")
 	private MarcaModel marca;
 	
+	@Column(name = "status")
+	private boolean status;
+	
 	@OneToOne
 	@JoinColumn(name = "id_tipo")
 	private TipoProdutoModel tipo_produto;
 	
 	@OneToOne
 	@JoinColumn(name = "id_tamanho")
+	
+	
+	
 	private TamanhoModel tamanho;
 	
 	public TamanhoModel getTamanho() {
@@ -95,6 +101,13 @@ public class ProdutoModel implements Serializable {
 
 	public void setQuantidade_estoque(int quantidade_estoque) {
 		this.quantidade_estoque = quantidade_estoque;
+	}
+
+	public boolean getStatus() {
+		return this.status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 	

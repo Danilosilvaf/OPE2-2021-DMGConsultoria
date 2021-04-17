@@ -11,6 +11,8 @@ public interface ProdutosService {
 	List<ProdutoModel> findAll();
 	
 	ProdutoModel cadastrar(ProdutoModel produto) throws Exception;
+
+	ProdutoModel deletar(String id);
 	
 
 }

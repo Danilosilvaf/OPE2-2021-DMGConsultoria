@@ -9,4 +9,6 @@ public interface FornecedorService {
 	List<FornecedorModel> findAll();
 	
 	void cadastrarFornecedor(FornecedorModel fornecedor);
+
+	Boolean deleteById(int id);
 }

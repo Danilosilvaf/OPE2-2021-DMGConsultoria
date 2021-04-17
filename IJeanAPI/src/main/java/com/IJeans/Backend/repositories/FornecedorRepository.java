@@ -9,4 +9,6 @@ import com.IJeans.Backend.model.FornecedorModel;
 public interface FornecedorRepository extends JpaRepository<FornecedorModel, Integer>{
 
 	public List<FornecedorModel> findAll();
+	
+	public void deleteById(int id);
 }

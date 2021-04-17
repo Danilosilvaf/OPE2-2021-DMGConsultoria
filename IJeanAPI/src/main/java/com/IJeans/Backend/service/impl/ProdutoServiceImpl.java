@@ -1,11 +1,9 @@
 package com.IJeans.Backend.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.IJeans.Backend.model.ProdutoModel;
@@ -33,6 +31,20 @@ public class ProdutoServiceImpl implements ProdutosService {
 		
 		produtoRepository.save(produto);
 		return produto;
+	}
+
+	@Override
+	public ProdutoModel deletar(String id) {
+		Optional<ProdutoModel> produtoretorno = produtoRepository.findById(id);
+		
+		System.out.println("a");
+		ProdutoModel produto = produtoretorno.get();
+		if(produtoretorno != null){
+			produto.setStatus(false);
+			this.produtoRepository.save(produto);
+			return produto;
+		}
+		return new ProdutoModel();
 	}
 
 	

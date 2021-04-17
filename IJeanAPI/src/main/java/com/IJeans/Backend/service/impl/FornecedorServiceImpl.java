@@ -22,5 +22,16 @@ public class FornecedorServiceImpl implements FornecedorService{
 	public void cadastrarFornecedor(FornecedorModel fornecedor) {
 		fornecedorRepository.save(fornecedor);
 	}
+
+	@Override
+	public Boolean deleteById(int id) {
+		
+		try {
+			fornecedorRepository.deleteById(id);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	}
 	
 }

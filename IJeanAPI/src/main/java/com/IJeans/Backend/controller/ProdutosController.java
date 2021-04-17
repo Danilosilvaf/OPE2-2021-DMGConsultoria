@@ -35,5 +35,15 @@ public class ProdutosController {
 		}
 	}
 	
+	@RequestMapping(value = "",method = RequestMethod.DELETE)
+	public ResponseEntity<ProdutoModel> deletar(@RequestBody ProdutoModel produto){
+		try {
+			;
+			return ResponseEntity.ok().body(produtoService.deletar(produto.getId()));
+		}catch (Exception e){
+			return ResponseEntity.ok().body(new ProdutoModel());
+		}
+	}
+	
 	
 }
