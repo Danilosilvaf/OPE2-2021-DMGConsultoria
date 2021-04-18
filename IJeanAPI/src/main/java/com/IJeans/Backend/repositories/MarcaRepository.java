@@ -16,4 +16,6 @@ public interface MarcaRepository extends JpaRepository<MarcaModel, Integer>{
 	public List<MarcaModel> findAll();
 
 	public Optional<MarcaModel> findById(String id);
+	
+	public void deleteById(String id);
 }

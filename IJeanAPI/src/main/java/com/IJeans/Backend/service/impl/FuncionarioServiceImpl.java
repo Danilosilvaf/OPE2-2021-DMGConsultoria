@@ -27,7 +27,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
 	@Override
 	public FuncionarioModel deletar(String id) {
-		Optional<FuncionarioModel> funcionario = funcionarioRepository.findById(funcionario.getId());
+		Optional<FuncionarioModel> funcionario = funcionarioRepository.findById(id);
 		if(funcionario.isPresent()) {
 			this.funcionarioRepository.deleteById(funcionario);
 		}

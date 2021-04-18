@@ -30,14 +30,14 @@ public class MarcaServiceImpl implements MarcaService {
 	public MarcaModel deletar(String id) {
 			Optional<MarcaModel> marcaretorno = marcaRepository.findById(id);
 			
-			System.out.println("a");
 			MarcaModel marca = marcaretorno.get();
 			if(marcaretorno != null){
-				marca.setStatus(false);
-				this.marcaRepository.save(marca);
+				
+				marcaRepository.deleteById(id);
 				return marca;
 			}
 			return new MarcaModel();
+			
 		}
 
 	@Override
