@@ -1,11 +1,11 @@
 package com.IJeans.Backend.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.IJeans.Backend.model.FuncionarioModel;
-import com.IJeans.Backend.model.ProdutoModel;
 
 
 public interface FuncionarioRepository  extends JpaRepository <FuncionarioModel, Integer>{
@@ -14,5 +14,11 @@ public interface FuncionarioRepository  extends JpaRepository <FuncionarioModel,
 
 	public List<FuncionarioModel> findAll();
 
-	public FuncionarioModel findByNome(String descricao);
+	public FuncionarioModel findByNome(String nome);
+
+	Optional<FuncionarioModel> findById(String id);
+
+	Optional<FuncionarioModel> findById(FuncionarioModel funcionarioModel);
+
+	void deleteById(Optional<FuncionarioModel> funcionario);
 }

@@ -13,6 +13,8 @@ public interface ProdutosService {
 	ProdutoModel cadastrar(ProdutoModel produto) throws Exception;
 
 	ProdutoModel deletar(String id);
+
+	ProdutoModel atualizar(ProdutoModel produto);
 	
 
 }

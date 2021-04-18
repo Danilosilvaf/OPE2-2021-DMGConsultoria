@@ -47,5 +47,16 @@ public class ProdutoServiceImpl implements ProdutosService {
 		return new ProdutoModel();
 	}
 
+	@Override
+	public ProdutoModel atualizar(ProdutoModel produto) {
+		Optional<ProdutoModel> produtoretorno = produtoRepository.findById(produto.getId());
+		
+		if(produtoretorno.isPresent()) {
+			this.produtoRepository.save(produto);
+			return produto;
+		}
+		return new ProdutoModel();
+	}
+
 	
 }

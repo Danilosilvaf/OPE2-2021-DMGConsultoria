@@ -29,9 +29,5 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 			}
 	
 		}
-		
-		
-		
 	}
-	
 }

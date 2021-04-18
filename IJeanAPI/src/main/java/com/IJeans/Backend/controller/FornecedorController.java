@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.model.FornecedorModel;
+import com.IJeans.Backend.model.MarcaModel;
 import com.IJeans.Backend.service.FornecedorService;
 
 @RestController
@@ -32,10 +33,24 @@ public class FornecedorController {
 			return ResponseEntity.ok().body(fornecedor);
 		
 	}
-	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> deleteById(@PathVariable("id") int id) {
-
-		
-		return ResponseEntity.ok().body(fornecedorService.deleteById(id));
+	
+	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+	public ResponseEntity<FornecedorModel> deletar(@PathVariable("id") String id){
+		try {
+			;
+			return ResponseEntity.ok().body(fornecedorService.deletar(id));
+		}catch (Exception e){
+			return ResponseEntity.ok().body( new FornecedorModel());
+		}
+	}
+	
+	@RequestMapping(value = "",method = RequestMethod.PUT)
+	public ResponseEntity<FornecedorModel> atualizar(@RequestBody FornecedorModel fornecedor){
+		try {
+			;
+			return ResponseEntity.ok().body(fornecedorService.atualizar(fornecedor));
+		}catch (Exception e){
+			return ResponseEntity.ok().body(new FornecedorModel());
+		}
 	}
 }

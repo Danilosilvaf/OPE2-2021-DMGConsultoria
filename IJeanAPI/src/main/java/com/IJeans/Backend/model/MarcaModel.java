@@ -21,7 +21,10 @@ public class MarcaModel implements Serializable{
 	@Column(name = "nome")
 	private String nome;
 
-	private MarcaModel() {
+	@Column(name = "status")
+	private boolean status;
+
+	public MarcaModel() {
 		
 	}
 	
@@ -46,5 +49,12 @@ public class MarcaModel implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 }

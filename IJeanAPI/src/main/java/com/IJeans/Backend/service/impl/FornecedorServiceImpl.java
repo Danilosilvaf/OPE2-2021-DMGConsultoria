@@ -1,6 +1,7 @@
 package com.IJeans.Backend.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,14 +25,27 @@ public class FornecedorServiceImpl implements FornecedorService{
 	}
 
 	@Override
-	public Boolean deleteById(int id) {
-		
-		try {
-			fornecedorRepository.deleteById(id);
-			return true;
-		}catch(Exception e) {
-			return false;
+	public FornecedorModel deletar(String id) {
+			Optional<FornecedorModel> fornecedorretorno = fornecedorRepository.findById(id);
+			
+			System.out.println("a");
+			FornecedorModel fornecedor = fornecedorretorno.get();
+			if(fornecedorretorno != null){
+				fornecedor.setStatus(false);
+				this.fornecedorRepository.save(fornecedor);
+				return fornecedor;
+			}
+			return new FornecedorModel();
 		}
-	}
-	
+
+	@Override
+	public FornecedorModel atualizar(FornecedorModel fornecedor) {
+			Optional<FornecedorModel> fornecedorretorno = fornecedorRepository.findById(fornecedor.getId());
+			
+			if(fornecedorretorno.isPresent()) {
+				this.fornecedorRepository.save(fornecedor);
+				return fornecedor;
+			}
+			return new FornecedorModel();
+		}
 }

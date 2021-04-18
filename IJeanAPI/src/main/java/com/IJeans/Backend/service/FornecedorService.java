@@ -10,5 +10,7 @@ public interface FornecedorService {
 	
 	void cadastrarFornecedor(FornecedorModel fornecedor);
 
-	Boolean deleteById(int id);
+	FornecedorModel atualizar(FornecedorModel fornecedor);
+
+	FornecedorModel deletar(String id);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,11 +36,21 @@ public class ProdutosController {
 		}
 	}
 	
-	@RequestMapping(value = "",method = RequestMethod.DELETE)
-	public ResponseEntity<ProdutoModel> deletar(@RequestBody ProdutoModel produto){
+	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+	public ResponseEntity<ProdutoModel> deletar(@PathVariable("id") String id){
 		try {
 			;
-			return ResponseEntity.ok().body(produtoService.deletar(produto.getId()));
+			return ResponseEntity.ok().body(produtoService.deletar(id));
+		}catch (Exception e){
+			return ResponseEntity.ok().body(new ProdutoModel());
+		}
+	}
+	
+	@RequestMapping(value = "",method = RequestMethod.PUT)
+	public ResponseEntity<ProdutoModel> atualizar(@RequestBody ProdutoModel produto){
+		try {
+			;
+			return ResponseEntity.ok().body(produtoService.atualizar(produto));
 		}catch (Exception e){
 			return ResponseEntity.ok().body(new ProdutoModel());
 		}

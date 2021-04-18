@@ -27,7 +27,10 @@ public class FornecedorModel implements Serializable{
 	@Column(name = "telefone")
 	private String telefone;
 	
-	private FornecedorModel() {
+	@Column(name = "status")
+	private boolean status;
+	
+	public FornecedorModel() {
 		
 	}
 
@@ -71,6 +74,12 @@ public class FornecedorModel implements Serializable{
 		this.telefone = telefone;
 	}
 
-	
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 	
 }

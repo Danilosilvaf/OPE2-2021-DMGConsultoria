@@ -9,4 +9,8 @@ public interface MarcaService {
 	List<MarcaModel> findAll();
 	
 	void cadastrarMarca(MarcaModel marca);
+
+	MarcaModel deletar(String id);
+
+	MarcaModel atualizar(MarcaModel marca);
 }
