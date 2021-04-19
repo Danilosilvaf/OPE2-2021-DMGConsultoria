@@ -11,7 +11,7 @@ import com.IJeans.Backend.model.FornecedorModel;
 public interface FornecedorRepository extends JpaRepository<FornecedorModel, Integer>{
 
 	@Query(
-			value="SELECT * FROM produto WHERE STATUS <> false",
+			value="SELECT * FROM fornecedor WHERE STATUS <> false",
 			nativeQuery=true)
 	public List<FornecedorModel> findAll();
 	

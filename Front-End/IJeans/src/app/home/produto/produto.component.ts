@@ -10,7 +10,7 @@ import { ProdutoService } from './service/service-produto.service';
 })
 export class ProdutoComponent implements OnInit {
 
-  
+  EditRowId:any='';
 
   constructor(private service:ProdutoService, private router:Router) { }
   produtos:Array<ProdutoModel>;
@@ -29,6 +29,7 @@ export class ProdutoComponent implements OnInit {
   }
 
   edit(produto:ProdutoModel){
+    this.EditRowId = produto.id
     console.log(produto)
   }
 

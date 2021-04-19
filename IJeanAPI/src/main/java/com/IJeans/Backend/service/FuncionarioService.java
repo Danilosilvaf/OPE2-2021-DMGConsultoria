@@ -12,5 +12,5 @@ public interface FuncionarioService {
 
 	FuncionarioModel deletar(String id);
 
-	FuncionarioModel atualizar(FuncionarioModel funcionario);
+	FuncionarioModel atualizar(FuncionarioModel funcionario) throws Exception;
 }

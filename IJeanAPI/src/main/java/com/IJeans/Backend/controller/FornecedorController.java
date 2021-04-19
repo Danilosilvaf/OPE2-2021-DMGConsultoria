@@ -37,13 +37,12 @@ public class FornecedorController {
 	}
 	
 	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
-//	@DeleteMapping(value="{id}")
 	public ResponseEntity<FornecedorModel> deletar(@PathVariable("id") String id){
 		try {
 			;
 			return ResponseEntity.ok().body(fornecedorService.deletar(id));
 		}catch (Exception e){
-			return ResponseEntity.ok().body( new FornecedorModel());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	

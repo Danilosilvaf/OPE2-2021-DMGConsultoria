@@ -25,17 +25,19 @@ public class FornecedorServiceImpl implements FornecedorService{
 	}
 
 	@Override
-	public FornecedorModel deletar(String id) {
+	public FornecedorModel deletar(String id) throws Exception {
 			Optional<FornecedorModel> fornecedorretorno = fornecedorRepository.findById(id);
 			
 			System.out.println("a");
-			FornecedorModel fornecedor = fornecedorretorno.get();
-			if(fornecedorretorno != null){
+			if(fornecedorretorno.isPresent()){
+				FornecedorModel fornecedor = fornecedorretorno.get();
 				fornecedor.setStatus(false);
 				this.fornecedorRepository.save(fornecedor);
 				return fornecedor;
+			}else {
+				throw new Exception("fornecedor não existe");
 			}
-			return new FornecedorModel();
+			
 		}
 
 	@Override

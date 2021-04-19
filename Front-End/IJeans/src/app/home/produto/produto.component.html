@@ -22,14 +22,16 @@
             <th>Estoque</th>
         </tr>
         <tr *ngFor="let produto of produtos">
-            <td>{{produto.id}}</td>
-            <td>{{produto.nome}}</td>
+            <td >{{produto.id}}</td>
+            <td *ngIf="produto.id === EditRowId"><input type="text" value="{{produto.nome}}"><p *ngIf="produto.id != EditRowId">{{produto.nome}}</p></td>
             <td>{{produto.marca.nome}}</td>
             <td>{{produto.tamanho.id}}</td>
-            <td>{{produto.preco_atual}}</td>
+            <td *ngIf="produto.id === EditRowId"><input type="text" value="{{produto.preco_atual}}"> <p *ngIf="produto.id != EditRowId">{{produto.preco_atual}}</p></td>
             <td>{{produto.quantidade_estoque}}</td>
-            <td><button class="btn fas fa-pen fa-lg"></button></td>
-            <td><button class="btn fas fa-trash fa-lg"></button></td>
+            <td *ngIf="produto.id === EditRowId"><button class="btn fas fa-ban fa-lg" (click)="edit(produto)"></button></td>
+            <td *ngIf="produto.id === EditRowId"><button class="btn fas fa-ban fa-lg" (click)="edit(produto)"></button></td>
+            <td *ngIf="produto.id != EditRowId"><button class="btn fas fa-pen fa-lg" (click)="edit(produto)"></button></td>
+            <td *ngIf="produto.id != EditRowId"><button class="btn fas fa-trash fa-lg" (click)="edit(produto)"></button></td>
         </tr>
     </table>
 </div>

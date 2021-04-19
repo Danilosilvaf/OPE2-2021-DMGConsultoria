@@ -33,7 +33,7 @@ public class ProdutoModel implements Serializable {
 	@JoinColumn(name = "id_marca")
 	private MarcaModel marca;
 	
-	@Column(name = "status")
+	@Column(name = "STATUS")
 	private boolean status;
 	
 	@OneToOne

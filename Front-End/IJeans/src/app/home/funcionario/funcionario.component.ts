@@ -28,10 +28,12 @@ export class FuncionarioComponent implements OnInit {
     this.router.navigateByUrl('cadastrofuncionario')
   }
   delete(funcionario:FuncionarioModel){
-    console.log(funcionario)
+    this.service.delete(funcionario).subscribe(data => {
+      console.log(data)
+    })
+
   }
 
   edit(funcionario:FuncionarioModel){
-    console.log(funcionario)
   }
 }
