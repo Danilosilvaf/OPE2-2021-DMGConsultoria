@@ -7,10 +7,11 @@
             <input type="text" class="form-control busca">
         </div>
         
-        <!-- <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="CadastrarFornecedor()" > Novo Produto</button> -->
+        <!-- <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="CadastrarFornecedor()" > Novo fornecedor</button> -->
         <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="cadastrarFornecedor()"> Novo Fornecedor</button>
         
     </div>
+<form [formGroup]="fornecedorForm">
 
     <table class="tabela">
         <tr>
@@ -21,12 +22,22 @@
         </tr>
         <tr *ngFor="let fornecedor of fornecedores">
             <td>{{fornecedor.id}}</td>
-            <td>{{fornecedor.nome}}</td>
-            <td>{{fornecedor.email}}</td>
-            <td>{{fornecedor.telefone}}</td>
-            <td><button class="btn fas fa-pen fa-lg"></button></td>
-            <td><button class="btn fas fa-trash fa-lg"></button></td>
+            <td *ngIf="fornecedor.id != EditRowId">{{fornecedor.nome}}</td>
+            <td *ngIf="fornecedor.id === EditRowId"><input type="text" value="{{fornecedor.nome}}" formControlName="nomeFornecedor"></td>
+            <td *ngIf="fornecedor.id != EditRowId">{{fornecedor.email}}</td>
+            <td *ngIf="fornecedor.id === EditRowId"><input type="text" value="{{fornecedor.email}}" formControlName="emailFornecedor"></td>
+            <td *ngIf="fornecedor.id != EditRowId">{{fornecedor.telefone}}</td>
+            <td *ngIf="fornecedor.id === EditRowId"><input type="text" value="{{fornecedor.telefone}}" formControlName="telefoneFornecedor"></td>
+            <td *ngIf="fornecedor.id === EditRowId"><button class="btn fas fa-ban fa-lg"
+                (click)="editIncorrect(fornecedor)"></button></td>
+        <td *ngIf="fornecedor.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"
+                (click)="editCorrect(fornecedor)"></button></td>
+        <td *ngIf="fornecedor.id != EditRowId"><button class="btn fas fa-pen fa-lg"
+                (click)="edit(fornecedor)"></button></td>
+        <td *ngIf="fornecedor.id != EditRowId"><button class="btn fas fa-trash fa-lg"
+                (click)="delete(fornecedor)"></button></td>
         </tr>
        
     </table>
+</form>
 </div>

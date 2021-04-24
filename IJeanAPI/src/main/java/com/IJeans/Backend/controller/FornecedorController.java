@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.IJeans.Backend.service.FornecedorService;
 
 @RestController
 @RequestMapping(value = "/fornecedor")
+@CrossOrigin(origins = "*")
 public class FornecedorController {
 
 	@Autowired
@@ -52,7 +54,7 @@ public class FornecedorController {
 			;
 			return ResponseEntity.ok().body(fornecedorService.atualizar(fornecedor));
 		}catch (Exception e){
-			return ResponseEntity.ok().body(new FornecedorModel());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 }

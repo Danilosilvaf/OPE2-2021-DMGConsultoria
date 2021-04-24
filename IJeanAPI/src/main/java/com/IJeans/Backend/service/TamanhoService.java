@@ -8,4 +8,6 @@ public interface TamanhoService {
 
 	List<TamanhoModel> findAll();
 
+	List<TamanhoModel> findByIdTipo(String id);
+
 }

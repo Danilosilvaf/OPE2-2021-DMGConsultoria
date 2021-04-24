@@ -17,6 +17,7 @@ import com.IJeans.Backend.service.FuncionarioService;
 
 @RestController
 @RequestMapping(value = "/funcionarios")
+@CrossOrigin(origins = "*")
 public class FuncionarioController {
 	
 	@Autowired

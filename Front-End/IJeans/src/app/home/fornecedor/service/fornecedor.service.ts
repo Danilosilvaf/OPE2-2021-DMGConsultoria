@@ -19,5 +19,11 @@ export class FornecedorService {
   cadastrarFornecedor(fornecedor){
     return this.http.post<FornecedorModel>('http://localhost:8080/fornecedor',fornecedor);
   }
+  updatefornecedor(fornecedor){
+    return this.http.put<FornecedorModel>('http://localhost:8080/fornecedor',fornecedor);
+  }
+  removerFornecedor(fornecedor){
+    return this.http.delete<FornecedorModel>('http://localhost:8080/fornecedor/'+fornecedor);
+  }
   
 }

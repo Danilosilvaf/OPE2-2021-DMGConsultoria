@@ -28,7 +28,6 @@ public class FornecedorServiceImpl implements FornecedorService{
 	public FornecedorModel deletar(String id) throws Exception {
 			Optional<FornecedorModel> fornecedorretorno = fornecedorRepository.findById(id);
 			
-			System.out.println("a");
 			if(fornecedorretorno.isPresent()){
 				FornecedorModel fornecedor = fornecedorretorno.get();
 				fornecedor.setStatus(false);

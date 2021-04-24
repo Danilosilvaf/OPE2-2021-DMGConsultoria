@@ -1,5 +1,4 @@
-
-<div class="main" >
+<div class="main">
     <h2>Produtos</h2>
 
     <div class="row">
@@ -7,31 +6,40 @@
             <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
             <input type="text" class="form-control busca">
         </div>
-        
-        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="cadastrarProduto()" > Novo Produto</button>
-        
-    </div>
 
-    <table class="tabela">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Marca</th>
-            <th>Tamanho</th>
-            <th>Valor</th>
-            <th>Estoque</th>
-        </tr>
-        <tr *ngFor="let produto of produtos">
-            <td >{{produto.id}}</td>
-            <td *ngIf="produto.id === EditRowId"><input type="text" value="{{produto.nome}}"><p *ngIf="produto.id != EditRowId">{{produto.nome}}</p></td>
-            <td>{{produto.marca.nome}}</td>
-            <td>{{produto.tamanho.id}}</td>
-            <td *ngIf="produto.id === EditRowId"><input type="text" value="{{produto.preco_atual}}"> <p *ngIf="produto.id != EditRowId">{{produto.preco_atual}}</p></td>
-            <td>{{produto.quantidade_estoque}}</td>
-            <td *ngIf="produto.id === EditRowId"><button class="btn fas fa-ban fa-lg" (click)="edit(produto)"></button></td>
-            <td *ngIf="produto.id === EditRowId"><button class="btn fas fa-ban fa-lg" (click)="edit(produto)"></button></td>
-            <td *ngIf="produto.id != EditRowId"><button class="btn fas fa-pen fa-lg" (click)="edit(produto)"></button></td>
-            <td *ngIf="produto.id != EditRowId"><button class="btn fas fa-trash fa-lg" (click)="edit(produto)"></button></td>
-        </tr>
-    </table>
+        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="cadastrarProduto()"> Novo Produto</button>
+
+    </div>
+    <form [formGroup]="produtoForm">
+
+
+        <table class="tabela">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Tamanho</th>
+                <th>Valor</th>
+                <th>Estoque</th>
+            </tr>
+            <tr *ngFor="let produto of produtos">
+                <td>{{produto.id}}</td>
+                <td *ngIf="produto.id === EditRowId"><input type="text" value="{{produto.nome}}" formControlName="nomeProduto"></td>
+                <td *ngIf="produto.id != EditRowId">{{produto.nome}}</td>
+                <td>{{produto.marca.nome}}</td>
+                <td>{{produto.tamanho.id}}</td>
+                <td *ngIf="produto.id === EditRowId"><input type="text" value="{{produto.preco_atual}}" formControlName="precoProduto"> </td>
+                <td *ngIf="produto.id != EditRowId">{{produto.preco_atual}}</td>
+                <td>{{produto.quantidade_estoque}}</td>
+                <td *ngIf="produto.id === EditRowId"><button class="btn fas fa-ban fa-lg"
+                        (click)="editIncorrect(produto)"></button></td>
+                <td *ngIf="produto.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"
+                        (click)="editCorrect(produto)"></button></td>
+                <td *ngIf="produto.id != EditRowId"><button class="btn fas fa-pen fa-lg"
+                        (click)="edit(produto)"></button></td>
+                <td *ngIf="produto.id != EditRowId"><button class="btn fas fa-trash fa-lg"
+                        (click)="delete(produto)"></button></td>
+            </tr>
+        </table>
+    </form>
 </div>

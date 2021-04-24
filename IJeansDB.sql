@@ -29,11 +29,12 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
 -- Dumping data for table IJeans.fornecedor: ~5 rows (approximately)
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
 INSERT INTO `fornecedor` (`id`, `nome`, `email`, `telefone`, `STATUS`) VALUES
-	(9, 'Queridão', 'Queridao@queridao.com', '1199999999', NULL),
-	(10, 'Edna', 'edna_henrique@fatec.com', '1134343434', NULL),
-	(11, 'Gui', 'professor@fatec.com', '1133333333', NULL),
-	(12, 'Marcos', 'marcos@alunoimpacta.com.br', '1143909734', NULL),
-	(13, 'asdas', 'asdasdas@a.com', '11123451234', NULL);
+	(9, 'Queridão', 'Queridao@queridao.com', '1199999999', 1),
+	(10, '', '', '', 0),
+	(11, '', 'asdas@asdas.com', '11963460773', 0),
+	(12, 'Marcos', 'marcos@alunoimpacta.com.br', '1143909734', 1),
+	(13, 'asdas', 'asdasdas@a.com', '11123451234', 1),
+	(14, 'SADA', 'asas2@SDas.com', '1232131232', 0);
 /*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.fornecimento
@@ -57,32 +58,31 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `senha` varchar(200) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `nivelFunc` int(1) NOT NULL,
+  `nivel_func` int(1) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.funcionario: ~3 rows (approximately)
+-- Dumping data for table IJeans.funcionario: ~0 rows (approximately)
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-INSERT INTO `funcionario` (`id`, `login`, `senha`, `nome`, `email`, `nivelFunc`) VALUES
-	(15, 'queridao', '123', 'Queridao', 'queridao@queridao.com', 0),
-	(16, 'edna', '123', 'Edna', 'EdnaHenrique@fatec.com.br', 0),
-	(17, 'devinho', '123', 'Devinho', 'devinho@devinho.com', 0);
+INSERT INTO `funcionario` (`id`, `login`, `senha`, `nome`, `email`, `nivel_func`) VALUES
+	(20, 'queridao', 'queridao', 'queridao', 'queridao@queridao.com', 0);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.marca
 CREATE TABLE IF NOT EXISTS `marca` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
+  `STATUS` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table IJeans.marca: ~2 rows (approximately)
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
-INSERT INTO `marca` (`id`, `nome`) VALUES
-	(1, 'Nike'),
-	(2, 'Adidas');
+INSERT INTO `marca` (`id`, `nome`, `STATUS`) VALUES
+	(1, 'Nike', 1),
+	(2, 'Adidas', 1);
 /*!40000 ALTER TABLE `marca` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.produto
@@ -111,8 +111,8 @@ INSERT INTO `produto` (`id`, `nome`, `preco_atual`, `quantidade_estoque`, `id_ma
 	(2, 'novo', 30, 25, 1, 1, 'GG', 0),
 	(3, 'novo4', 30, 25, 1, 1, 'GG', 0),
 	(4, 'novo1', 30, 25, 1, 1, 'GG', 0),
-	(5, 'novo23', 30, 25, 1, 1, 'GG', 1),
-	(6, 'Air Jordan 1', 30, 25, 1, 1, 'GG', 1),
+	(5, 'novo23456', 27, 25, 1, 1, 'GG', 0),
+	(6, 'Air Jordan 2345', 2333, 25, 1, 1, 'GG', 0),
 	(7, 'Air Jordan 7', 30, 25, 1, 1, 'GG', 1),
 	(8, 'Air Jordan 6', 30, 25, 1, 1, 'GG', 1),
 	(9, 'Air Jordan 5', 30, 25, 1, 1, 'GG', 1),
@@ -135,19 +135,34 @@ INSERT INTO `produto` (`id`, `nome`, `preco_atual`, `quantidade_estoque`, `id_ma
 -- Dumping structure for table IJeans.tamanho
 CREATE TABLE IF NOT EXISTS `tamanho` (
   `id` char(3) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_tipo` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_tipo` (`id_tipo`),
+  CONSTRAINT `tamanho_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipoproduto` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.tamanho: ~7 rows (approximately)
+-- Dumping data for table IJeans.tamanho: ~19 rows (approximately)
 /*!40000 ALTER TABLE `tamanho` DISABLE KEYS */;
-INSERT INTO `tamanho` (`id`) VALUES
-	('G'),
-	('GG'),
-	('M'),
-	('P'),
-	('PP'),
-	('XG'),
-	('XL');
+INSERT INTO `tamanho` (`id`, `id_tipo`) VALUES
+	('32', 2),
+	('33', 2),
+	('34', 2),
+	('35', 2),
+	('36', 2),
+	('37', 2),
+	('38', 2),
+	('39', 2),
+	('40', 2),
+	('41', 2),
+	('42', 2),
+	('43', 2),
+	('44', 2),
+	('45', 2),
+	('G', 1),
+	('GG', 1),
+	('M', 1),
+	('P', 1),
+	('PP', 1);
 /*!40000 ALTER TABLE `tamanho` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.tipoproduto
@@ -157,10 +172,11 @@ CREATE TABLE IF NOT EXISTS `tipoproduto` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.tipoproduto: ~1 rows (approximately)
+-- Dumping data for table IJeans.tipoproduto: ~2 rows (approximately)
 /*!40000 ALTER TABLE `tipoproduto` DISABLE KEYS */;
 INSERT INTO `tipoproduto` (`id`, `nome`) VALUES
-	(1, 'Camiseta');
+	(1, 'Camiseta'),
+	(2, 'Tenis');
 /*!40000 ALTER TABLE `tipoproduto` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

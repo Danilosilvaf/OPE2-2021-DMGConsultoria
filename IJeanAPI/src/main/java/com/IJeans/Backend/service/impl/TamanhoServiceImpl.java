@@ -19,4 +19,9 @@ public class TamanhoServiceImpl implements TamanhoService {
 	public List<TamanhoModel> findAll() {
 		return tamanhoRepository.findAll();
 	}
+
+	@Override
+	public List<TamanhoModel> findByIdTipo(String id) {
+		return tamanhoRepository.findByIdTipo(id);
+	}
 }
