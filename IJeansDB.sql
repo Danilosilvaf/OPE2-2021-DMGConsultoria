@@ -24,17 +24,14 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
   `telefone` varchar(11) NOT NULL,
   `STATUS` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.fornecedor: ~5 rows (approximately)
+-- Dumping data for table IJeans.fornecedor: ~7 rows (approximately)
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
 INSERT INTO `fornecedor` (`id`, `nome`, `email`, `telefone`, `STATUS`) VALUES
-	(9, 'Queridão', 'Queridao@queridao.com', '1199999999', 1),
-	(10, '', '', '', 0),
-	(11, '', 'asdas@asdas.com', '11963460773', 0),
-	(12, 'Marcos', 'marcos@alunoimpacta.com.br', '1143909734', 1),
-	(13, 'asdas', 'asdasdas@a.com', '11123451234', 1),
-	(14, 'SADA', 'asas2@SDas.com', '1232131232', 0);
+	(19, 'queridao', 'queridao@queridao', '11999999999', 1),
+	(20, 'Gui', 'gui@alunoimpacta.com', '1188888888', 1),
+	(21, 'Edna', 'edna@henrique.com', '11777777777', 1);
 /*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.fornecimento
@@ -62,12 +59,13 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.funcionario: ~0 rows (approximately)
+-- Dumping data for table IJeans.funcionario: ~1 rows (approximately)
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
 INSERT INTO `funcionario` (`id`, `login`, `senha`, `nome`, `email`, `nivel_func`) VALUES
-	(20, 'queridao', 'queridao', 'queridao', 'queridao@queridao.com', 0);
+	(24, 'admin', 'admin123', 'admin', 'admin@admin.com', 0),
+	(25, 'queridao', 'queridao', 'queridao', 'queridao@queridao.com', 0);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.marca
@@ -103,42 +101,26 @@ CREATE TABLE IF NOT EXISTS `produto` (
   CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id`),
   CONSTRAINT `produto_ibfk_2` FOREIGN KEY (`id_tipo`) REFERENCES `tipoproduto` (`id`),
   CONSTRAINT `produto_ibfk_3` FOREIGN KEY (`id_tamanho`) REFERENCES `tamanho` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table IJeans.produto: ~22 rows (approximately)
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 INSERT INTO `produto` (`id`, `nome`, `preco_atual`, `quantidade_estoque`, `id_marca`, `id_tipo`, `id_tamanho`, `STATUS`) VALUES
-	(2, 'novo', 30, 25, 1, 1, 'GG', 0),
-	(3, 'novo4', 30, 25, 1, 1, 'GG', 0),
-	(4, 'novo1', 30, 25, 1, 1, 'GG', 0),
-	(5, 'novo23456', 27, 25, 1, 1, 'GG', 0),
-	(6, 'Air Jordan 2345', 2333, 25, 1, 1, 'GG', 0),
-	(7, 'Air Jordan 7', 30, 25, 1, 1, 'GG', 1),
-	(8, 'Air Jordan 6', 30, 25, 1, 1, 'GG', 1),
-	(9, 'Air Jordan 5', 30, 25, 1, 1, 'GG', 1),
-	(10, 'Air Jordan 4', 30, 25, 1, 1, 'GG', 1),
-	(11, 'Air Jordan 3', 30, 25, 1, 1, 'GG', 1),
-	(12, 'Air Jordan 2', 30, 25, 1, 1, 'GG', 1),
-	(13, 'Air Jordan1', 30, 25, 1, 1, 'GG', 1),
-	(14, 'Air Jordan 444', 30, 25, 1, 1, 'GG', 1),
-	(15, 'CAMISETA HENLEY', 129.9, 3, 1, 1, 'GG', 1),
-	(16, 'a', 12, 1, 1, 1, 'GG', 1),
-	(17, '', 0, 0, 1, 1, 'GG', 1),
-	(18, 'asdasdasdas', 111, 2, 1, 1, 'G', 1),
-	(19, 'aaaaasd', 1, 1, 1, 1, 'G', 1),
-	(20, 'adasadas', 123, 1, 1, 1, 'G', 1),
-	(21, 'Air Jordan', 18.99, 3, 1, 1, 'G', 1),
-	(22, 'aaaassdasdad', 111, 1, 1, 1, 'G', 1),
-	(23, 'aasdasdasdasdas', 232.93, 122, 1, 1, 'G', 1);
+	(25, 'Air Max Total 90', 579.9, 20, 1, 2, '44', 1),
+	(26, 'Camiseta PSG', 249.9, 17, 1, 1, 'GG', 1),
+	(27, 'Adidas Originals', 149.3, 13, 1, 1, 'G', 1),
+	(28, 'Adidas Originals II', 179.4, 19, 1, 1, 'M', 1),
+	(29, 'Sportwear Icon Futura', 89.9, 15, 1, 1, 'M', 1),
+	(30, 'Sportwear Icon Futura II', 89.9, 15, 1, 1, 'M', 1),
+	(31, 'Air Jordan 1 Retro', 1029.9, 3, 1, 2, '40', 1),
+	(32, 'Air Jordan 7', 899.9, 9, 1, 2, '40', 1);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.tamanho
 CREATE TABLE IF NOT EXISTS `tamanho` (
   `id` char(3) NOT NULL,
   `id_tipo` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_tipo` (`id_tipo`),
-  CONSTRAINT `tamanho_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipoproduto` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table IJeans.tamanho: ~19 rows (approximately)
