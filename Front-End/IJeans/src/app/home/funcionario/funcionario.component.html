@@ -10,6 +10,8 @@
         <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="CadastrarFuncionario()" > Novo Funcionário</button>
         
     </div>
+<form [formGroup]="funcionarioForm">
+
 
     <table class="tabela">
         <tr>
@@ -19,15 +21,26 @@
             <th>E-mail</th>
         </tr>
         <tr *ngFor="let funcionario of funcionarios">
-            <td>{{funcionario.id}}</td>
-            <td>{{funcionario.nome}}</td>
-            <td>{{funcionario.login}}</td>
-            <td>{{funcionario.email}}</td>
-            <td><button class="btn fas fa-pen fa-lg" (click)="edit(funcionario)"></button></td>
-            <td><button class="btn fas fa-trash fa-lg" (click)="delete(funcionario)"></button></td>
+            <td *ngIf="funcionario.id != EditRowId">{{funcionario.id}}</td>
+            <td *ngIf="funcionario.id != EditRowId">{{funcionario.nome}}</td>
+            <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.nome}}" formControlName="nomeFuncionario"></td>
+            <td *ngIf="funcionario.id != EditRowId">{{funcionario.login}}</td>
+            <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.login}}" formControlName="loginFuncionario"></td>
+            <td *ngIf="funcionario.id != EditRowId">{{funcionario.email}}</td>
+            <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.email}}" formControlName="emailFuncionario"></td>
+            <td *ngIf="funcionario.id === EditRowId"><button class="btn fas fa-ban fa-lg"
+            (click)="editIncorrect(funcionario)"></button></td>
+    <td *ngIf="funcionario.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"
+            (click)="editCorrect(funcionario)"></button></td>
+    <td *ngIf="funcionario.id != EditRowId"><button class="btn fas fa-pen fa-lg"
+            (click)="edit(funcionario)"></button></td>
+    <td *ngIf="funcionario.id != EditRowId"><button class="btn fas fa-trash fa-lg"
+            (click)="delete(funcionario)"></button></td>
         </tr>
         
     </table>
+
+</form>
 </div>
 
 <!-- <app-cadastrafuncionario [ngStyle]="{'display': displayCadastroFuncionario}"></app-cadastrafuncionario> -->

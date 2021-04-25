@@ -8,6 +8,7 @@ import { FornecedorComponent } from './fornecedor/fornecedor.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserModule } from "@angular/platform-browser";
+import { MarcaComponent } from "./marca/marca.component";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BrowserModule } from "@angular/platform-browser";
         HomeComponent,
         ProdutoComponent,
         FuncionarioComponent,
-        FornecedorComponent
+        FornecedorComponent,
+        MarcaComponent
         ],
     imports: [
         CommonModule,

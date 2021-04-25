@@ -11,7 +11,7 @@ import com.IJeans.Backend.model.MarcaModel;
 public interface MarcaRepository extends JpaRepository<MarcaModel, Integer>{
 
 	@Query(
-			value="SELECT * FROM produto WHERE STATUS <> false",
+			value="SELECT * FROM marca WHERE STATUS <> false",
 			nativeQuery=true)
 	public List<MarcaModel> findAll();
 

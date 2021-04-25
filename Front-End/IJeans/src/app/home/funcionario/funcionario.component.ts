@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FuncionarioModel } from 'src/app/shared/model/funcionario.model';
 import { FuncionarioService } from './service/funcionario.service';
@@ -13,7 +14,10 @@ import { FuncionarioService } from './service/funcionario.service';
 
 export class FuncionarioComponent implements OnInit {
 
-  constructor(private service: FuncionarioService, private router:Router) { }
+EditRowId: any = '';
+funcionarioForm: FormGroup;
+
+  constructor(private service: FuncionarioService, private router:Router,private formBuilder: FormBuilder) { }
 
   
   funcionarios:Array<FuncionarioModel>;
@@ -22,6 +26,14 @@ export class FuncionarioComponent implements OnInit {
     this.service.findAll().subscribe(data => {
       this.funcionarios=data
     });
+
+    this.funcionarioForm = this.formBuilder.group({
+      nomeFuncionario: ['', [Validators.required]],
+      loginFuncionario: ['', [Validators.required]],
+      emailFuncionario:['',[Validators.required]]
+
+    });
+
   }
 
   CadastrarFuncionario(){
@@ -30,10 +42,34 @@ export class FuncionarioComponent implements OnInit {
   delete(funcionario:FuncionarioModel){
     this.service.delete(funcionario).subscribe(data => {
       console.log(data)
+      this.ngOnInit();
     })
 
   }
 
+  editIncorrect() {
+    this.EditRowId = -2
+    this.funcionarioForm.get('nomeFuncionario').setValue("");
+    this.funcionarioForm.get('loginFuncionario').setValue("");
+    this.funcionarioForm.get('emailFuncionario').setValue("");
+  }
+
+  editCorrect(funcionario: FuncionarioModel) {
+    funcionario.nome = this.funcionarioForm.get('nomeFuncionario').value
+    funcionario.login = this.funcionarioForm.get('loginFuncionario').value
+    funcionario.email = this.funcionarioForm.get('emailFuncionario').value
+
+    this.service.alteraFuncionario(funcionario).subscribe(data => {
+      console.log(data)
+      this.EditRowId = -2
+      this.funcionarioForm.get('nomeFuncionario').setValue("");
+      this.funcionarioForm.get('loginFuncionario').setValue("");
+      this.funcionarioForm.get('emailFuncionario').setValue("");
+      
+    })
+  }
+
   edit(funcionario:FuncionarioModel){
+    this.EditRowId = funcionario.id
   }
 }

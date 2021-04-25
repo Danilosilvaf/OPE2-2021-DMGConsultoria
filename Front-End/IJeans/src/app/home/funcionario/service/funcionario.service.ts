@@ -22,5 +22,8 @@ export class FuncionarioService {
   delete(funcionario){
     return this.http.delete<FuncionarioModel>(`http://localhost:8080/funcionarios/${funcionario.id}`);
   }
+  alteraFuncionario(funcionario){
+    return this.http.put<FuncionarioModel>("http://localhost:8080/funcionarios",funcionario);
+  }
   
 }
