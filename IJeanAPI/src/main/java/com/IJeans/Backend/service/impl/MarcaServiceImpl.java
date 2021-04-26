@@ -33,7 +33,8 @@ public class MarcaServiceImpl implements MarcaService {
 			MarcaModel marca = marcaretorno.get();
 			if(marcaretorno != null){
 				
-				marcaRepository.deleteById(id);
+				marca.setStatus(false);
+				marcaRepository.save(marca);
 				return marca;
 			}
 			return new MarcaModel();

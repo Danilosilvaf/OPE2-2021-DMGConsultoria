@@ -44,7 +44,7 @@ public class MarcaController {
 			;
 			return ResponseEntity.ok().body(marcaService.deletar(id));
 		}catch (Exception e){
-			return ResponseEntity.ok().body(new MarcaModel());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	
@@ -54,7 +54,7 @@ public class MarcaController {
 			;
 			return ResponseEntity.ok().body(marcaService.atualizar(marca));
 		}catch (Exception e){
-			return ResponseEntity.ok().body(new MarcaModel());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 }
