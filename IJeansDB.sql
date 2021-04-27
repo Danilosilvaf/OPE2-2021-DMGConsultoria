@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.fornecedor: ~7 rows (approximately)
+-- Dumping data for table IJeans.fornecedor: ~3 rows (approximately)
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
 INSERT INTO `fornecedor` (`id`, `nome`, `email`, `telefone`, `STATUS`) VALUES
 	(19, 'queridao', 'queridao@queridao', '11999999999', 1),
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.funcionario: ~1 rows (approximately)
+-- Dumping data for table IJeans.funcionario: ~2 rows (approximately)
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
 INSERT INTO `funcionario` (`id`, `login`, `senha`, `nome`, `email`, `nivel_func`) VALUES
 	(24, 'admin', 'admin123', 'admin', 'admin@admin.com', 0),
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `marca` (
   `nome` varchar(200) NOT NULL,
   `STATUS` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table IJeans.marca: ~2 rows (approximately)
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   CONSTRAINT `produto_ibfk_3` FOREIGN KEY (`id_tamanho`) REFERENCES `tamanho` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.produto: ~22 rows (approximately)
+-- Dumping data for table IJeans.produto: ~8 rows (approximately)
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 INSERT INTO `produto` (`id`, `nome`, `preco_atual`, `quantidade_estoque`, `id_marca`, `id_tipo`, `id_tamanho`, `STATUS`) VALUES
 	(25, 'Air Max Total 90', 579.9, 20, 1, 2, '44', 1),
