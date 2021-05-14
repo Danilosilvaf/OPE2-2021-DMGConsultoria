@@ -4,8 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+=======
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+>>>>>>> c53cb8ba4701ba7a15791285d35b2aa63d46248d
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,6 +23,7 @@ import com.IJeans.Backend.service.FuncionarioService;
 
 @RestController
 @RequestMapping(value = "/funcionarios")
+@CrossOrigin(origins = "*")
 public class FuncionarioController {
 	
 	@Autowired
@@ -54,7 +60,7 @@ public class FuncionarioController {
 			;
 			return ResponseEntity.ok().body(funcionarioService.atualizar(Funcionario));
 		}catch (Exception e){
-			return ResponseEntity.ok().body(new FuncionarioModel());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 }

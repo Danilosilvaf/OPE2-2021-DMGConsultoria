@@ -18,6 +18,7 @@ import com.IJeans.Backend.service.ProdutosService;
 
 @RestController
 @RequestMapping(value = "/produtos")
+@CrossOrigin(origins = "*")
 public class ProdutosController {
 
 	@Autowired
@@ -41,7 +42,7 @@ public class ProdutosController {
 			return ResponseEntity.ok().body(new ProdutoModel());
 		}
 	}
-	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	public ResponseEntity<ProdutoModel> deletar(@PathVariable("id") String id){
 		try {
@@ -58,7 +59,7 @@ public class ProdutosController {
 			;
 			return ResponseEntity.ok().body(produtoService.atualizar(produto));
 		}catch (Exception e){
-			return ResponseEntity.ok().body(new ProdutoModel());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	

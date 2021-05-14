@@ -41,6 +41,7 @@ export class CadastrarFuncionarioComponent{
          
           let funcionario = {
               login: this.cadastraFuncionarioForm.value.login ,
+              nivel_func:1,
               senha: this.cadastraFuncionarioForm.value.senha,
               nome: this.cadastraFuncionarioForm.value.nome,
               email: this.cadastraFuncionarioForm.value.email

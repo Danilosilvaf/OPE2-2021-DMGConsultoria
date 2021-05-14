@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.IJeans.Backend.service.FornecedorService;
 
 @RestController
 @RequestMapping(value = "/fornecedor")
+@CrossOrigin(origins = "*")
 public class FornecedorController {
 
 	@Autowired
@@ -39,13 +41,17 @@ public class FornecedorController {
 		
 	}
 	
+<<<<<<< HEAD
 	@DeleteMapping(value="/{id}")
+=======
+	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+>>>>>>> c53cb8ba4701ba7a15791285d35b2aa63d46248d
 	public ResponseEntity<FornecedorModel> deletar(@PathVariable("id") String id){
 		try {
 			;
 			return ResponseEntity.ok().body(fornecedorService.deletar(id));
 		}catch (Exception e){
-			return ResponseEntity.ok().body( new FornecedorModel());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	
@@ -55,7 +61,7 @@ public class FornecedorController {
 			;
 			return ResponseEntity.ok().body(fornecedorService.atualizar(fornecedor));
 		}catch (Exception e){
-			return ResponseEntity.ok().body(new FornecedorModel());
+			return ResponseEntity.badRequest().build();
 		}
 	}
 }

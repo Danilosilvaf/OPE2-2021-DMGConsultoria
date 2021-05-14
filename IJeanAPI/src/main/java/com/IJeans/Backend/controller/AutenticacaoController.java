@@ -17,6 +17,7 @@ import com.IJeans.Backend.service.AutenticacaoService;
 
 @RestController
 @RequestMapping(value = "/")
+@CrossOrigin(origins = "*")
 public class AutenticacaoController {
 	
 	@Autowired

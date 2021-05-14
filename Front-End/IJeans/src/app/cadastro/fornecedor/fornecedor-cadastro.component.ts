@@ -33,7 +33,8 @@ export class CadastroFornecedorComponent {
       let fornecedor = {
         nome: this.cadastraFornecedorForm.value.nome,
         email: this.cadastraFornecedorForm.value.email,
-        telefone: this.cadastraFornecedorForm.value.telefone
+        telefone: this.cadastraFornecedorForm.value.telefone,
+        status:true
       }
       
   

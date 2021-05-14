@@ -1,0 +1,39 @@
+<div class="main">
+    <h2>Marcas</h2>
+
+    <div class="row">
+        <div class="col input-group-prepend">
+            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control busca">
+        </div>
+
+        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="CadastrarMarca()"> Nova Marca</button>
+
+    </div>
+    <form [formGroup]="marcaForm">
+
+   
+    <table class="tabela">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+        </tr>
+        <tr *ngFor="let marca of marcas">
+            <td>{{marca.id}}</td>
+            <td *ngIf="marca.id === EditRowId"><input type="text" value="{{marca.nome}}" formControlName="nomeMarca"></td>
+            <td *ngIf="marca.id != EditRowId">{{marca.nome}}</td>
+            <td *ngIf="marca.id === EditRowId"><button class="btn fas fa-ban fa-lg"
+                (click)="editIncorrect(marca)"></button></td>
+        <td *ngIf="marca.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"
+                (click)="editCorrect(marca)"></button></td>
+        <td *ngIf="marca.id != EditRowId"><button class="btn fas fa-pen fa-lg"
+                (click)="edit(marca)"></button></td>
+        <td *ngIf="marca.id != EditRowId"><button class="btn fas fa-trash fa-lg"
+                (click)="delete(marca)"></button></td>
+        </tr>
+
+    </table>
+</form>
+</div>
+
+<!-- <app-cadastramarca [ngStyle]="{'display': displayCadastromarca}"></app-cadastramarca> -->

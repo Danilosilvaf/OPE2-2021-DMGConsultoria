@@ -12,5 +12,5 @@ public interface FornecedorService {
 
 	FornecedorModel atualizar(FornecedorModel fornecedor);
 
-	FornecedorModel deletar(String id);
+	FornecedorModel deletar(String id) throws Exception;
 }
