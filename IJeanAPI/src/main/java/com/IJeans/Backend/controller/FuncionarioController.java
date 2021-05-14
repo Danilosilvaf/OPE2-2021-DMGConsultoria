@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.model.FuncionarioModel;
@@ -20,18 +23,22 @@ public class FuncionarioController {
 	@Autowired
 	private FuncionarioService funcionarioService;
 	
-	@RequestMapping(value = "",method = RequestMethod.GET)
+	@GetMapping
 	public ResponseEntity<List<FuncionarioModel>> getAll(){
+		List<FuncionarioModel> funcionarios = funcionarioService.findAll();
+		if (funcionarios.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 		return ResponseEntity.ok().body(funcionarioService.findAll());
 	}
 	
-	@RequestMapping(value = "",method = RequestMethod.POST)
+	@PostMapping
 	public ResponseEntity<FuncionarioModel> cadastrarFuncionario(@RequestBody FuncionarioModel funcionario){
 			funcionarioService.cadastrarFuncionario(funcionario);
 			return ResponseEntity.ok().body(funcionario);
 	}
 
-	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<FuncionarioModel> deletar(@PathVariable("id") String id){
 		try {
 			;
@@ -41,7 +48,7 @@ public class FuncionarioController {
 		}
 	}
 	
-	@RequestMapping(value = "",method = RequestMethod.PUT)
+	@PutMapping
 	public ResponseEntity<FuncionarioModel> atualizar(@RequestBody FuncionarioModel Funcionario){
 		try {
 			;

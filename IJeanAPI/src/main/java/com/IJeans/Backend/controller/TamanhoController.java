@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.model.TamanhoModel;
@@ -18,8 +18,12 @@ public class TamanhoController {
 	@Autowired
 	private TamanhoService tamanhoService;
 	
-	@RequestMapping(value = "",method = RequestMethod.GET)
+	@GetMapping
 	public ResponseEntity<List<TamanhoModel>> getAll(){
+		List<TamanhoModel> tamanhos = tamanhoService.findAll();
+		if (tamanhos.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 		return ResponseEntity.ok().body(tamanhoService.findAll());
 	}
 }
