@@ -33,5 +33,4 @@ public class TamanhoController {
 	public ResponseEntity<List<TamanhoModel>> findById(@PathVariable("id") String id){
 		return ResponseEntity.ok().body(tamanhoService.findByIdTipo(id));
 	}
-	
 }
