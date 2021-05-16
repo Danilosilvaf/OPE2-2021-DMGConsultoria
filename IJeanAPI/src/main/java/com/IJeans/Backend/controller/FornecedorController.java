@@ -41,11 +41,7 @@ public class FornecedorController {
 		
 	}
 	
-<<<<<<< HEAD
 	@DeleteMapping(value="/{id}")
-=======
-	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
->>>>>>> c53cb8ba4701ba7a15791285d35b2aa63d46248d
 	public ResponseEntity<FornecedorModel> deletar(@PathVariable("id") String id){
 		try {
 			;
