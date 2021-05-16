@@ -50,7 +50,6 @@ public class ProdutoServiceImpl implements ProdutosService {
 	@Override
 	public ProdutoModel atualizar(ProdutoModel produto) {
 		Optional<ProdutoModel> produtoretorno = produtoRepository.findById(produto.getId());
-		
 		if(produtoretorno.isPresent()) {
 			this.produtoRepository.save(produto);
 			return produto;
@@ -58,5 +57,4 @@ public class ProdutoServiceImpl implements ProdutosService {
 		return new ProdutoModel();
 	}
 
-	
 }

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.IJeans.Backend.model.FuncionarioModel;
-import com.IJeans.Backend.model.MarcaModel;
 import com.IJeans.Backend.repositories.FuncionarioRepository;
 import com.IJeans.Backend.service.FuncionarioService;
 
