@@ -3,6 +3,8 @@ package com.IJeans.Backend.repositories;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -15,6 +17,7 @@ public interface FornecedorRepository extends JpaRepository<FornecedorModel, Int
 			nativeQuery=true)
 	public List<FornecedorModel> findAll();
 	
+	@Transactional
 	public void deleteById(int id);
 
 	public Optional<FornecedorModel> findById(String id);
