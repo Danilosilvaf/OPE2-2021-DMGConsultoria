@@ -1,8 +1,10 @@
 package com.IJeans.Backend.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,42 +23,46 @@ import com.IJeans.Backend.service.FuncionarioService;
 @RequestMapping(value = "/funcionarios")
 @CrossOrigin(origins = "*")
 public class FuncionarioController {
-	
+
 	@Autowired
 	private FuncionarioService funcionarioService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<FuncionarioModel>> getAll(){
+	public ResponseEntity<List<FuncionarioModel>> getAll() {
 		List<FuncionarioModel> funcionarios = funcionarioService.findAll();
 		if (funcionarios.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok().body(funcionarioService.findAll());
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<FuncionarioModel> cadastrarFuncionario(@RequestBody FuncionarioModel funcionario){
-			funcionarioService.cadastrarFuncionario(funcionario);
-			return ResponseEntity.ok().body(funcionario);
+	public ResponseEntity<FuncionarioModel> cadastrarFuncionario(@RequestBody FuncionarioModel funcionario) {
+		funcionarioService.cadastrarFuncionario(funcionario);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<FuncionarioModel> deletar(@PathVariable("id") String id){
-		try {
-			;
-			return ResponseEntity.ok().body(funcionarioService.deletar(id));
-		}catch (Exception e){
-			return ResponseEntity.ok().body( new FuncionarioModel());
+	public ResponseEntity<FuncionarioModel> deletar(@PathVariable("id") String id) {
+		Optional<FuncionarioModel> optional = funcionarioService.findById(id);
+		if (optional.isPresent()) {
+			try {
+				funcionarioService.deletar(optional.get());
+				return ResponseEntity.ok().build();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
+		return ResponseEntity.notFound().build();
 	}
-	
+
 	@PutMapping
-	public ResponseEntity<FuncionarioModel> atualizar(@RequestBody FuncionarioModel Funcionario){
-		try {
-			;
-			return ResponseEntity.ok().body(funcionarioService.atualizar(Funcionario));
-		}catch (Exception e){
-			return ResponseEntity.badRequest().build();
+	public ResponseEntity<FuncionarioModel> atualizar(@RequestBody FuncionarioModel funcionario) {
+		Optional<FuncionarioModel> optional = funcionarioService.findById(funcionario.getId());
+		if (optional.isPresent()) {
+			funcionarioService.atualizar(funcionario);
+			return ResponseEntity.ok().body(funcionario);
 		}
+		return ResponseEntity.notFound().build();
 	}
 }
