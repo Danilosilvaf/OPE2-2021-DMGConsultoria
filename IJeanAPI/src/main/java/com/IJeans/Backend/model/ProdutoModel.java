@@ -14,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name= "produto")
 public class ProdutoModel implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id")
