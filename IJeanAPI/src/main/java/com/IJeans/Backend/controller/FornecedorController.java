@@ -3,6 +3,8 @@ package com.IJeans.Backend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +39,7 @@ public class FornecedorController {
 	}
 
 	@PostMapping
-	public ResponseEntity<FornecedorModel> cadastrar(@RequestBody FornecedorModel fornecedor) {
+	public ResponseEntity<FornecedorModel> cadastrar(@Valid @RequestBody FornecedorModel fornecedor) {
 		fornecedorService.cadastrarFornecedor(fornecedor);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
@@ -57,7 +59,7 @@ public class FornecedorController {
 	}
 
 	@PutMapping
-	public ResponseEntity<FornecedorModel> atualizar(@RequestBody FornecedorModel fornecedor) {
+	public ResponseEntity<FornecedorModel> atualizar(@Valid @RequestBody FornecedorModel fornecedor) {
 		Optional<FornecedorModel> optional = fornecedorService.findById(fornecedor.getId());
 		if (optional.isPresent()) {
 			fornecedorService.atualizar(fornecedor);

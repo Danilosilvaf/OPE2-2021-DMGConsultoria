@@ -3,6 +3,8 @@ package com.IJeans.Backend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +39,7 @@ public class ProdutosController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ProdutoModel> cadastrar(@RequestBody ProdutoModel produto){
+	public ResponseEntity<ProdutoModel> cadastrar(@Valid @RequestBody ProdutoModel produto){
 		produtoService.cadastrar(produto);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
@@ -58,7 +60,7 @@ public class ProdutosController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<ProdutoModel> atualizar(@RequestBody ProdutoModel produto){
+	public ResponseEntity<ProdutoModel> atualizar(@Valid @RequestBody ProdutoModel produto){
 		Optional<ProdutoModel> optional = produtoService.findById(produto.getId());
 		if (optional.isPresent()) {
 			produtoService.atualizar(produto);

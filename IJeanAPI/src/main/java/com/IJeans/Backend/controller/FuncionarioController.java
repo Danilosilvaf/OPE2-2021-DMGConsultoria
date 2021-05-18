@@ -3,12 +3,14 @@ package com.IJeans.Backend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -37,7 +39,7 @@ public class FuncionarioController {
 	}
 
 	@PostMapping
-	public ResponseEntity<FuncionarioModel> cadastrarFuncionario(@RequestBody FuncionarioModel funcionario) {
+	public ResponseEntity<FuncionarioModel> cadastrarFuncionario(@Valid @RequestBody FuncionarioModel funcionario) {
 		funcionarioService.cadastrarFuncionario(funcionario);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
@@ -57,7 +59,7 @@ public class FuncionarioController {
 	}
 
 	@PutMapping
-	public ResponseEntity<FuncionarioModel> atualizar(@RequestBody FuncionarioModel funcionario) {
+	public ResponseEntity<FuncionarioModel> atualizar(@Valid @RequestBody FuncionarioModel funcionario) {
 		Optional<FuncionarioModel> optional = funcionarioService.findById(funcionario.getId());
 		if (optional.isPresent()) {
 			funcionarioService.atualizar(funcionario);

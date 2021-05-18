@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "fornecedor")
@@ -19,13 +23,20 @@ public class FornecedorModel implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
+	
 	@Column(name = "nome")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull @Size(min = 3, max = 25)
 	private String nome;
 	
 	@Column(name = "email")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@Email @NotNull
 	private String email;
 	
 	@Column(name = "telefone")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull @Size(min = 10, max = 11)
 	private String telefone;
 	
 	@Column(name = "status")

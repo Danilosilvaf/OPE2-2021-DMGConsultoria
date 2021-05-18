@@ -3,6 +3,8 @@ package com.IJeans.Backend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,7 +40,7 @@ public class MarcaController {
 
 	@CrossOrigin(origins = "*")
 	@PostMapping
-	public ResponseEntity<MarcaModel> cadastrar(@RequestBody MarcaModel marca) {
+	public ResponseEntity<MarcaModel> cadastrar(@Valid @RequestBody MarcaModel marca) {
 		marcaService.cadastrarMarca(marca);
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
@@ -58,7 +60,7 @@ public class MarcaController {
 	}
 
 	@PutMapping
-	public ResponseEntity<MarcaModel> atualizar(@RequestBody MarcaModel marca) {
+	public ResponseEntity<MarcaModel> atualizar(@Valid @RequestBody MarcaModel marca) {
 		Optional<MarcaModel> optional = marcaService.findById(marca.getId());
 		if (optional.isPresent()) {
 			marcaService.atualizar(marca);
