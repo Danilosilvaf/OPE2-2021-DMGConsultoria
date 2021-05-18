@@ -32,7 +32,7 @@ public class FornecedorServiceImpl implements FornecedorService {
 
 	@Override
 	public void atualizar(FornecedorModel fornecedor) {
-			this.fornecedorRepository.save(fornecedor);
+		this.fornecedorRepository.save(fornecedor);
 	}
 
 	@Override

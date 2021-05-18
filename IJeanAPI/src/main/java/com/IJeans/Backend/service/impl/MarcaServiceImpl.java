@@ -27,29 +27,19 @@ public class MarcaServiceImpl implements MarcaService {
 	}
 
 	@Override
-	public MarcaModel deletar(String id) {
-			Optional<MarcaModel> marcaretorno = marcaRepository.findById(id);
-			
-			MarcaModel marca = marcaretorno.get();
-			if(marcaretorno != null){
-				
-				marca.setStatus(false);
-				marcaRepository.save(marca);
-				return marca;
-			}
-			return new MarcaModel();
-			
-		}
-
+	public void deletar(MarcaModel marca) {
+		marca.setStatus(false);
+		this.marcaRepository.save(marca);
+	}
+	
 	@Override
-	public MarcaModel atualizar(MarcaModel marca) {
-			Optional<MarcaModel> marcaretorno = marcaRepository.findById(marca.getId());
-			
-			if(marcaretorno.isPresent()) {
-				this.marcaRepository.save(marca);
-				return marca;
-			}
-			return new MarcaModel();
-		}
+	public void atualizar(MarcaModel marca) {
+		this.marcaRepository.save(marca);
+	}
+	
+	@Override
+	public Optional<MarcaModel> findById(String id) {
+		return marcaRepository.findById(id);
+	}
 
 }

@@ -11,11 +11,9 @@ public interface FuncionarioService {
 	
 	void cadastrarFuncionario(FuncionarioModel funcionario);
 
-	FuncionarioModel deletar(String id);
-
-	FuncionarioModel atualizar(FuncionarioModel funcionario);
+	void atualizar(FuncionarioModel funcionario);
 
 	Optional<FuncionarioModel> findById(String id);
 
-	void deletar(FuncionarioModel funcionarioModel);
+	void deletar(FuncionarioModel funcionario);
 }

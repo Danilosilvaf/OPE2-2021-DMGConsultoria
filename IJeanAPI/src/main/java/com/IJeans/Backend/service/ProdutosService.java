@@ -9,15 +9,12 @@ public interface ProdutosService {
 
 	List<ProdutoModel> findAll();
 	
-	ProdutoModel cadastrar(ProdutoModel produto);
+	void cadastrar(ProdutoModel produto);
 
-	ProdutoModel deletar(String id);
-
-	ProdutoModel atualizar(ProdutoModel produto);
+	void atualizar(ProdutoModel produto);
 
 	Optional<ProdutoModel> findById(String id);
 
 	void deletar(ProdutoModel produtoModel);
 	
-
 }

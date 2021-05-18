@@ -22,41 +22,24 @@ public class ProdutoServiceImpl implements ProdutosService {
 	}
 
 	@Override
-	public ProdutoModel cadastrar(ProdutoModel produto) throws Exception {
-		ProdutoModel produtoretorno = produtoRepository.findByNome(produto.getNome());
-		
-		if(produtoretorno != null) {
-			throw new Exception("produto ja existente");
-		}
-		
+	public void cadastrar(ProdutoModel produto) {
 		produtoRepository.save(produto);
-		return produto;
 	}
 
 	@Override
-	public ProdutoModel deletar(String id) {
-		Optional<ProdutoModel> produtoretorno = produtoRepository.findById(id);
-		
-		System.out.println("a");
-		ProdutoModel produto = produtoretorno.get();
-		if(produtoretorno != null){
-			produto.setStatus(false);
-			this.produtoRepository.save(produto);
-			return produto;
-		}
-		return new ProdutoModel();
+	public void deletar(ProdutoModel produto) {
+		produto.setStatus(false);
+		this.produtoRepository.save(produto);
 	}
 
 	@Override
-	public ProdutoModel atualizar(ProdutoModel produto) {
-		Optional<ProdutoModel> produtoretorno = produtoRepository.findById(produto.getId());
-		
-		if(produtoretorno.isPresent()) {
-			this.produtoRepository.save(produto);
-			return produto;
-		}
-		return new ProdutoModel();
+	public void atualizar(ProdutoModel produto) {
+        this.produtoRepository.save(produto);
+    }
+
+	@Override
+	public Optional<ProdutoModel> findById(String id) {
+		return produtoRepository.findById(id);
 	}
 
-	
 }

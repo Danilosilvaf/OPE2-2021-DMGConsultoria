@@ -11,9 +11,7 @@ public interface MarcaService {
 	
 	void cadastrarMarca(MarcaModel marca);
 
-	MarcaModel deletar(String id);
-
-	MarcaModel atualizar(MarcaModel marca);
+	void atualizar(MarcaModel marca);
 
 	Optional<MarcaModel> findById(String id);
 
