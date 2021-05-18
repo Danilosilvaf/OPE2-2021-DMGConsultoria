@@ -3,11 +3,11 @@
 
     <div class="row">
         <div class="col input-group-prepend">
-            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <span class="input-group-text lupa"><i class="fas fa-search fa-lg"></i></span>
             <input type="text" class="form-control busca">
         </div>
 
-        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="CadastrarMarca()"> Nova Marca</button>
+        <button class="btn btn-cadastrar" (click)="CadastrarMarca()">Nova Marca <a class="fas fa-plus-circle fa-lg"></a></button>
 
     </div>
     <form [formGroup]="marcaForm">
@@ -15,13 +15,13 @@
    <!-- teste -->
     <table class="tabela">
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
+            <th class="table-align">ID</th>
+            <th class="table-align">Nome</th>
         </tr>
         <tr *ngFor="let marca of marcas">
-            <td>{{marca.id}}</td>
+            <td class="table-align">{{marca.id}}</td>
             <td *ngIf="marca.id === EditRowId"><input type="text" value="{{marca.nome}}" formControlName="nomeMarca"></td>
-            <td *ngIf="marca.id != EditRowId">{{marca.nome}}</td>
+            <td *ngIf="marca.id != EditRowId" class="table-align">{{marca.nome}}</td>
             <td *ngIf="marca.id === EditRowId"><button class="btn fas fa-ban fa-lg"
                 (click)="editIncorrect(marca)"></button></td>
         <td *ngIf="marca.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"

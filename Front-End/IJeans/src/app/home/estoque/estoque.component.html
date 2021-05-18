@@ -3,36 +3,30 @@
 
     <div class="row">
         <div class="col input-group-prepend">
-            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <span class="input-group-text lupa"><i class="fas fa-search fa-lg"></i></span>
             <input type="text" class="form-control busca">
         </div>
-
-
     </div>
     <form [formGroup]="estoqueForm">
-
-
         <table class="tabela">
             <tr>
-                <th>ID</th>
-                <th>Nome</th>
+                <th class="table-align">ID</th>
+                <th class="table-align">Nome</th>
                 <th>Marca</th>
                 <th>Tamanho</th>
                 <th>Valor</th>
                 <th>Estoque</th>
             </tr>
             <tr *ngFor="let produto of produtos">
-                <td>{{produto.id}}</td>
-                <td >{{produto.nome}}</td>
+                <td class="table-align">{{produto.id}}</td>
+                <td class="table-align">{{produto.nome}}</td>
                 <td>{{produto.marca.nome}}</td>
                 <td>{{produto.tamanho.id}}</td>
-                <td >{{produto.preco_atual}}</td>
+                <td>{{produto.preco_atual}}</td>
                 <td>{{produto.quantidade_estoque}}</td>
-                <button>Entrada de Estoque</button>
-                <button>Saida de Estoque</button>
+                <button class="btn up fas fa-sign-in-alt icons fa-2x"></button>
+                <button class="btn down fas fa-sign-out-alt icons fa-2x"></button>
             </tr>
         </table>
     </form>
-
-    
 </div>
