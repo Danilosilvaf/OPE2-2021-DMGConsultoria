@@ -1,1 +1,38 @@
-<h1>Tela de Estoque</h1>
+<div class="main">
+    <h2>Estoque</h2>
+
+    <div class="row">
+        <div class="col input-group-prepend">
+            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <input type="text" class="form-control busca">
+        </div>
+
+
+    </div>
+    <form [formGroup]="estoqueForm">
+
+
+        <table class="tabela">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Marca</th>
+                <th>Tamanho</th>
+                <th>Valor</th>
+                <th>Estoque</th>
+            </tr>
+            <tr *ngFor="let produto of produtos">
+                <td>{{produto.id}}</td>
+                <td >{{produto.nome}}</td>
+                <td>{{produto.marca.nome}}</td>
+                <td>{{produto.tamanho.id}}</td>
+                <td >{{produto.preco_atual}}</td>
+                <td>{{produto.quantidade_estoque}}</td>
+                <button>Entrada de Estoque</button>
+                <button>Saida de Estoque</button>
+            </tr>
+        </table>
+    </form>
+
+    
+</div>

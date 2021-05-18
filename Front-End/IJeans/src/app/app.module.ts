@@ -15,6 +15,8 @@ import { HomeModule } from './home/home.module';
 import { CadastroFuncionarioModule } from './cadastro/funcionario/cadastro-funcionario.module';
 import { CadastroProdutoModule } from './cadastro/produto/cadastro-produto.module';
 import { CadastroFornecedorModule } from './cadastro/fornecedor/fornecedor-cadastro.module';
+import { EntradaModule } from './home/estoque/movimentacao_estoque/entrada/entrada.module';
+import { SaidaModule } from './home/estoque/movimentacao_estoque/saida/saida.module';
 
 
 
@@ -34,6 +36,8 @@ import { CadastroFornecedorModule } from './cadastro/fornecedor/fornecedor-cadas
     HomeModule,
     CadastroFornecedorModule,
     CadastroProdutoModule,
+    EntradaModule,
+    SaidaModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
