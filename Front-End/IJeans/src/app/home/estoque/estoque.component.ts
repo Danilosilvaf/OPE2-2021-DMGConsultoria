@@ -20,4 +20,12 @@ import { ProdutoService } from "../produto/service/service-produto.service";
         this.produtos = data
       });
     }
+
+
+    realizarEntrada(){
+      this.router.navigateByUrl('entrada/1')
+    }
+    realizarVenda(){
+
+    }
 }

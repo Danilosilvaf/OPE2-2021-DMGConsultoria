@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ProdutoService } from "src/app/home/produto/service/service-produto.service";
 import { MarcaModel } from "src/app/shared/model/marca.model";
 import { TamanhoModel } from "src/app/shared/model/tamanho.model";
@@ -19,7 +19,8 @@ export class EntradaComponent {
   cadastraProdutoForm: FormGroup;
   
 
-  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,  private route: ActivatedRoute) {
+    this.route.params.subscribe(params => console.log(params['id']));
   }
 
   marcas: Array<MarcaModel>
@@ -34,6 +35,9 @@ export class EntradaComponent {
 
   ngOnInit() {
 
+    
+  
+  
     this.tipoProdutoControl = new FormControl('valid', [
       Validators.required,
       Validators.pattern('valid'),

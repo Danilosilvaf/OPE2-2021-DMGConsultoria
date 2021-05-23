@@ -28,8 +28,8 @@
                 <td>{{produto.tamanho.id}}</td>
                 <td >{{produto.preco_atual}}</td>
                 <td>{{produto.quantidade_estoque}}</td>
-                <button>Entrada de Estoque</button>
-                <button>Saida de Estoque</button>
+                <button (click)='realizarEntrada()'>Entrada de Estoque</button>
+                <button (click)='realizarVenda()' >Saida de Estoque</button>
             </tr>
         </table>
     </form>
