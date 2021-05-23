@@ -42,10 +42,11 @@ public class ProdutoModel implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name = "id_tamanho")
-	
-	
-	
 	private TamanhoModel tamanho;
+	
+	
+	
+	
 	
 	public TamanhoModel getTamanho() {
 		return tamanho;

@@ -22,10 +22,10 @@ import { ProdutoService } from "../produto/service/service-produto.service";
     }
 
 
-    realizarEntrada(){
-      this.router.navigateByUrl('entrada/1')
+    realizarEntrada(id){
+      this.router.navigateByUrl('entrada/'+id)
     }
-    realizarVenda(){
-
+    realizarVenda(id){
+      this.router.navigateByUrl('saida/'+id)
     }
 }
