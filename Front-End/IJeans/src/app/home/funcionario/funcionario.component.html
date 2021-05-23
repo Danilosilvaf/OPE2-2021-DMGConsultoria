@@ -3,11 +3,11 @@
 
     <div class="row">
         <div class="col input-group-prepend">
-            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <span class="input-group-text lupa"><i class="fas fa-search fa-lg"></i></span>
             <input type="text" class="form-control busca">
         </div>
         
-        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="CadastrarFuncionario()" > Novo Funcionário</button>
+        <button class="btn btn-cadastrar" (click)="CadastrarFuncionario()" >Novo Funcionário <a class="fas fa-plus-circle fa-lg"></a></button>
         
     </div>
 <form [formGroup]="funcionarioForm">
@@ -15,14 +15,14 @@
 
     <table class="tabela">
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
+            <th class="table-align">ID</th>
+            <th class="table-align">Nome</th>
             <th>Login</th>
             <th>E-mail</th>
         </tr>
         <tr *ngFor="let funcionario of funcionarios">
-            <td *ngIf="funcionario.id != EditRowId">{{funcionario.id}}</td>
-            <td *ngIf="funcionario.id != EditRowId">{{funcionario.nome}}</td>
+            <td *ngIf="funcionario.id != EditRowId" class="table-align">{{funcionario.id}}</td>
+            <td *ngIf="funcionario.id != EditRowId" class="table-align">{{funcionario.nome}}</td>
             <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.nome}}" formControlName="nomeFuncionario"></td>
             <td *ngIf="funcionario.id != EditRowId">{{funcionario.login}}</td>
             <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.login}}" formControlName="loginFuncionario"></td>
