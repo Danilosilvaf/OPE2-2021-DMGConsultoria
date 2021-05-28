@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { SaidaComponent } from "./saida.component";
 
 const routes: Routes = [
-    {path:'saida', component:SaidaComponent }
+    {path:'saida/:id', component:SaidaComponent }
      ];
 
 @NgModule({

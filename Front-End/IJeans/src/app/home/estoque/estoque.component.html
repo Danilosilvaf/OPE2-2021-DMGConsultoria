@@ -24,13 +24,8 @@
                 <td>{{produto.tamanho.id}}</td>
                 <td>{{produto.preco_atual}}</td>
                 <td>{{produto.quantidade_estoque}}</td>
-<<<<<<< HEAD
-                <button (click)='realizarEntrada()'>Entrada de Estoque</button>
-                <button (click)='realizarVenda()' >Saida de Estoque</button>
-=======
-                <button class="btn up fas fa-sign-in-alt icons fa-2x"></button>
-                <button class="btn down fas fa-sign-out-alt icons fa-2x"></button>
->>>>>>> b234f9cc6e9f8f2e570a2e8132f36d88f020e8e6
+                <button (click)='realizarEntrada(produto.id)'>Entrada de Estoque</button>
+                <button (click)='realizarVenda(produto.id)' >Saida de Estoque</button>
             </tr>
         </table>
     </form>
