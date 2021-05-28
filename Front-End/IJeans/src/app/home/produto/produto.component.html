@@ -3,11 +3,11 @@
 
     <div class="row">
         <div class="col input-group-prepend">
-            <span class="input-group-text lupa"><i class="fas fa-search"></i></span>
+            <span class="input-group-text lupa"><i class="fas fa-search fa-lg"></i></span>
             <input type="text" class="form-control busca">
         </div>
 
-        <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="cadastrarProduto()"> Novo Produto</button>
+        <button class="btn btn-cadastrar" (click)="cadastrarProduto()">Novo Produto <a class="fas fa-plus-circle fa-lg"></a></button>
 
     </div>
     <form [formGroup]="produtoForm">
@@ -15,17 +15,17 @@
 
         <table class="tabela">
             <tr>
-                <th>ID</th>
-                <th>Nome</th>
+                <th class="table-align">ID</th>
+                <th class="table-align">Nome</th>
                 <th>Marca</th>
                 <th>Tamanho</th>
                 <th>Valor</th>
                 <th>Estoque</th>
             </tr>
             <tr *ngFor="let produto of produtos">
-                <td>{{produto.id}}</td>
+                <td class="table-align">{{produto.id}}</td>
                 <td *ngIf="produto.id === EditRowId"><input type="text" value="{{produto.nome}}" formControlName="nomeProduto"></td>
-                <td *ngIf="produto.id != EditRowId">{{produto.nome}}</td>
+                <td *ngIf="produto.id != EditRowId" class="table-align">{{produto.nome}}</td>
                 <td>{{produto.marca.nome}}</td>
                 <td>{{produto.tamanho.id}}</td>
                 <td *ngIf="produto.id === EditRowId"><input type="text" value="{{produto.preco_atual}}" formControlName="precoProduto"> </td>

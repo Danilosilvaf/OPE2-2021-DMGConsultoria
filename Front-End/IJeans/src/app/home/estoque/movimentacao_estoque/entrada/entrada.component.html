@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<div class="main">
+    <button class="botao-voltar fas fa-chevron-circle-left fa-2x" (click)="voltarHome()"></button>
+    <label class="titulo">Entrada Estoque</label>
+
+    <form [formGroup]="cadastraProdutoForm" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
+        <label class="label-title">Nome</label><br>
+        <input type="text"  readonly value="Air Jordan 7" formControlName="nome">
+        <label for="Nome"></label>
+
+        <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Campo incorreto"></app-msg-erro>
+
+        <div>
+            <label class="label-title">Marca</label><br>
+            <input type="text" value="Nike" readonly=true >
+            <label for="Nome"></label>
+        </div>
+        <div>
+            <label class="label-title">Tipo Produto</label><br>
+            <input type="text" value="Camiseta" readonly=true >
+            <label for="Nome"></label>
+        </div>
+        <div>
+            <label class="label-title">Tamanho</label><br>
+            <input type="text" value="GG" readonly=true >
+            <label for="Nome"></label>
+        </div>
+        
+            
+        <label class="label-title">Valor</label><br>
+        <input type="text" value="109.98" formControlName="valor"><br>
+
+        <app-msg-erro [isError]="isErrorCampo('valor')" mensagem="Campo incorreto"></app-msg-erro>
+
+        <label class="label-title">Quantidade</label><br>
+        <input type="text" value="110"  formControlName="quantidade">
+
+        <app-msg-erro [isError]="isErrorCampo('quantidade')" mensagem="Campo incorreto"></app-msg-erro>
+
+        <input type="button" class="botao-cadastrar" type="submit" id="cadastrar" name="cadastrar" value="Cadastrar">
+    </form>
+</div>

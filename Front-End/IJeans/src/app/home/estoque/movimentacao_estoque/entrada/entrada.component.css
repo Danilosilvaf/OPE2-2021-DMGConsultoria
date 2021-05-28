@@ -1,0 +1,59 @@
+.main {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 70%;
+}
+
+input {
+    background-color: #E1E1E1;
+    border: none;
+    width: 80%;
+    height: 50px;
+    padding-left: 15px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+select {
+    background-color: #E1E1E1;
+    border: none;
+    width: 80%;
+    height: 50px;
+    padding-left: 15px;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.botao-cadastrar {
+    background-color: #017EEC;
+    color: #FFFFFF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 100px;
+}
+
+.label-title {
+    padding-bottom: 0;
+    margin-left: 10px;
+}
+
+.botao-voltar {
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    border: none;
+    color: #017EEC;
+}
+
+.titulo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+}

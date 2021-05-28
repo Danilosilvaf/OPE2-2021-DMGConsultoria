@@ -1,0 +1,37 @@
+<div class="main">
+    <h2>Estoque</h2>
+
+    <div class="row">
+        <div class="col input-group-prepend">
+            <span class="input-group-text lupa"><i class="fas fa-search fa-lg"></i></span>
+            <input type="text" class="form-control busca">
+        </div>
+    </div>
+    <form [formGroup]="estoqueForm">
+        <table class="tabela">
+            <tr>
+                <th class="table-align">ID</th>
+                <th class="table-align">Nome</th>
+                <th>Marca</th>
+                <th>Tamanho</th>
+                <th>Valor</th>
+                <th>Estoque</th>
+            </tr>
+            <tr *ngFor="let produto of produtos">
+                <td class="table-align">{{produto.id}}</td>
+                <td class="table-align">{{produto.nome}}</td>
+                <td>{{produto.marca.nome}}</td>
+                <td>{{produto.tamanho.id}}</td>
+                <td>{{produto.preco_atual}}</td>
+                <td>{{produto.quantidade_estoque}}</td>
+<<<<<<< HEAD
+                <button (click)='realizarEntrada()'>Entrada de Estoque</button>
+                <button (click)='realizarVenda()' >Saida de Estoque</button>
+=======
+                <button class="btn up fas fa-sign-in-alt icons fa-2x"></button>
+                <button class="btn down fas fa-sign-out-alt icons fa-2x"></button>
+>>>>>>> b234f9cc6e9f8f2e570a2e8132f36d88f020e8e6
+            </tr>
+        </table>
+    </form>
+</div>
