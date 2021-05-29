@@ -5,8 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "funcionario")
@@ -18,18 +21,28 @@ public class FuncionarioModel {
 	private String id;
 
 	@Column(name = "login")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull @Size(min = 6)
 	private String login;
 
 	@Column(name = "senha")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull @Size(min = 6)
 	private String senha;
 
 	@Column(name = "nome")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull @Size(min = 3, max = 30)
 	private String nome;
 
 	@Column(name = "email")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@Email @NotNull
 	private String email;
 
 	@Column(name = "nivel_func")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull @Size(max = 1)
 	private int nivelFunc;
 
 	public FuncionarioModel() {

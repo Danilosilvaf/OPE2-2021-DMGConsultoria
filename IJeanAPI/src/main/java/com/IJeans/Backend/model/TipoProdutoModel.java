@@ -27,8 +27,8 @@ public class TipoProdutoModel {
 		this.nome = nome;
 	}
 
+	@SuppressWarnings("unused")
 	private TipoProdutoModel() {
-		
 	}
 
 	public String getId() {

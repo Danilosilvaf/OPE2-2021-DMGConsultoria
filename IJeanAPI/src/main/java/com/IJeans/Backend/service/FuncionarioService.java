@@ -2,6 +2,7 @@ package com.IJeans.Backend.service;
 
 import java.util.List;
 
+import java.util.Optional;
 import com.IJeans.Backend.model.FuncionarioModel;
 
 public interface FuncionarioService {
@@ -10,7 +11,9 @@ public interface FuncionarioService {
 	
 	void cadastrarFuncionario(FuncionarioModel funcionario);
 
-	FuncionarioModel deletar(String id);
+	void atualizar(FuncionarioModel funcionario);
 
-	FuncionarioModel atualizar(FuncionarioModel funcionario) throws Exception;
+	Optional<FuncionarioModel> findById(String id);
+
+	void deletar(FuncionarioModel funcionario);
 }

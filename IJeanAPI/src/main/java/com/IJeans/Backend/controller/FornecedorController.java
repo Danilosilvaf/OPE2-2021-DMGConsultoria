@@ -1,8 +1,12 @@
 package com.IJeans.Backend.controller;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,40 +28,43 @@ public class FornecedorController {
 
 	@Autowired
 	private FornecedorService fornecedorService;
-	
+
 	@GetMapping
-	public ResponseEntity<List<FornecedorModel>> getAll(){
+	public ResponseEntity<List<FornecedorModel>> getAll() {
 		List<FornecedorModel> fornecedores = fornecedorService.findAll();
 		if (fornecedores.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok().body(fornecedorService.findAll());
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<FornecedorModel> cadastrar(@RequestBody FornecedorModel fornecedor){
-			fornecedorService.cadastrarFornecedor(fornecedor);
-			return ResponseEntity.ok().body(fornecedor);
-		
+	public ResponseEntity<FornecedorModel> cadastrar(@Valid @RequestBody FornecedorModel fornecedor) {
+		fornecedorService.cadastrarFornecedor(fornecedor);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
-	
-	@DeleteMapping(value="/{id}")
-	public ResponseEntity<FornecedorModel> deletar(@PathVariable("id") String id){
-		try {
-			;
-			return ResponseEntity.ok().body(fornecedorService.deletar(id));
-		}catch (Exception e){
-			return ResponseEntity.badRequest().build();
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<FornecedorModel> deletar(@PathVariable("id") String id) {
+		Optional<FornecedorModel> optional = fornecedorService.findById(id);
+		if (optional.isPresent()) {
+			try {
+				fornecedorService.deletar(optional.get());
+				return ResponseEntity.ok().build();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
+		return ResponseEntity.notFound().build();
 	}
-	
+
 	@PutMapping
-	public ResponseEntity<FornecedorModel> atualizar(@RequestBody FornecedorModel fornecedor){
-		try {
-			;
-			return ResponseEntity.ok().body(fornecedorService.atualizar(fornecedor));
-		}catch (Exception e){
-			return ResponseEntity.badRequest().build();
+	public ResponseEntity<FornecedorModel> atualizar(@Valid @RequestBody FornecedorModel fornecedor) {
+		Optional<FornecedorModel> optional = fornecedorService.findById(fornecedor.getId());
+		if (optional.isPresent()) {
+			fornecedorService.atualizar(fornecedor);
+			return ResponseEntity.ok().body(fornecedor);
 		}
+		return ResponseEntity.notFound().build();
 	}
 }

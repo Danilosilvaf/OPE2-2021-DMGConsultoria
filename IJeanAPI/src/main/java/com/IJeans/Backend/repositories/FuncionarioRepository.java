@@ -17,7 +17,6 @@ public interface FuncionarioRepository  extends JpaRepository <FuncionarioModel,
 	public FuncionarioModel findByNome(String nome);
 
 	Optional<FuncionarioModel> findById(String id);
-
-
-	void  deleteById(String id);
+	
+	void deleteById(String id);
 }

@@ -1,6 +1,7 @@
 package com.IJeans.Backend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.IJeans.Backend.model.FornecedorModel;
 
@@ -10,7 +11,10 @@ public interface FornecedorService {
 	
 	void cadastrarFornecedor(FornecedorModel fornecedor);
 
-	FornecedorModel atualizar(FornecedorModel fornecedor);
+	void atualizar(FornecedorModel fornecedor);
 
-	FornecedorModel deletar(String id) throws Exception;
+	public void deletar(FornecedorModel fornecedor) throws Exception;
+
+	Optional<FornecedorModel> findById(String id);
+
 }

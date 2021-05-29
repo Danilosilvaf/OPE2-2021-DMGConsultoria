@@ -1,8 +1,7 @@
 package com.IJeans.Backend.service;
 
 import java.util.List;
-
-import org.springframework.data.domain.Page;
+import java.util.Optional;
 
 import com.IJeans.Backend.model.ProdutoModel;
 
@@ -10,11 +9,12 @@ public interface ProdutosService {
 
 	List<ProdutoModel> findAll();
 	
-	ProdutoModel cadastrar(ProdutoModel produto) throws Exception;
+	void cadastrar(ProdutoModel produto);
 
-	ProdutoModel deletar(String id);
+	void atualizar(ProdutoModel produto);
 
-	ProdutoModel atualizar(ProdutoModel produto);
+	Optional<ProdutoModel> findById(String id);
+
+	void deletar(ProdutoModel produtoModel);
 	
-
 }

@@ -1,16 +1,21 @@
 package com.IJeans.Backend.controller;
 
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.model.ProdutoModel;
@@ -34,33 +39,34 @@ public class ProdutosController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ProdutoModel> cadastrar(@RequestBody ProdutoModel produto){
-		try {
-			;
-			return ResponseEntity.ok().body(produtoService.cadastrar(produto));
-		}catch (Exception e){
-			return ResponseEntity.ok().body(new ProdutoModel());
-		}
-	}
-	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
-	public ResponseEntity<ProdutoModel> deletar(@PathVariable("id") String id){
-		try {
-			;
-			return ResponseEntity.ok().body(produtoService.deletar(id));
-		}catch (Exception e){
-			return ResponseEntity.ok().body(new ProdutoModel());
-		}
+	public ResponseEntity<ProdutoModel> cadastrar(@Valid @RequestBody ProdutoModel produto){
+		produtoService.cadastrar(produto);
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
-	@RequestMapping(value = "",method = RequestMethod.PUT)
-	public ResponseEntity<ProdutoModel> atualizar(@RequestBody ProdutoModel produto){
-		try {
-			;
-			return ResponseEntity.ok().body(produtoService.atualizar(produto));
-		}catch (Exception e){
-			return ResponseEntity.badRequest().build();
+	@CrossOrigin(origins = "*")
+	@DeleteMapping("/{id}")
+	public ResponseEntity<ProdutoModel> deletar(@PathVariable("id") String id){
+		Optional<ProdutoModel> optional = produtoService.findById(id);
+		if (optional.isPresent()) {
+			try {
+				produtoService.deletar(optional.get());
+				return ResponseEntity.ok().build();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	@PutMapping
+	public ResponseEntity<ProdutoModel> atualizar(@Valid @RequestBody ProdutoModel produto){
+		Optional<ProdutoModel> optional = produtoService.findById(produto.getId());
+		if (optional.isPresent()) {
+			produtoService.atualizar(produto);
+			return ResponseEntity.ok().body(produto);
+		}
+		return ResponseEntity.notFound().build();
 	}
 	
 	

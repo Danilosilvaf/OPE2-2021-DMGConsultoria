@@ -8,10 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity	
 @Table(name= "marca")
 public class MarcaModel implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "id")
@@ -19,6 +23,8 @@ public class MarcaModel implements Serializable{
 	private String id;
 	
 	@Column(name = "nome")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull @Size(min = 3, max = 25)
 	private String nome;
 
 	@Column(name = "status")
