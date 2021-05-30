@@ -6,6 +6,6 @@ import com.IJeans.Backend.controller.dto.EstoqueDto;
 
 public interface EstoqueService {
 
-	void registrarTransacao(@Valid EstoqueDto transacao);
+	void registrarTransacao(@Valid EstoqueDto transacao) throws Exception;
 
 }

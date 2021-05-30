@@ -25,7 +25,7 @@ public class EstoqueServiceImpl implements EstoqueService{
 	private ProdutoRepository produtoRepository;
 	
 	@Override
-	public void registrarTransacao(@Valid @RequestBody EstoqueDto transacao) {
+	public void registrarTransacao(@Valid @RequestBody EstoqueDto transacao) throws Exception {
 		movimentacaoRepository.save(transacao);
 		loteRepository.save(transacao);
 		transacao.calcularQuantidade();

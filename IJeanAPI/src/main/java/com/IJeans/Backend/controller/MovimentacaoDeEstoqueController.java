@@ -46,7 +46,7 @@ public class MovimentacaoDeEstoqueController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<EstoqueDto> registrarTransacao(@Valid @RequestBody EstoqueDto transacao) {
+	public ResponseEntity<EstoqueDto> registrarTransacao(@Valid @RequestBody EstoqueDto transacao) throws Exception {
 		if(transacao.isStatus()) {
 			estoqueService.registrarTransacao(transacao);
 			movimentacaoService.registrarTransacao(transacao);
