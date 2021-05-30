@@ -41,13 +41,13 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull @Length(min = 1, max = 1)
 	private boolean status;
-	
+
 	@OneToOne
 	@JoinColumn(name = "id_lote")
 	private LoteModel lote;
 	
 	@Column(name = "DATA")
-	private LocalDateTime dataCriacao = LocalDateTime.now();
+	private LocalDateTime dataTransacao = LocalDateTime.now();
 	
 	public MovimentacaoDeEstoqueModel() {
 	}
@@ -67,12 +67,12 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 		this.lote = lote;
 	}
 
-	public LocalDateTime getDataCriacao() {
-		return dataCriacao;
+	public LocalDateTime getDataTransacao() {
+		return dataTransacao;
 	}
 
-	public void setDataCriacao(LocalDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	public void setDataTransacao(LocalDateTime dataTransacao) {
+		this.dataTransacao = dataTransacao;
 	}
 
 	public String getId() {
