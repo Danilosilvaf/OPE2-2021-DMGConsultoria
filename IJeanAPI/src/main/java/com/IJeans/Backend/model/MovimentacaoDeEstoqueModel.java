@@ -13,7 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -46,7 +45,7 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 
 //	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull
-//	@Length(min = 1, max = 1)
+//	@Length(max = 1)
 
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull @Length(max = 1)
@@ -60,7 +59,6 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	@Column(name = "DATA")
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private LocalDateTime dataTransacao = LocalDateTime.now();
-
 	
 	public MovimentacaoDeEstoqueModel() {
 	}
