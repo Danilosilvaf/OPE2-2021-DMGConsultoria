@@ -43,14 +43,14 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	private int quantidade;
 	
 	@Column(name = "tipo_transacao")
-<<<<<<< HEAD
+
 //	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull
 //	@Length(min = 1, max = 1)
-=======
+
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull @Length(max = 1)
->>>>>>> api
+
 	private boolean status;
 
 	@OneToOne
@@ -58,12 +58,9 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	private LoteModel lote;
 	
 	@Column(name = "DATA")
-<<<<<<< HEAD
-	private LocalDateTime dataTransacao; 
-=======
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private LocalDateTime dataTransacao = LocalDateTime.now();
->>>>>>> api
+
 	
 	public MovimentacaoDeEstoqueModel() {
 	}
