@@ -7,33 +7,35 @@
             <input type="text" class="form-control busca">
         </div>
 
-        <button class="btn btn-cadastrar" (click)="CadastrarMarca()">Nova Marca <a class="fas fa-plus-circle fa-lg"></a></button>
+        <button class="btn btn-cadastrar" (click)="CadastrarMarca()">Nova Marca <a
+                class="fas fa-plus-circle fa-lg"></a></button>
 
     </div>
     <form [formGroup]="marcaForm">
 
-   <!-- teste -->
-    <table class="tabela">
-        <tr>
-            <th class="table-align">ID</th>
-            <th class="table-align">Nome</th>
-        </tr>
-        <tr *ngFor="let marca of marcas">
-            <td class="table-align">{{marca.id}}</td>
-            <td *ngIf="marca.id === EditRowId"><input type="text" value="{{marca.nome}}" formControlName="nomeMarca"></td>
-            <td *ngIf="marca.id != EditRowId" class="table-align">{{marca.nome}}</td>
-            <td *ngIf="marca.id === EditRowId"><button class="btn fas fa-ban fa-lg"
-                (click)="editIncorrect(marca)"></button></td>
-        <td *ngIf="marca.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"
-                (click)="editCorrect(marca)"></button></td>
-        <td *ngIf="marca.id != EditRowId"><button class="btn fas fa-pen fa-lg"
-                (click)="edit(marca)"></button></td>
-        <td *ngIf="marca.id != EditRowId"><button class="btn fas fa-trash fa-lg"
-                (click)="delete(marca)"></button></td>
-        </tr>
+        <!-- teste -->
+        <table class="tabela">
+            <tr>
+                <th class="table-align">ID</th>
+                <th class="table-align">Nome</th>
+            </tr>
+            <tr *ngFor="let marca of marcas">
+                <td class="table-align">{{marca.id}}</td>
+                <td *ngIf="marca.id === EditRowId"><input type="text" value="{{marca.nome}}"
+                        formControlName="nomeMarca"></td>
+                <td *ngIf="marca.id != EditRowId" class="table-align">{{marca.nome}}</td>
+                <td *ngIf="marca.id === EditRowId"><button class="btn fas fa-times-circle fa-lg"
+                        (click)="editIncorrect(marca)"></button></td>
+                <td *ngIf="marca.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"
+                        (click)="editCorrect(marca)"></button></td>
+                <td *ngIf="marca.id != EditRowId"><button class="btn fas fa-pen fa-lg" (click)="edit(marca)"></button>
+                </td>
+                <td *ngIf="marca.id != EditRowId"><button class="btn fas fa-trash fa-lg"
+                        (click)="delete(marca)"></button></td>
+            </tr>
 
-    </table>
-</form>
+        </table>
+    </form>
 </div>
 
 <!-- <app-cadastramarca [ngStyle]="{'display': displayCadastromarca}"></app-cadastramarca> -->
