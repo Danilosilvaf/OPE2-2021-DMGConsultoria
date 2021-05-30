@@ -14,34 +14,47 @@
 
         <div>
             <label class="label-title">Marca</label><br>
-            <select class="form-select form-select-lg mb-3"  (change)=selectMarca(marca) >
-                <option *ngFor="let marca of marcas"  [value]="marca" >
+            <select class="form-select form-select-lg mb-3"  (change)=selectMarca($event.target.value) >
+                <option *ngFor="let marca of marcas"  >
                     {{marca.nome}}
                 </option>
             </select>
         </div>
         <div>
-            <label class="label-title">Produto</label><br>
-            <select  class="form-select form-select-lg mb-3" (change)=selectTipoProduto(tipoProduto) >
-                <option *ngFor="let tipoProduto of tipoProdutos"  [value]="tipoProduto" >
+            <label class="label-title">Tipo Produto</label><br>
+            <select  class="form-select form-select-lg mb-3" (change)=selectTipoProduto($event.target.value) >
+                <option *ngFor="let tipoProduto of tipoProdutos"   >
                     {{tipoProduto.nome}}
                 </option>
             </select>
         </div>
         <div>
             <label class="label-title">Tamanho</label><br>
-            <select class="form-select form-select-lg mb-3" (change)=selectTamanho(tamanho) >
-                <option *ngFor="let tamanho of tamanhos"  [value]="tamanho">
+            <select class="form-select form-select-lg mb-3" (change)=selectTamanho($event.target.value) >
+                <option *ngFor="let tamanho of tamanhos"  >
                     {{tamanho.id}}
                 </option>
             </select>
         </div>
-        
-            
-        <label class="label-title">Valor</label><br>
-        <input type="text" formControlName="valor"><br>
 
-        <app-msg-erro [isError]="isErrorCampo('valor')" mensagem="Campo incorreto"></app-msg-erro>
+        <div>
+            <label class="label-title">Fornecedor</label><br>
+            <select  class="form-select form-select-lg mb-3" (change)=selectFornecedor($event.target.value) >
+                <option *ngFor="let fornecedor of fornecedores"   >
+                    {{fornecedor.nome}}
+                </option>
+            </select>
+        </div>
+        
+        <label class="label-title">Valor de Compra</label><br>
+        <input type="text" formControlName="valorCompra"><br>
+
+        <app-msg-erro [isError]="isErrorCampo('valorCompra')" mensagem="Campo incorreto"></app-msg-erro>
+            
+        <label class="label-title">Valor para Venda</label><br>
+        <input type="text" formControlName="valorVenda"><br>
+
+        <app-msg-erro [isError]="isErrorCampo('valorVenda')" mensagem="Campo incorreto"></app-msg-erro>
 
         <label class="label-title">Quantidade</label><br>
         <input type="text"  formControlName="quantidade">

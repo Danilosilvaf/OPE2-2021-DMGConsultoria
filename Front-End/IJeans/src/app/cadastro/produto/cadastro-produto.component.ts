@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { FornecedorService } from "src/app/home/fornecedor/service/fornecedor.service";
+import { FornecedorModel } from "src/app/shared/model/fornecedor.model";
 import { MarcaModel } from "src/app/shared/model/marca.model";
-import { ProdutoModel } from "src/app/shared/model/produto.model";
 import { TamanhoModel } from "src/app/shared/model/tamanho.model";
 import { TipoProduto } from "src/app/shared/model/tipo.model";
 import { AlertModalService } from "src/app/shared/services/alert-modal.service";
@@ -21,7 +22,7 @@ export class CadastrarProdutosComponent {
   cadastraProdutoForm: FormGroup;
   
 
-  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,private alertService:AlertModalService) {
+  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,private alertService:AlertModalService, private fornecedorService:FornecedorService) {
   }
 
   marcas: Array<MarcaModel>
@@ -31,6 +32,9 @@ export class CadastrarProdutosComponent {
   tipoProdutos: Array<TipoProduto>
   tipoProduto: TipoProduto
   tipoProdutoControl:FormControl
+
+  fornecedores:Array<FornecedorModel>
+  fornecedor:FornecedorModel;
   
   idTipoProduto="1";
 
@@ -43,10 +47,9 @@ export class CadastrarProdutosComponent {
 
     this.cadastraProdutoForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
-      valor: ['', [Validators.required, Validators.pattern('^[0-9]')]],
-      quantidade: ['', [Validators.required, Validators.pattern('^[0-9]')],],
-      tipoProduto:['', [Validators.required]]
-
+      valorCompra: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')]],
+      valorVenda: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')]],
+      quantidade: ['', [Validators.required, Validators.pattern('^-?[0-9]+$')],]
     });
     this.service.findAllMarcas().subscribe(data => {
       this.marcas = data
@@ -55,34 +58,48 @@ export class CadastrarProdutosComponent {
     this.service.findAllTipoProduto().subscribe(data => {
       this.tipoProdutos = data
       this.tipoProduto = data[0]
+
+
       this.service.findByTipoProduto(this.tipoProduto.id).subscribe(data => {
         this.tamanhos = data
         this.tamanho = data[0]
       })
+     
     })
-    // this.service.findAllTamanhos().subscribe(data => {
-    //   this.tamanhos = data
-    //   this.tamanho= data[0]
-    // })
+    
+    this.fornecedorService.findAll().subscribe(data =>{
+      this.fornecedores = data
+      this.fornecedor = data[0]
+    })
 
 
   }
 
+  selectFornecedor(fornecedor){
+    this.fornecedores.forEach(data =>{
+      if(data.nome === fornecedor)
+        this.fornecedor = data
+      })
+  }
   selectMarca(marca) {
-      this.marca = marca
+    this.marcas.forEach(data =>{
+      if(data.nome === marca)
+        this.marca = data
+      })
   }
   selectTamanho(tamanho) {
-    this.tamanho = tamanho
+    this.tamanhos.forEach(data =>{
+      if(data.id === tamanho)
+        this.tamanho = data
+      })
   }
-  selectTipoProduto(tipo:TipoProduto) {
-    this.tipoProduto = tipo
-
-    if(this.idTipoProduto === "1"){
-      this.idTipoProduto = "2"
-    }else{
-      this.idTipoProduto = "1"
-    }
-    this.service.findByTipoProduto(this.idTipoProduto).subscribe(data => {
+  selectTipoProduto(tipo) {
+    this.tipoProdutos.forEach(data =>{
+      if(data.nome === tipo)
+      this.tipoProduto = data
+      })
+      console.log(this.tipoProduto.id)
+    this.service.findByTipoProduto(this.tipoProduto.id).subscribe(data => {
       this.tamanhos = data
       this.tamanho = data[0]
     })
@@ -92,27 +109,29 @@ export class CadastrarProdutosComponent {
     // Verifica ao enviar se os dados informados são validos
     if (
       this.cadastraProdutoForm.get('nome').valid &&
-      this.cadastraProdutoForm.get('valor').valid &&
-      this.cadastraProdutoForm.get('quantidade').valid
+      this.cadastraProdutoForm.get('valorVenda').valid &&
+      this.cadastraProdutoForm.get('quantidade').valid &&
+      this.cadastraProdutoForm.get('valorCompra').valid 
     ) {
       let produto = {
         nome: this.cadastraProdutoForm.value.nome,
-        preco_atual: this.cadastraProdutoForm.value.valor,
+        preco_atual: this.cadastraProdutoForm.value.valorVenda,
         quantidade_estoque: this.cadastraProdutoForm.value.quantidade,
         marca: this.marca,
         tipo_produto: this.tipoProduto,
-        tamanho: this.tamanho.id
+        tamanho: this.tamanho
       }
-
-
-      this.service.cadastrarProduto(produto).subscribe(data => {
-        if (data.id != null) {
-          this.alertService.showSucess("produto cadastrado com sucesso")
-          this.router.navigateByUrl('home');
-        } else {
-          this.alertService.showAlertDanger("produto ja cadastrado")
-        }
-      })
+      console.log(produto)
+      console.log(this.fornecedor)
+      console.log(this.cadastraProdutoForm.value.valorCompra)
+      // this.service.cadastrarProduto(produto).subscribe(data => {
+      //   if (data.id != null) {
+      //     this.alertService.showSucess("produto cadastrado com sucesso")
+      //     this.router.navigateByUrl('home');
+      //   } else {
+      //     this.alertService.showAlertDanger("produto ja cadastrado")
+      //   }
+      // })
     } else {
       this.alertService.showAlertDanger('Dados Incorretos')
     }
