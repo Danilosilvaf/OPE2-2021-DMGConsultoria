@@ -41,9 +41,8 @@ public class ProdutosController {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ProdutoModel> findByID(@PathVariable("id") String id){
-		
 		try {
-			return ResponseEntity.ok().body(produtoService.findById(id));
+			return ResponseEntity.ok().body(produtoService.findById(id).get());
 		} catch (FileNotFoundException e) {
 			return ResponseEntity.notFound().build();
 		}
@@ -59,6 +58,8 @@ public class ProdutosController {
 	@CrossOrigin(origins = "*")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<ProdutoModel> deletar(@PathVariable("id") String id){
+		try {
+			
 		Optional<ProdutoModel> optional = produtoService.findById(id);
 		if (optional.isPresent()) {
 			try {
@@ -69,16 +70,25 @@ public class ProdutosController {
 			}
 		}
 		return ResponseEntity.notFound().build();
+			}catch(FileNotFoundException e) {
+				return ResponseEntity.notFound().build();
+			}
 	}
 	
 	@PutMapping
 	public ResponseEntity<ProdutoModel> atualizar(@Valid @RequestBody ProdutoModel produto){
-		Optional<ProdutoModel> optional = produtoService.findById(produto.getId());
+		Optional<ProdutoModel> optional;
+		try {
+			optional = produtoService.findById(produto.getId());
+		
 		if (optional.isPresent()) {
 			produtoService.atualizar(produto);
 			return ResponseEntity.ok().body(produto);
 		}
 		return ResponseEntity.notFound().build();
+		} catch (FileNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 }

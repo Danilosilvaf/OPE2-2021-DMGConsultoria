@@ -38,19 +38,14 @@ public class ProdutoServiceImpl implements ProdutosService {
         this.produtoRepository.save(produto);
     }
 
-	@Override
-	public Optional<ProdutoModel> findById(String id) {
-		return produtoRepository.findById(id);
-	}
+	
 
-<<<<<<< HEAD
-=======
 	@Override
-	public ProdutoModel findById(String id) throws FileNotFoundException {
+	public Optional<ProdutoModel> findById(String id) throws FileNotFoundException {
 		Optional<ProdutoModel> produtoretorno = produtoRepository.findById(id);
 		
 		if(produtoretorno.isPresent()) {
-			return produtoretorno.get();
+			return produtoretorno;
 		}else {
 			throw new FileNotFoundException();
 		}
@@ -58,5 +53,4 @@ public class ProdutoServiceImpl implements ProdutosService {
 	}
 
 	
->>>>>>> 95a9c2a64c3b489a880584e6dae7d62a66b19aae
 }
