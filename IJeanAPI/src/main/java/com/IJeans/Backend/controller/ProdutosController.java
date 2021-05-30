@@ -48,11 +48,13 @@ public class ProdutosController {
 		}
 	}
 	
-	
-	@PostMapping
-	public ResponseEntity<ProdutoModel> cadastrar(@Valid @RequestBody ProdutoModel produto){
-		produtoService.cadastrar(produto);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
+	@GetMapping(value = "/nome/{nomeBusca}")
+	public ResponseEntity<Optional<ProdutoModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
+		Optional<ProdutoModel> nome = produtoService.findByNomeContaining(nomeBusca);
+		if(nome.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().body(produtoService.findByNomeContaining(nomeBusca));
 	}
 	
 	@CrossOrigin(origins = "*")

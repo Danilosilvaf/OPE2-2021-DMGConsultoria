@@ -1,6 +1,7 @@
 package com.IJeans.Backend.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -16,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.controller.dto.EstoqueDto;
+import com.IJeans.Backend.controller.dto.ProdutoDto;
+import com.IJeans.Backend.exception.ProdutoExistenteException;
 import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
+import com.IJeans.Backend.model.ProdutoModel;
 import com.IJeans.Backend.service.EstoqueService;
 import com.IJeans.Backend.service.MovimentacaoDeEstoqueService;
+import com.IJeans.Backend.service.ProdutosService;
 
 @RestController
 @RequestMapping(value = "/estoque")
@@ -30,6 +35,9 @@ public class MovimentacaoDeEstoqueController {
 	
 	@Autowired
 	private EstoqueService estoqueService;
+	
+	@Autowired
+	private ProdutosService produtosService;
 	
 	@GetMapping
 	public ResponseEntity<List<MovimentacaoDeEstoqueModel>> getAll() {
@@ -54,4 +62,13 @@ public class MovimentacaoDeEstoqueController {
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
+	@PostMapping(value = "/novoProduto")
+	public Optional<ProdutoDto> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto, String nomeBusca) throws Exception {
+		Optional<ProdutoModel> prod = produtosService.findByNomeContaining(nomeBusca);
+		
+		if(prod.isPresent()) {
+			throw new ProdutoExistenteException("Produto já cadastrado no sistema.");
+		}
+		return produtosService.cadastrarNovoProduto(produto);
+	}
 }

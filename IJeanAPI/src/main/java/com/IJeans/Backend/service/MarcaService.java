@@ -16,4 +16,8 @@ public interface MarcaService {
 	Optional<MarcaModel> findById(String id);
 
 	void deletar(MarcaModel marcaModel);
+
+	Optional<MarcaModel> findByNomeContaining(String nomeBusca);
+
 }
+

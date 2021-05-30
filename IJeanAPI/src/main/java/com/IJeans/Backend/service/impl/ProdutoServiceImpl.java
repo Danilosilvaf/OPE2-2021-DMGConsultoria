@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.IJeans.Backend.controller.dto.ProdutoDto;
 import com.IJeans.Backend.model.ProdutoModel;
 import com.IJeans.Backend.repositories.ProdutoRepository;
 import com.IJeans.Backend.service.ProdutosService;
@@ -16,15 +17,20 @@ public class ProdutoServiceImpl implements ProdutosService {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
-	
+
 	@Override
 	public List<ProdutoModel> findAll() {
 		return produtoRepository.findAll();
 	}
 
 	@Override
-	public void cadastrar(ProdutoModel produto) {
-		produtoRepository.save(produto);
+	public Optional<ProdutoModel> findByNomeContaining(String nomeBusca) {
+		return produtoRepository.findByNomeContaining(nomeBusca);
+	}
+
+	@Override
+	public Optional<ProdutoDto> cadastrarNovoProduto(ProdutoDto produto) {
+		return produtoRepository.save(produto);
 	}
 
 	@Override
@@ -35,22 +41,20 @@ public class ProdutoServiceImpl implements ProdutosService {
 
 	@Override
 	public void atualizar(ProdutoModel produto) {
-        this.produtoRepository.save(produto);
-    }
-
-	
+		this.produtoRepository.save(produto);
+	}
 
 	@Override
 	public Optional<ProdutoModel> findById(String id) throws FileNotFoundException {
 		Optional<ProdutoModel> produtoretorno = produtoRepository.findById(id);
-		
-		if(produtoretorno.isPresent()) {
+
+		if (produtoretorno.isPresent()) {
 			return produtoretorno;
-		}else {
+		} else {
 			throw new FileNotFoundException();
 		}
-		
+
 	}
 
-	
+
 }

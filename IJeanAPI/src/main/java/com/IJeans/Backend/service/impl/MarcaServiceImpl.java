@@ -42,4 +42,9 @@ public class MarcaServiceImpl implements MarcaService {
 		return marcaRepository.findById(id);
 	}
 
+	@Override
+	public Optional<MarcaModel> findByNomeContaining(String nomeBusca) {
+		return marcaRepository.findByNomeContaining(nomeBusca);
+	}
+
 }

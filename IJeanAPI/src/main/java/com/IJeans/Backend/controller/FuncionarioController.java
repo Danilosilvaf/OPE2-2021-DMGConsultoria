@@ -37,6 +37,15 @@ public class FuncionarioController {
 		}
 		return ResponseEntity.ok().body(funcionarioService.findAll());
 	}
+	
+	@GetMapping(value = "/nome/{nomeBusca}")
+	public ResponseEntity<Optional<FuncionarioModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
+		Optional<FuncionarioModel> nome = funcionarioService.findByNomeContaining(nomeBusca);
+		if(nome.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().body(funcionarioService.findByNomeContaining(nomeBusca));
+	}
 
 	@PostMapping
 	public ResponseEntity<FuncionarioModel> cadastrarFuncionario(@Valid @RequestBody FuncionarioModel funcionario) {

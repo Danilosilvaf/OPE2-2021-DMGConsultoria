@@ -37,6 +37,15 @@ public class MarcaController {
 		}
 		return ResponseEntity.ok().body(marcaService.findAll());
 	}
+	
+	@GetMapping(value = "/nome/{nomeBusca}")
+	public ResponseEntity<Optional<MarcaModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
+		Optional<MarcaModel> nome = marcaService.findByNomeContaining(nomeBusca);
+		if(nome.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().body(marcaService.findByNomeContaining(nomeBusca));
+	}
 
 	@CrossOrigin(origins = "*")
 	@PostMapping

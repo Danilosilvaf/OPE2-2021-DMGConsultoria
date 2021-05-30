@@ -21,4 +21,6 @@ public interface MarcaRepository extends JpaRepository<MarcaModel, Integer>{
 	
 	@Transactional
 	public void deleteById(String id);
+
+	public Optional<MarcaModel> findByNomeContaining(String nomeBusca);
 }

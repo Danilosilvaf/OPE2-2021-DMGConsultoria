@@ -40,4 +40,9 @@ public class FornecedorServiceImpl implements FornecedorService {
 		return fornecedorRepository.findById(id);
 	}
 
+	@Override
+	public Optional<FornecedorModel> findByNomeContaining(String nomeBusca) {
+		return fornecedorRepository.findByNomeContaining(nomeBusca);
+	}
+
 }

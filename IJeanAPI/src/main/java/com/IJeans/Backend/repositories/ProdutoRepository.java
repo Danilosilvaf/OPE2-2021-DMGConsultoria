@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.IJeans.Backend.controller.dto.ProdutoDto;
 import com.IJeans.Backend.model.ProdutoModel;
 
 public interface ProdutoRepository extends JpaRepository<ProdutoModel, Integer>{
@@ -18,5 +19,9 @@ public interface ProdutoRepository extends JpaRepository<ProdutoModel, Integer>{
 	public ProdutoModel findByNome(String descricao);
 	
 	public Optional<ProdutoModel> findById(String id);
+
+	public Optional<ProdutoModel> findByNomeContaining(String nomeBusca);
+
+	public Optional<ProdutoDto> save(ProdutoDto produto);
 
 }
