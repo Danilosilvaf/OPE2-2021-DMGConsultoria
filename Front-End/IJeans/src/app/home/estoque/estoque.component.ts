@@ -11,7 +11,6 @@ import { ProdutoService } from "../produto/service/service-produto.service";
   })
   export class EstoqueComponent implements OnInit {
  
-    estoqueForm: FormGroup;
 
     produtos: Array<ProdutoModel>;
     constructor(private service: ProdutoService, private router: Router, private formBuilder: FormBuilder){}

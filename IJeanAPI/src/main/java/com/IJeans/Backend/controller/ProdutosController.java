@@ -1,5 +1,6 @@
 package com.IJeans.Backend.controller;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,17 @@ public class ProdutosController {
 		}
 		return ResponseEntity.ok().body(produtoService.findAll());
 	}
+	
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<ProdutoModel> findByID(@PathVariable("id") String id){
+		
+		try {
+			return ResponseEntity.ok().body(produtoService.findById(id));
+		} catch (FileNotFoundException e) {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
 	
 	@PostMapping
 	public ResponseEntity<ProdutoModel> cadastrar(@RequestBody ProdutoModel produto){

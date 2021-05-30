@@ -1,8 +1,10 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Subject } from "rxjs";
 import { ProdutoService } from "src/app/home/produto/service/service-produto.service";
 import { MarcaModel } from "src/app/shared/model/marca.model";
+import { ProdutoModel } from "src/app/shared/model/produto.model";
 import { TamanhoModel } from "src/app/shared/model/tamanho.model";
 import { TipoProduto } from "src/app/shared/model/tipo.model";
 
@@ -17,10 +19,9 @@ import { TipoProduto } from "src/app/shared/model/tipo.model";
 export class EntradaComponent {
 
   cadastraProdutoForm: FormGroup;
-  
+  id;
 
   constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,  private route: ActivatedRoute) {
-    this.route.params.subscribe(params => console.log(params['id']));
   }
 
   marcas: Array<MarcaModel>
@@ -29,51 +30,50 @@ export class EntradaComponent {
   tamanho: TamanhoModel
   tipoProdutos: Array<TipoProduto>
   tipoProduto: TipoProduto
-  tipoProdutoControl:FormControl
   
-  idTipoProduto="1";
+
+
+   
+
+  produtoNome;
+  produtoQuantidade;
+  produtoMarca;
+  produtoTipo;
+  produtoTamanho;
+  produtoValor;
 
   ngOnInit() {
 
+    this.route.params.subscribe(params => this.id = params['id']);
+
     
+    if(this.id != null || this.id != undefined || this.id != ""){
+       this.service.findById(this.id).subscribe(data => {
+         console.log(data)
+        this.produtoNome=data['nome'];
+        this.produtoQuantidade=data['quantidade_estoque'];
+        this.produtoMarca=data['marca']['nome'];
+        this.produtoTipo=data['tipo_produto']['nome'];
+        this.produtoTamanho=data['tamanho']['id'];
+        this.produtoValor=data['preco_atual'];
+        
+      })
+    }
+
+
   
-  
-    this.tipoProdutoControl = new FormControl('valid', [
-      Validators.required,
-      Validators.pattern('valid'),
-    ]);
+   
 
     this.cadastraProdutoForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
       valor: ['', [Validators.required, Validators.pattern('^[0-9]')]],
-      quantidade: ['', [Validators.required, Validators.pattern('^[0-9]')],],
-      tipoProduto:['', [Validators.required]]
-
+      quantidade: ['', [Validators.required, Validators.pattern('^[0-9]')],]
     });
    
   }
 
-  selectMarca(marca) {
-    console.log(marca)
-    this.marca = marca
-  }
-  selectTamanho(tamanho) {
-    console.log(tamanho)
-    this.tamanho = tamanho
-  }
-  selectTipoProduto(tipo:TipoProduto) {
-    this.tipoProduto = tipo
 
-    if(this.idTipoProduto === "1"){
-      this.idTipoProduto = "2"
-    }else{
-      this.idTipoProduto = "1"
-    }
-    this.service.findByTipoProduto(this.idTipoProduto).subscribe(data => {
-      this.tamanhos = data
-      this.tamanho = data[0]
-    })
-  }
+  
 
   onSubmit() {
     // Verifica ao enviar se os dados informados são validos

@@ -1,5 +1,6 @@
 package com.IJeans.Backend.service;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -15,6 +16,8 @@ public interface ProdutosService {
 	ProdutoModel deletar(String id);
 
 	ProdutoModel atualizar(ProdutoModel produto);
+	
+	ProdutoModel findById(String id) throws FileNotFoundException;
 	
 
 }
