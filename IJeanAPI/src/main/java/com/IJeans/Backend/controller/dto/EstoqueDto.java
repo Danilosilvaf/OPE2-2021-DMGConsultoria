@@ -1,5 +1,6 @@
 package com.IJeans.Backend.controller.dto;
 
+import com.IJeans.Backend.exception.NumeroNegativoException;
 import com.IJeans.Backend.model.FornecedorModel;
 import com.IJeans.Backend.model.ProdutoModel;
 
@@ -59,7 +60,7 @@ public class EstoqueDto {
 	
 	public void calcularQuantidade() throws Exception {
 		if(this.quantidade <= 0) {
-			throw new Exception();
+			throw new NumeroNegativoException("Numeros negativos nao permitidos");
 		}
 		if(this.isStatus() && getQuantidade() > 0){
 			this.produto.setQuantidade_estoque(this.quantidade + this.produto.getQuantidade_estoque());

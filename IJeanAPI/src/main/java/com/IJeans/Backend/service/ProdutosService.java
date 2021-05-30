@@ -14,10 +14,10 @@ public interface ProdutosService {
 
 	void atualizar(ProdutoModel produto);
 	
-	
 	Optional<ProdutoModel> findById(String id) throws FileNotFoundException;
-	
 
 	void deletar(ProdutoModel produtoModel);
+
+	Optional<ProdutoModel> findByNomeContaining(String nomeBusca);
 	
 }

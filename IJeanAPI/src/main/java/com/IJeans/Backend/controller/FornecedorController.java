@@ -37,6 +37,15 @@ public class FornecedorController {
 		}
 		return ResponseEntity.ok().body(fornecedorService.findAll());
 	}
+	
+	@GetMapping(value = "/nome/{nomeBusca}")
+	public ResponseEntity<Optional<FornecedorModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
+		Optional<FornecedorModel> nome = fornecedorService.findByNomeContaining(nomeBusca);
+		if(nome.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().body(fornecedorService.findByNomeContaining(nomeBusca));
+	}
 
 	@PostMapping
 	public ResponseEntity<FornecedorModel> cadastrar(@Valid @RequestBody FornecedorModel fornecedor) {

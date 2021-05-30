@@ -16,9 +16,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "movimentacaoestoque")
+@Table(name = "movimentacao")
 public class MovimentacaoDeEstoqueModel implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -39,7 +40,7 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	
 	@Column(name = "tipo_transacao")
 	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Length(min = 1, max = 1)
+	@NotNull @Length(max = 1)
 	private boolean status;
 
 	@OneToOne
@@ -47,6 +48,7 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	private LoteModel lote;
 	
 	@Column(name = "DATA")
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	private LocalDateTime dataTransacao = LocalDateTime.now();
 	
 	public MovimentacaoDeEstoqueModel() {

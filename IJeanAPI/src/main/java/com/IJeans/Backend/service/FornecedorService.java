@@ -17,4 +17,6 @@ public interface FornecedorService {
 
 	Optional<FornecedorModel> findById(String id);
 
+	Optional<FornecedorModel> findByNomeContaining(String nomeBusca);
+
 }

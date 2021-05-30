@@ -41,4 +41,9 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	public Optional<FuncionarioModel> findById(String id){
 		return funcionarioRepository.findById(id);
 	}
+
+	@Override
+	public Optional<FuncionarioModel> findByNomeContaining(String nomeBusca) {
+		return funcionarioRepository.findByNomeContaining(nomeBusca);
+	}
 }

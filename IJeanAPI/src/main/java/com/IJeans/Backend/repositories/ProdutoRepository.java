@@ -19,4 +19,6 @@ public interface ProdutoRepository extends JpaRepository<ProdutoModel, Integer>{
 	
 	public Optional<ProdutoModel> findById(String id);
 
+	public Optional<ProdutoModel> findByNomeContaining(String nomeBusca);
+
 }

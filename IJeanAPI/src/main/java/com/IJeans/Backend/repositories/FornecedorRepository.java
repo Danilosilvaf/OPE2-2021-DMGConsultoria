@@ -22,4 +22,6 @@ public interface FornecedorRepository extends JpaRepository<FornecedorModel, Int
 
 	public Optional<FornecedorModel> findById(String id);
 
+	public Optional<FornecedorModel> findByNomeContaining(String nomeBusca);
+
 }
