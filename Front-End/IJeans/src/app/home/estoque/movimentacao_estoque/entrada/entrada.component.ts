@@ -2,7 +2,9 @@ import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subject } from "rxjs";
+import { FornecedorService } from "src/app/home/fornecedor/service/fornecedor.service";
 import { ProdutoService } from "src/app/home/produto/service/service-produto.service";
+import { FornecedorModel } from "src/app/shared/model/fornecedor.model";
 import { MarcaModel } from "src/app/shared/model/marca.model";
 import { ProdutoModel } from "src/app/shared/model/produto.model";
 import { TamanhoModel } from "src/app/shared/model/tamanho.model";
@@ -21,19 +23,13 @@ export class EntradaComponent {
   cadastraProdutoForm: FormGroup;
   id;
 
-  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,  private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,  private route: ActivatedRoute,private serviceFornecedor:FornecedorService) {
   }
 
-  marcas: Array<MarcaModel>
-  marca: MarcaModel
-  tamanhos: Array<TamanhoModel>
-  tamanho: TamanhoModel
-  tipoProdutos: Array<TipoProduto>
-  tipoProduto: TipoProduto
-  
+ 
 
 
-   
+  fornecedores:Array<FornecedorModel> 
 
   produtoNome;
   produtoQuantidade;
@@ -41,70 +37,67 @@ export class EntradaComponent {
   produtoTipo;
   produtoTamanho;
   produtoValor;
+  produto;
 
+  fornecedor:FornecedorModel
   ngOnInit() {
 
     this.route.params.subscribe(params => this.id = params['id']);
 
+    this.serviceFornecedor.findAll().subscribe(data =>{
+      this.fornecedores = data
+      this.fornecedor = this.fornecedores[0]
+    });
     
     if(this.id != null || this.id != undefined || this.id != ""){
        this.service.findById(this.id).subscribe(data => {
-         console.log(data)
         this.produtoNome=data['nome'];
-        this.produtoQuantidade=data['quantidade_estoque'];
+        this.produtoQuantidade;
         this.produtoMarca=data['marca']['nome'];
         this.produtoTipo=data['tipo_produto']['nome'];
         this.produtoTamanho=data['tamanho']['id'];
-        this.produtoValor=data['preco_atual'];
-        
+        this.produtoValor;
+        this.produto=data
       })
     }
 
-
-  
-   
-
     this.cadastraProdutoForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
-      valor: ['', [Validators.required, Validators.pattern('^[0-9]')]],
-      quantidade: ['', [Validators.required, Validators.pattern('^[0-9]')],]
+      valor: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')]],
+      quantidade: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')],]
     });
    
   }
 
-
+  selectFornecedor(fornecedor){
+      this.fornecedores.forEach(data =>{
+        if(data.nome === fornecedor)
+        this.fornecedor = data;
+      })
+  }
   
 
   onSubmit() {
-    // Verifica ao enviar se os dados informados são validos
+    
     if (
-      this.cadastraProdutoForm.get('nome').valid &&
-      this.cadastraProdutoForm.get('valor').valid &&
-      this.cadastraProdutoForm.get('quantidade').valid
-    ) {
-      let produto = {
-        nome: this.cadastraProdutoForm.value.nome,
-        preco_atual: this.cadastraProdutoForm.value.valor,
-        quantidade_estoque: this.cadastraProdutoForm.value.quantidade,
-        marca: this.marca,
-        tipo_produto: this.tipoProduto,
-        tamanho: this.tamanho.id
-      }
-
-
-      this.service.cadastrarProduto(produto).subscribe(data => {
-        if (data.id != null) {
-          alert("produto cadastrado com sucesso")
-          this.router.navigateByUrl('home');
-        } else {
-          alert("produto ja cadastrado");
+      (this.cadastraProdutoForm.get('valor').valid &&
+      this.cadastraProdutoForm.get('quantidade').valid) 
+    ) 
+    {
+      if( this.cadastraProdutoForm.get('quantidade').value >0 && this.cadastraProdutoForm.get('valor').value >0){
+        let movimentacao = {
+          quantidade: this.cadastraProdutoForm.get('quantidade').value,
+          status: true,
+          preco: this.cadastraProdutoForm.get('valor').value,
+          produto: this.produto,
+          fornecedor: this.fornecedor,
         }
-      })
-    } else {
-      alert('Dados Incorretos')
+  
+        console.log(movimentacao)
+      }
     }
+    alert("Dados Incorretos")
   }
-
 
 
   voltarHome() {
