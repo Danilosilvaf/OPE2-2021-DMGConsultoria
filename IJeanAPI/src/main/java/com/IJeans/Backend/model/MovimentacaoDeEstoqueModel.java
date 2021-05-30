@@ -30,25 +30,15 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	private String id;
 	
 	@Column(name = "valor_unitario")
-//	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull
-//	@Size(min = 1, max = 10)
 	private double valor_unitario;
 	
 	@Column(name = "quantidade")
-//	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull 
-//	@Size(min = 1, max = 10)
 	private int quantidade;
 	
 	@Column(name = "tipo_transacao")
-
-//	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull
-//	@Length(max = 1)
-
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Length(max = 1)
 
 	private boolean status;
 

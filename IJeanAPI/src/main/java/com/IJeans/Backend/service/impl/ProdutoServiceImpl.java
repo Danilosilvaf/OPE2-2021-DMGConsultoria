@@ -29,8 +29,11 @@ public class ProdutoServiceImpl implements ProdutosService {
 	}
 
 	@Override
-	public Optional<ProdutoDto> cadastrarNovoProduto(ProdutoDto produto) {
-		return produtoRepository.save(produto);
+	public void cadastrarNovoProduto(ProdutoDto produto) {
+		
+		
+			
+		 produtoRepository.save(produto.getProduto());
 	}
 
 	@Override

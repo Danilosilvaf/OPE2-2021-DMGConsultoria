@@ -63,8 +63,8 @@ public class MovimentacaoDeEstoqueController {
 	}
 	
 	@PostMapping(value = "/novoProduto")
-	public Optional<ProdutoDto> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto, String nomeBusca) throws Exception {
-		Optional<ProdutoModel> prod = produtosService.findByNomeContaining(nomeBusca);
+	public Optional<ProdutoDto> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
+		Optional<ProdutoModel> prod = produtosService.findByNomeContaining(produto.getProduto().getNome());
 		
 		if(prod.isPresent()) {
 			throw new ProdutoExistenteException("Produto já cadastrado no sistema.");

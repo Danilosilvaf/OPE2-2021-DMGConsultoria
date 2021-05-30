@@ -23,6 +23,6 @@ public interface ProdutosService {
 
 	Optional<ProdutoModel> findByNomeContaining(String nomeBusca);
 
-	Optional<ProdutoDto> cadastrarNovoProduto(ProdutoDto produto);
+	void cadastrarNovoProduto(ProdutoDto produto);
 	
 }

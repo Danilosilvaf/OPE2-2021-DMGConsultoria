@@ -8,11 +8,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-public class IJeansApiApplication {
+public class IJeanApiApplication {
 
 	@CrossOrigin(origins = "*")
 	public static void main(String[] args) {
-		SpringApplication.run(IJeansApiApplication.class, args);
+		SpringApplication.run(IJeanApiApplication.class, args);
 	}
 
 }
