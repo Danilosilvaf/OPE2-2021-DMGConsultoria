@@ -8,7 +8,7 @@ public class EstoqueDto {
 
 	private int quantidade;
 	private boolean status;
-	private double preco;
+	private double precoTransacao;
 	private ProdutoModel produto;
 	private FornecedorModel fornecedor;
 	
@@ -25,10 +25,10 @@ public class EstoqueDto {
 		this.status = status;
 	}
 	public double getPreco() {
-		return preco;
+		return precoTransacao;
 	}
 	public void setPreco(double preco) {
-		this.preco = preco;
+		this.precoTransacao = preco;
 	}
 	public ProdutoModel getProduto() {
 		return produto;
@@ -47,7 +47,7 @@ public class EstoqueDto {
 		super();
 		this.quantidade = quantidade;
 		this.status = status;
-		this.preco = preco;
+		this.precoTransacao = preco;
 		this.produto = produto;
 		this.fornecedor = fornecedor;
 	}
