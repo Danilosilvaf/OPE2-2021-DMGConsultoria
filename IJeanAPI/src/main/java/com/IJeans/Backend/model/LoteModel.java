@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.IJeans.Backend.controller.dto.EstoqueDto;
+
 
 @Entity
 @Table(name= "lote")
@@ -31,7 +33,13 @@ public class LoteModel {
 	private FornecedorModel fornecedor;
 
 	public LoteModel() {}
-
+	
+	public LoteModel(EstoqueDto estoque) {
+		this.quantidade = estoque.getQuantidade();
+		this.precoCompra = estoque.getPreco();
+		this.produto = estoque.getProduto();
+		this.fornecedor = estoque.getFornecedor();
+	}
 
 	public LoteModel(int id, int quantidade, double precoCompra, ProdutoModel produto, FornecedorModel fornecedor) {
 		super();

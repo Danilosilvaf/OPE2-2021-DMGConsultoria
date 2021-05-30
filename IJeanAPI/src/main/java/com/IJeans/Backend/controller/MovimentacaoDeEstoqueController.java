@@ -49,7 +49,7 @@ public class MovimentacaoDeEstoqueController {
 	public ResponseEntity<EstoqueDto> registrarTransacao(@Valid @RequestBody EstoqueDto transacao) throws Exception {
 		if(transacao.isStatus()) {
 			estoqueService.registrarTransacao(transacao);
-			movimentacaoService.registrarTransacao(transacao);
+//			movimentacaoService.registrarTransacao(transacao);
 		}
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}

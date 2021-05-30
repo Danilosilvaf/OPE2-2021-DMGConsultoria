@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.IJeans.Backend.controller.dto.EstoqueDto;
+import com.IJeans.Backend.model.LoteModel;
+import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
 import com.IJeans.Backend.repositories.LoteRepository;
 import com.IJeans.Backend.repositories.MovimentacaoDeEstoqueRepository;
 import com.IJeans.Backend.repositories.ProdutoRepository;
@@ -26,8 +28,11 @@ public class EstoqueServiceImpl implements EstoqueService{
 	
 	@Override
 	public void registrarTransacao(@Valid @RequestBody EstoqueDto transacao) throws Exception {
-		movimentacaoRepository.save(transacao);
-		loteRepository.save(transacao);
+		
+		LoteModel lote =new LoteModel(transacao) ;
+		
+		loteRepository.save(lote);
+		movimentacaoRepository.save(new MovimentacaoDeEstoqueModel(transacao,lote));
 		transacao.calcularQuantidade();
 		produtoRepository.save(transacao.getProduto());
 	}

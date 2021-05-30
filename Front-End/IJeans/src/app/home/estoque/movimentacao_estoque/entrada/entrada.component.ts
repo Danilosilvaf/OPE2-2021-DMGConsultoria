@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { FornecedorService } from "src/app/home/fornecedor/service/fornecedor.service";
 import { ProdutoService } from "src/app/home/produto/service/service-produto.service";
 import { FornecedorModel } from "src/app/shared/model/fornecedor.model";
+import { EstoqueService } from "../../service/estoque.service";
 
 
 @Component({
@@ -18,7 +19,7 @@ export class EntradaComponent {
   cadastraProdutoForm: FormGroup;
   id;
 
-  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,  private route: ActivatedRoute,private serviceFornecedor:FornecedorService) {
+  constructor(private formBuilder: FormBuilder, private service: ProdutoService,private serviceEstoque: EstoqueService, private router: Router,  private route: ActivatedRoute,private serviceFornecedor:FornecedorService) {
   }
 
  
@@ -85,10 +86,11 @@ export class EntradaComponent {
           status: true,
           preco: this.cadastraProdutoForm.get('valor').value,
           produto: this.produto,
-          fornecedor: this.fornecedor,
+          fornecedor: this.fornecedor
         }
   
         console.log(movimentacao)
+        this.serviceEstoque.cadastrarEstoqueJaExistente(movimentacao).subscribe(data => console.log(data))
       }
     }
     alert("Dados Incorretos")

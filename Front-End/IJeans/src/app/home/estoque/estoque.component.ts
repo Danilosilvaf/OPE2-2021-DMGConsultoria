@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ProdutoModel } from "src/app/shared/model/produto.model";
 import { ProdutoService } from "../produto/service/service-produto.service";
+import { EstoqueService } from "./service/estoque.service";
 
 @Component({
     selector: 'app-estoque',

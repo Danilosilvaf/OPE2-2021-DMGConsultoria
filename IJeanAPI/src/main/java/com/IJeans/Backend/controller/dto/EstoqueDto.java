@@ -1,6 +1,7 @@
 package com.IJeans.Backend.controller.dto;
 
 import com.IJeans.Backend.model.FornecedorModel;
+import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
 import com.IJeans.Backend.model.ProdutoModel;
 
 public class EstoqueDto {
@@ -42,6 +43,8 @@ public class EstoqueDto {
 		this.fornecedor = fornecedor;
 	}
 	
+	
+	
 	public EstoqueDto(int quantidade, boolean status, double preco, ProdutoModel produto, FornecedorModel fornecedor) {
 		super();
 		this.quantidade = quantidade;
@@ -61,7 +64,7 @@ public class EstoqueDto {
 		if(this.quantidade <= 0) {
 			throw new Exception();
 		}
-		if(this.isStatus() && getQuantidade() > 0){
+		if(this.isStatus()){
 			this.produto.setQuantidade_estoque(this.quantidade + this.produto.getQuantidade_estoque());
 		} else {
 			if (validacao()) { 

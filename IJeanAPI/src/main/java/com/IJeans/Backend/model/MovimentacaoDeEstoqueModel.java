@@ -17,8 +17,10 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.IJeans.Backend.controller.dto.EstoqueDto;
+
 @Entity
-@Table(name = "movimentacaoestoque")
+@Table(name = "movimentacao")
 public class MovimentacaoDeEstoqueModel implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -28,18 +30,21 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	private String id;
 	
 	@Column(name = "valor_unitario")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 1, max = 10)
+//	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull
+//	@Size(min = 1, max = 10)
 	private double valor_unitario;
 	
 	@Column(name = "quantidade")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 1, max = 10)
+//	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull 
+//	@Size(min = 1, max = 10)
 	private int quantidade;
 	
 	@Column(name = "tipo_transacao")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Length(min = 1, max = 1)
+//	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull
+//	@Length(min = 1, max = 1)
 	private boolean status;
 
 	@OneToOne
@@ -47,9 +52,17 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	private LoteModel lote;
 	
 	@Column(name = "DATA")
-	private LocalDateTime dataTransacao = LocalDateTime.now();
+	private LocalDateTime dataTransacao; 
 	
 	public MovimentacaoDeEstoqueModel() {
+	}
+	
+	public MovimentacaoDeEstoqueModel(EstoqueDto estoque, LoteModel lote) {
+		this.valor_unitario = estoque.getPreco();
+		this.quantidade = estoque.getQuantidade();
+		this.status = estoque.isStatus();
+		this.lote = lote;
+		this.dataTransacao= LocalDateTime.now();
 	}
 
 	public MovimentacaoDeEstoqueModel(String id, double valor_unitario, int quantidade, boolean status) {
