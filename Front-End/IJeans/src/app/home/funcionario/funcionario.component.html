@@ -1,4 +1,4 @@
-<div class="main" >
+<div class="main">
     <h2>Funcionários</h2>
 
     <div class="row">
@@ -6,41 +6,45 @@
             <span class="input-group-text lupa"><i class="fas fa-search fa-lg"></i></span>
             <input type="text" class="form-control busca">
         </div>
-        
-        <button class="btn btn-cadastrar" (click)="CadastrarFuncionario()" >Novo Funcionário <a class="fas fa-plus-circle fa-lg"></a></button>
-        
+
+        <button class="btn btn-cadastrar" (click)="CadastrarFuncionario()">Novo Funcionário <a
+                class="fas fa-plus-circle fa-lg"></a></button>
+
     </div>
-<form [formGroup]="funcionarioForm">
+    <form [formGroup]="funcionarioForm">
 
 
-    <table class="tabela">
-        <tr>
-            <th class="table-align">ID</th>
-            <th class="table-align">Nome</th>
-            <th>Login</th>
-            <th>E-mail</th>
-        </tr>
-        <tr *ngFor="let funcionario of funcionarios">
-            <td *ngIf="funcionario.id != EditRowId" class="table-align">{{funcionario.id}}</td>
-            <td *ngIf="funcionario.id != EditRowId" class="table-align">{{funcionario.nome}}</td>
-            <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.nome}}" formControlName="nomeFuncionario"></td>
-            <td *ngIf="funcionario.id != EditRowId">{{funcionario.login}}</td>
-            <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.login}}" formControlName="loginFuncionario"></td>
-            <td *ngIf="funcionario.id != EditRowId">{{funcionario.email}}</td>
-            <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.email}}" formControlName="emailFuncionario"></td>
-            <td *ngIf="funcionario.id === EditRowId"><button class="btn fas fa-ban fa-lg"
-            (click)="editIncorrect(funcionario)"></button></td>
-    <td *ngIf="funcionario.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"
-            (click)="editCorrect(funcionario)"></button></td>
-    <td *ngIf="funcionario.id != EditRowId"><button class="btn fas fa-pen fa-lg"
-            (click)="edit(funcionario)"></button></td>
-    <td *ngIf="funcionario.id != EditRowId"><button class="btn fas fa-trash fa-lg"
-            (click)="delete(funcionario)"></button></td>
-        </tr>
-        
-    </table>
+        <table class="tabela">
+            <tr>
+                <th class="table-align">ID</th>
+                <th class="table-align">Nome</th>
+                <th>Login</th>
+                <th>E-mail</th>
+            </tr>
+            <tr *ngFor="let funcionario of funcionarios">
+                <td *ngIf="funcionario.id != EditRowId" class="table-align">{{funcionario.id}}</td>
+                <td *ngIf="funcionario.id != EditRowId" class="table-align">{{funcionario.nome}}</td>
+                <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.nome}}"
+                        formControlName="nomeFuncionario"></td>
+                <td *ngIf="funcionario.id != EditRowId">{{funcionario.login}}</td>
+                <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.login}}"
+                        formControlName="loginFuncionario"></td>
+                <td *ngIf="funcionario.id != EditRowId">{{funcionario.email}}</td>
+                <td *ngIf="funcionario.id === EditRowId"><input type="text" value="{{funcionario.email}}"
+                        formControlName="emailFuncionario"></td>
+                <td *ngIf="funcionario.id === EditRowId"><button class="btn fas fa-times-circle fa-lg"
+                        (click)="editIncorrect(funcionario)"></button></td>
+                <td *ngIf="funcionario.id === EditRowId"><button class="btn fas fa-check-circle fa-lg"
+                        (click)="editCorrect(funcionario)"></button></td>
+                <td *ngIf="funcionario.id != EditRowId"><button class="btn fas fa-pen fa-lg"
+                        (click)="edit(funcionario)"></button></td>
+                <td *ngIf="funcionario.id != EditRowId"><button class="btn fas fa-trash fa-lg"
+                        (click)="delete(funcionario)"></button></td>
+            </tr>
 
-</form>
+        </table>
+
+    </form>
 </div>
 
 <!-- <app-cadastrafuncionario [ngStyle]="{'display': displayCadastroFuncionario}"></app-cadastrafuncionario> -->
