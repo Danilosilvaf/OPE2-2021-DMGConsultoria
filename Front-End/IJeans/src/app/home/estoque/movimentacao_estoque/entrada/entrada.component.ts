@@ -1,14 +1,9 @@
 import { Component } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder,  FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Subject } from "rxjs";
 import { FornecedorService } from "src/app/home/fornecedor/service/fornecedor.service";
 import { ProdutoService } from "src/app/home/produto/service/service-produto.service";
 import { FornecedorModel } from "src/app/shared/model/fornecedor.model";
-import { MarcaModel } from "src/app/shared/model/marca.model";
-import { ProdutoModel } from "src/app/shared/model/produto.model";
-import { TamanhoModel } from "src/app/shared/model/tamanho.model";
-import { TipoProduto } from "src/app/shared/model/tipo.model";
 
 
 @Component({
