@@ -1,10 +1,8 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ProdutoService } from "src/app/home/produto/service/service-produto.service";
-import { MarcaModel } from "src/app/shared/model/marca.model";
-import { TamanhoModel } from "src/app/shared/model/tamanho.model";
-import { TipoProduto } from "src/app/shared/model/tipo.model";
+
 
 
 @Component({
@@ -19,25 +17,36 @@ export class SaidaComponent {
   cadastraProdutoForm: FormGroup;
   
 
-  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,  private route: ActivatedRoute) {
   }
 
-  marcas: Array<MarcaModel>
-  marca: MarcaModel
-  tamanhos: Array<TamanhoModel>
-  tamanho: TamanhoModel
-  tipoProdutos: Array<TipoProduto>
-  tipoProduto: TipoProduto
-  tipoProdutoControl:FormControl
-  
-  idTipoProduto="1";
+  produtoNome;
+  produtoQuantidade;
+  produtoMarca;
+  produtoTipo;
+  produtoTamanho;
+  produtoValor;
+
+  id;
 
   ngOnInit() {
 
-    this.tipoProdutoControl = new FormControl('valid', [
-      Validators.required,
-      Validators.pattern('valid'),
-    ]);
+    this.route.params.subscribe(params => this.id = params['id']);
+
+    
+    if(this.id != null || this.id != undefined || this.id != ""){
+       this.service.findById(this.id).subscribe(data => {
+         console.log(data)
+        this.produtoNome=data['nome'];
+        this.produtoQuantidade=data['quantidade_estoque'];
+        this.produtoMarca=data['marca']['nome'];
+        this.produtoTipo=data['tipo_produto']['nome'];
+        this.produtoTamanho=data['tamanho']['id'];
+        this.produtoValor=data['preco_atual'];
+        
+      })
+    }
+   
 
     this.cadastraProdutoForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
@@ -49,28 +58,7 @@ export class SaidaComponent {
 
   }
 
-  selectMarca(marca) {
-    console.log(marca)
-    this.marca = marca
-  }
-  selectTamanho(tamanho) {
-    console.log(tamanho)
-    this.tamanho = tamanho
-  }
-  selectTipoProduto(tipo:TipoProduto) {
-    this.tipoProduto = tipo
-
-    if(this.idTipoProduto === "1"){
-      this.idTipoProduto = "2"
-    }else{
-      this.idTipoProduto = "1"
-    }
-    this.service.findByTipoProduto(this.idTipoProduto).subscribe(data => {
-      this.tamanhos = data
-      this.tamanho = data[0]
-    })
-  }
-
+ 
   onSubmit() {
     // Verifica ao enviar se os dados informados são validos
     if (
@@ -82,9 +70,9 @@ export class SaidaComponent {
         nome: this.cadastraProdutoForm.value.nome,
         preco_atual: this.cadastraProdutoForm.value.valor,
         quantidade_estoque: this.cadastraProdutoForm.value.quantidade,
-        marca: this.marca,
-        tipo_produto: this.tipoProduto,
-        tamanho: this.tamanho.id
+        marca: this.produtoMarca,
+        tipo_produto: this.produtoTipo,
+        tamanho: this.produtoTamanho
       }
 
 

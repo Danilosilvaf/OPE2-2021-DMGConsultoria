@@ -19,6 +19,9 @@ export class ProdutoService {
   findAll(){
     return this.http.get<Array<ProdutoModel>>("http://localhost:8080/produtos");
   }
+  findById(id){
+    return this.http.get<ProdutoModel>("http://localhost:8080/produtos/"+id);
+  }
   cadastrarProduto(body){
     return this.http.post<ProdutoModel>("http://localhost:8080/produtos",body);
   }

@@ -1,5 +1,6 @@
 package com.IJeans.Backend.service.impl;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,4 +43,20 @@ public class ProdutoServiceImpl implements ProdutosService {
 		return produtoRepository.findById(id);
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public ProdutoModel findById(String id) throws FileNotFoundException {
+		Optional<ProdutoModel> produtoretorno = produtoRepository.findById(id);
+		
+		if(produtoretorno.isPresent()) {
+			return produtoretorno.get();
+		}else {
+			throw new FileNotFoundException();
+		}
+		
+	}
+
+	
+>>>>>>> 95a9c2a64c3b489a880584e6dae7d62a66b19aae
 }

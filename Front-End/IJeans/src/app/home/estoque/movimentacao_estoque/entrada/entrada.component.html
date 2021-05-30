@@ -4,38 +4,39 @@
 <div class="main">
     <button class="botao-voltar fas fa-chevron-circle-left fa-2x" (click)="voltarHome()"></button>
     <label class="titulo">Entrada Estoque</label>
+    
 
     <form [formGroup]="cadastraProdutoForm" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
         <label class="label-title">Nome</label><br>
-        <input type="text"  readonly value="Air Jordan 7" formControlName="nome">
+        <input type="text"  readonly [value]="produtoNome" formControlName="nome">
         <label for="Nome"></label>
 
         <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Campo incorreto"></app-msg-erro>
 
         <div>
             <label class="label-title">Marca</label><br>
-            <input type="text" value="Nike" readonly=true >
+            <input type="text" [value]="produtoMarca" readonly=true >
             <label for="Nome"></label>
         </div>
         <div>
             <label class="label-title">Tipo Produto</label><br>
-            <input type="text" value="Camiseta" readonly=true >
+            <input type="text" [value]="produtoTipo" readonly=true >
             <label for="Nome"></label>
         </div>
         <div>
             <label class="label-title">Tamanho</label><br>
-            <input type="text" value="GG" readonly=true >
+            <input type="text" [value]="produtoTamanho" readonly=true >
             <label for="Nome"></label>
         </div>
         
             
         <label class="label-title">Valor</label><br>
-        <input type="text" value="109.98" formControlName="valor"><br>
+        <input type="text" [value]="produtoValor" formControlName="valor"><br>
 
         <app-msg-erro [isError]="isErrorCampo('valor')" mensagem="Campo incorreto"></app-msg-erro>
 
         <label class="label-title">Quantidade</label><br>
-        <input type="text" value="110"  formControlName="quantidade">
+        <input type="text" [value]="produtoQuantidade"  formControlName="quantidade">
 
         <app-msg-erro [isError]="isErrorCampo('quantidade')" mensagem="Campo incorreto"></app-msg-erro>
 

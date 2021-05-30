@@ -24,7 +24,6 @@ marcaForm: FormGroup;
     ngOnInit(): void {
         this.service.findAll().subscribe(data => {
           this.marcas=data;
-          console.log(data)
         })
 
 
@@ -38,7 +37,6 @@ marcaForm: FormGroup;
     }
     delete(marca:MarcaModel){
       this.service.delete(marca.id).subscribe(data => {
-        console.log(data)
         this.ngOnInit();
       })
   
@@ -54,7 +52,6 @@ marcaForm: FormGroup;
       marca.nome = this.marcaForm.get('nomeMarca').value
       
       this.service.alterar(marca).subscribe(data => {
-        console.log(data)
         this.EditRowId = -2
         this.marcaForm.get('nomeMarca').setValue("");
         
