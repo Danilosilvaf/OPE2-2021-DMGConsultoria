@@ -4,12 +4,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 @SpringBootApplication
-public class IJeanApiApplication {
+@EnableSwagger2
+public class IJeansApiApplication {
 
 	@CrossOrigin(origins = "*")
 	public static void main(String[] args) {
-		SpringApplication.run(IJeanApiApplication.class, args);
+		SpringApplication.run(IJeansApiApplication.class, args);
 	}
 
 }

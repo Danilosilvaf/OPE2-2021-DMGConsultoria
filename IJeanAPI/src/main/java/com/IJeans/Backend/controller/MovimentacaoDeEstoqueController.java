@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.controller.dto.EstoqueDto;
-import com.IJeans.Backend.controller.dto.ProdutoDto;
 import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
 import com.IJeans.Backend.service.EstoqueService;
 import com.IJeans.Backend.service.MovimentacaoDeEstoqueService;
