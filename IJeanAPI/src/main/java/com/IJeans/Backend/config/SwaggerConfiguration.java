@@ -20,8 +20,8 @@ public class SwaggerConfiguration {
 	public Docket Ijeans() {
         return new Docket(DocumentationType.SWAGGER_2)
   	          .select()
-  	          .apis(RequestHandlerSelectors.any())
-  	          .paths(PathSelectors.any())
+  	          .apis(RequestHandlerSelectors.basePackage("com.IJeans.Backend"))
+  	          .paths(PathSelectors.ant("/**"))
   	          .build()
   	          .ignoredParameterTypes(FuncionarioModel.class)
   	          .apiInfo(apiInfo());
