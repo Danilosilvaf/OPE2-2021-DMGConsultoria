@@ -5,6 +5,7 @@ import { MarcaModel } from "src/app/shared/model/marca.model";
 import { ProdutoModel } from "src/app/shared/model/produto.model";
 import { TamanhoModel } from "src/app/shared/model/tamanho.model";
 import { TipoProduto } from "src/app/shared/model/tipo.model";
+import { AlertModalService } from "src/app/shared/services/alert-modal.service";
 import { ProdutoService } from "../../home/produto/service/service-produto.service";
 
 
@@ -20,7 +21,7 @@ export class CadastrarProdutosComponent {
   cadastraProdutoForm: FormGroup;
   
 
-  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,private alertService:AlertModalService) {
   }
 
   marcas: Array<MarcaModel>
@@ -68,11 +69,9 @@ export class CadastrarProdutosComponent {
   }
 
   selectMarca(marca) {
-    console.log(marca)
-    this.marca = marca
+      this.marca = marca
   }
   selectTamanho(tamanho) {
-    console.log(tamanho)
     this.tamanho = tamanho
   }
   selectTipoProduto(tipo:TipoProduto) {
@@ -108,14 +107,14 @@ export class CadastrarProdutosComponent {
 
       this.service.cadastrarProduto(produto).subscribe(data => {
         if (data.id != null) {
-          alert("produto cadastrado com sucesso")
+          this.alertService.showSucess("produto cadastrado com sucesso")
           this.router.navigateByUrl('home');
         } else {
-          alert("produto ja cadastrado");
+          this.alertService.showAlertDanger("produto ja cadastrado")
         }
       })
     } else {
-      alert('Dados Incorretos')
+      this.alertService.showAlertDanger('Dados Incorretos')
     }
   }
 

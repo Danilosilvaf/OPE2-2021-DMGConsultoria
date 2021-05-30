@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { FornecedorService } from "src/app/home/fornecedor/service/fornecedor.service";
+import { AlertModalService } from "src/app/shared/services/alert-modal.service";
 
 
 
@@ -15,7 +16,7 @@ import { FornecedorService } from "src/app/home/fornecedor/service/fornecedor.se
 export class CadastroFornecedorComponent {
   cadastraFornecedorForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private service: FornecedorService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private service: FornecedorService, private router: Router,private alertService:AlertModalService) {
   }
 
   ngOnInit() {
@@ -39,11 +40,11 @@ export class CadastroFornecedorComponent {
       
   
       this.service.cadastrarFornecedor(fornecedor).subscribe(data => {
-          alert('Fornecedor Cadastrado')
+          this.alertService.showSucess('Fornecedor Cadastrado')
           this.router.navigateByUrl('home');
       });
     }else{
-      alert('Dados Incorretos')
+      this.alertService.showAlertDanger('Dados Incorretos')
     }
 
    
