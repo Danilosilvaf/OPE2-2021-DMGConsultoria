@@ -57,12 +57,6 @@ public class ProdutosController {
 		return ResponseEntity.ok().body(produtoService.findByNomeContaining(nomeBusca));
 	}
 	
-	@PostMapping
-	public ResponseEntity<ProdutoModel> cadastrar(@Valid @RequestBody ProdutoModel produto){
-		produtoService.cadastrar(produto);
-		return ResponseEntity.status(HttpStatus.CREATED).build();
-	}
-	
 	@CrossOrigin(origins = "*")
 	@DeleteMapping("/{id}")
 	public ResponseEntity<ProdutoModel> deletar(@PathVariable("id") String id){

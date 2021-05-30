@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.IJeans.Backend.controller.dto.ProdutoDto;
 import com.IJeans.Backend.model.ProdutoModel;
 import com.IJeans.Backend.repositories.ProdutoRepository;
 import com.IJeans.Backend.service.ProdutosService;
@@ -28,8 +29,8 @@ public class ProdutoServiceImpl implements ProdutosService {
 	}
 
 	@Override
-	public void cadastrar(ProdutoModel produto) {
-		produtoRepository.save(produto);
+	public Optional<ProdutoDto> cadastrarNovoProduto(ProdutoDto produto) {
+		return produtoRepository.save(produto);
 	}
 
 	@Override
@@ -54,5 +55,6 @@ public class ProdutoServiceImpl implements ProdutosService {
 		}
 
 	}
+
 
 }

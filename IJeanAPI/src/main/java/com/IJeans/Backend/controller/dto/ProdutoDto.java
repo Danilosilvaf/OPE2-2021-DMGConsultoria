@@ -42,5 +42,4 @@ public class ProdutoDto {
 		this.fornecedor = fornecedor;
 	}
 	
-	
 }
