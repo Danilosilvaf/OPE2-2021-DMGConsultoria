@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { FuncionarioService } from "src/app/home/funcionario/service/funcionario.service";
+import { AlertModalService } from "src/app/shared/services/alert-modal.service";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class CadastrarFuncionarioComponent{
     
   cadastraFuncionarioForm : FormGroup;
 
-  constructor(private formBuilder :  FormBuilder, private service: FuncionarioService,private router: Router){}
+  constructor(private formBuilder :  FormBuilder, private service: FuncionarioService,private router: Router,private alertService:AlertModalService){}
   ngOnInit() {
     let regexEmail = 
     this.cadastraFuncionarioForm = this.formBuilder.group( { 
@@ -48,16 +49,15 @@ export class CadastrarFuncionarioComponent{
           }
           this.service.cadastraFuncionario(funcionario).subscribe(data =>{
             if(data.id != null  ){
-              alert('funcionario cadastrada com sucesso')
+              this.alertService.showSucess('funcionario cadastrada com sucesso');
               this.router.navigateByUrl('home');
             }else{
-              alert("funcionario ja cadastrado")
+              this.alertService.showAlertDanger('funcionario ja cadastrado')
             }
           })
         }
-
       }else{
-        alert('Dados incorretos')
+        this.alertService.showAlertDanger('Dados incorretos')
       }
 
     

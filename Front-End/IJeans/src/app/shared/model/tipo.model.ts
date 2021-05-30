@@ -1,4 +1,4 @@
 export class TipoProduto{
     id;
-    tipo:String;
+    nome:String;
 }

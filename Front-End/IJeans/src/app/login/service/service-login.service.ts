@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { EnvService } from 'src/app/env.service';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { LocalUserModel } from 'src/app/shared/model/local-user.model';
+import { AlertModalService } from 'src/app/shared/services/alert-modal.service';
 
 
 
@@ -20,6 +21,7 @@ export class ServiceLoginService {
 
   constructor(private router: Router,
     private http: HttpClient,
+    private alertService:AlertModalService,
     private envService: EnvService,
     private storageService: StorageService
     
@@ -35,9 +37,11 @@ export class ServiceLoginService {
       (data) => {
         if(data.login != null){
           this.router.navigateByUrl("/home");
-
+          this.storageService.setLocalUser(login)
+          console.log(this.storageService.getLocalUser())
         }else{
-          alert("Usuario ou senha incorreta");
+          // alert("Erro")
+          this.alertService.showAlertDanger("Erro")
         }
       }
     );
@@ -46,9 +50,10 @@ export class ServiceLoginService {
   isAutenticado() {
 
     let localUser: LocalUserModel = this.storageService.getLocalUser();
+    console.log(localUser)
     if (localUser == null) {
       this.isAuth = false;
-    } else if (this.isAdmin() == true) {
+    } else  {
       this.isAuth = true;
     }
     //console.log(localUser);
