@@ -11,7 +11,6 @@
         <input type="text"  readonly [value]="produtoNome" formControlName="nome">
         <label for="Nome"></label>
 
-        <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Campo incorreto"></app-msg-erro>
 
         <div>
             <label class="label-title">Marca</label><br>
@@ -29,8 +28,18 @@
             <label for="Nome"></label>
         </div>
         
+
+        <div>
+            <label class="label-title">Fornecedor</label><br>
+            <select class="form-select form-select-lg mb-3"  (change)="selectFornecedor($event.target.value)">
+                <option  *ngFor="let fornecedor of fornecedores"  >
+                    {{fornecedor.nome}}
+                </option>
+            </select>
+        </div>
+
             
-        <label class="label-title">Valor</label><br>
+        <label class="label-title">Preço de Compra</label><br>
         <input type="text" [value]="produtoValor" formControlName="valor"><br>
 
         <app-msg-erro [isError]="isErrorCampo('valor')" mensagem="Campo incorreto"></app-msg-erro>

@@ -27,6 +27,7 @@ export class SaidaComponent {
   produtoTamanho;
   produtoValor;
 
+  produto;
   id;
 
   ngOnInit() {
@@ -38,22 +39,20 @@ export class SaidaComponent {
        this.service.findById(this.id).subscribe(data => {
          console.log(data)
         this.produtoNome=data['nome'];
-        this.produtoQuantidade=data['quantidade_estoque'];
+        this.produtoQuantidade;
         this.produtoMarca=data['marca']['nome'];
         this.produtoTipo=data['tipo_produto']['nome'];
         this.produtoTamanho=data['tamanho']['id'];
-        this.produtoValor=data['preco_atual'];
+        this.produtoValor;
+        this.produto=data
         
       })
     }
    
 
     this.cadastraProdutoForm = this.formBuilder.group({
-      nome: ['', [Validators.required]],
-      valor: ['', [Validators.required, Validators.pattern('^[0-9]')]],
-      quantidade: ['', [Validators.required, Validators.pattern('^[0-9]')],],
-      tipoProduto:['', [Validators.required]]
-
+      valor: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')]],
+      quantidade: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')],],
     });
 
   }
@@ -62,32 +61,21 @@ export class SaidaComponent {
   onSubmit() {
     // Verifica ao enviar se os dados informados são validos
     if (
-      this.cadastraProdutoForm.get('nome').valid &&
       this.cadastraProdutoForm.get('valor').valid &&
       this.cadastraProdutoForm.get('quantidade').valid
     ) {
-      let produto = {
-        nome: this.cadastraProdutoForm.value.nome,
-        preco_atual: this.cadastraProdutoForm.value.valor,
-        quantidade_estoque: this.cadastraProdutoForm.value.quantidade,
-        marca: this.produtoMarca,
-        tipo_produto: this.produtoTipo,
-        tamanho: this.produtoTamanho
-      }
-
-
-      this.service.cadastrarProduto(produto).subscribe(data => {
-        if (data.id != null) {
-          alert("produto cadastrado com sucesso")
-          this.router.navigateByUrl('home');
-        } else {
-          alert("produto ja cadastrado");
+      if( this.cadastraProdutoForm.get('quantidade').value >0 && this.cadastraProdutoForm.get('valor').value >0){
+        let movimentacao = {
+          quantidade: this.cadastraProdutoForm.get('quantidade').value,
+          status: true,
+          preco: this.cadastraProdutoForm.get('valor').value,
+          produto: this.produto
+          // fornecedor: this.fornecedor,
         }
-      })
-    } else {
-      alert('Dados Incorretos')
-    }
-  }
+  
+        console.log(movimentacao)
+      }
+  }}
 
 
 

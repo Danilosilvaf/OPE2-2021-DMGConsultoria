@@ -7,10 +7,9 @@
 
     <form [formGroup]="cadastraProdutoForm" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
         <label class="label-title">Nome</label><br>
-        <input type="text" readonly [value]="produtoNome" formControlName="nome">
+        <input type="text" readonly [value]="produtoNome">
         <label for="Nome"></label>
 
-        <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Campo incorreto"></app-msg-erro>
 
         <div>
             <label class="label-title">Marca</label><br>
@@ -29,12 +28,12 @@
         </div>
         
             
-        <label class="label-title">Valor</label><br>
+        <label class="label-title">Valor de Venda</label><br>
         <input type="text" [value]="produtoValor" formControlName="valor"><br>
 
         <app-msg-erro [isError]="isErrorCampo('valor')" mensagem="Campo incorreto"></app-msg-erro>
 
-        <label class="label-title">Quantidade</label><br>
+        <label class="label-title">Quantidade de produtos vendidos</label><br>
         <input type="text" [value]="produtoQuantidade" formControlName="quantidade">
 
         <app-msg-erro [isError]="isErrorCampo('quantidade')" mensagem="Campo incorreto"></app-msg-erro>
