@@ -13,15 +13,10 @@ public interface ProdutosService {
 	void cadastrar(ProdutoModel produto);
 
 	void atualizar(ProdutoModel produto);
-
-<<<<<<< HEAD
-	Optional<ProdutoModel> findById(String id);
-=======
-	ProdutoModel atualizar(ProdutoModel produto);
 	
-	ProdutoModel findById(String id) throws FileNotFoundException;
 	
->>>>>>> 95a9c2a64c3b489a880584e6dae7d62a66b19aae
+	Optional<ProdutoModel> findById(String id) throws FileNotFoundException;
+	
 
 	void deletar(ProdutoModel produtoModel);
 	
