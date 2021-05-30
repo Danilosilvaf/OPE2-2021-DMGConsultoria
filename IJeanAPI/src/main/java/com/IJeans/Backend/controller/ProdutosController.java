@@ -51,7 +51,7 @@ public class ProdutosController {
 	@GetMapping(value = "/nome/{nomeBusca}")
 	public ResponseEntity<Optional<ProdutoModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
 		Optional<ProdutoModel> nome = produtoService.findByNomeContaining(nomeBusca);
-		if(nome.isEmpty()) {
+		if(!nome.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok().body(produtoService.findByNomeContaining(nomeBusca));

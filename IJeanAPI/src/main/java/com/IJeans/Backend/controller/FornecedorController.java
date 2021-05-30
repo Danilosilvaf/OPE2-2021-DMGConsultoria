@@ -41,7 +41,7 @@ public class FornecedorController {
 	@GetMapping(value = "/nome/{nomeBusca}")
 	public ResponseEntity<Optional<FornecedorModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
 		Optional<FornecedorModel> nome = fornecedorService.findByNomeContaining(nomeBusca);
-		if(nome.isEmpty()) {
+		if(!nome.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok().body(fornecedorService.findByNomeContaining(nomeBusca));

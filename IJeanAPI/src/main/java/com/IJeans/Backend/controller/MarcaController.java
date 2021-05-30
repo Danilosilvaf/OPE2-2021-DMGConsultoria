@@ -41,7 +41,7 @@ public class MarcaController {
 	@GetMapping(value = "/nome/{nomeBusca}")
 	public ResponseEntity<Optional<MarcaModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
 		Optional<MarcaModel> nome = marcaService.findByNomeContaining(nomeBusca);
-		if(nome.isEmpty()) {
+		if(!nome.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok().body(marcaService.findByNomeContaining(nomeBusca));
