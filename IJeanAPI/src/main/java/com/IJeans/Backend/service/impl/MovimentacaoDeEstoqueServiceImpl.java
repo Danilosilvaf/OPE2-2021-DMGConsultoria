@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.IJeans.Backend.controller.dto.EstoqueDto;
 import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
 import com.IJeans.Backend.repositories.MovimentacaoDeEstoqueRepository;
 import com.IJeans.Backend.service.MovimentacaoDeEstoqueService;
@@ -27,7 +28,7 @@ public class MovimentacaoDeEstoqueServiceImpl implements MovimentacaoDeEstoqueSe
 	}
 
 	@Override
-	public void registrarTransacao(MovimentacaoDeEstoqueModel transacao) {
+	public void registrarTransacao(EstoqueDto transacao) {
 		movimentacaoRepository.save(transacao);
 	}
 	

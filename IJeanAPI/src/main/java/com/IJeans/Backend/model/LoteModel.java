@@ -29,13 +29,9 @@ public class LoteModel {
 	@OneToOne
 	@JoinColumn(name = "id_fornecedor")
 	private FornecedorModel fornecedor;
-	
-	
-	
+
 	public LoteModel() {}
-	
-	
-	
+
 
 	public LoteModel(int id, int quantidade, double precoCompra, ProdutoModel produto, FornecedorModel fornecedor) {
 		super();
@@ -45,10 +41,7 @@ public class LoteModel {
 		this.produto = produto;
 		this.fornecedor = fornecedor;
 	}
-
-
-
-
+	
 	public int getId() {
 		return id;
 	}
@@ -88,9 +81,5 @@ public class LoteModel {
 	public void setFornecedor(FornecedorModel fornecedor) {
 		this.fornecedor = fornecedor;
 	}
-	
-	
-	
-	
 	
 }
