@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.IJeans.Backend.controller.dto.EstoqueDto;
 import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
+import com.IJeans.Backend.service.EstoqueService;
 import com.IJeans.Backend.service.MovimentacaoDeEstoqueService;
 
 @RestController
@@ -25,6 +27,9 @@ public class MovimentacaoDeEstoqueController {
 
 	@Autowired
 	private MovimentacaoDeEstoqueService movimentacaoService;
+	
+	@Autowired
+	private EstoqueService estoqueService;
 	
 	@GetMapping
 	public ResponseEntity<List<MovimentacaoDeEstoqueModel>> getAll() {
@@ -41,8 +46,11 @@ public class MovimentacaoDeEstoqueController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<MovimentacaoDeEstoqueModel> registrarTransacao(@Valid @RequestBody MovimentacaoDeEstoqueModel transacao) {
-		movimentacaoService.registrarTransacao(transacao);
+	public ResponseEntity<EstoqueDto> registrarTransacao(@Valid @RequestBody EstoqueDto transacao) {
+		if(transacao.isStatus()) {
+			estoqueService.registrarTransacao(transacao);
+			movimentacaoService.registrarTransacao(transacao);
+		}
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	

@@ -1,18 +1,21 @@
 package com.IJeans.Backend.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "movimentacaoestoque")
@@ -33,50 +36,74 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	@NotEmpty(message = "Preenchimento obrigatório")
 	@NotNull @Size(min = 1, max = 10)
 	private int quantidade;
-
-	@Enumerated(EnumType.STRING)
-	@NotNull @NotEmpty(message = "Preenchimento obrigatório")
-	private StatusTransacao status;
-
+	
+	@Column(name = "tipo_transacao")
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@NotNull @Length(min = 1, max = 1)
+	private boolean status;
+	
+	@OneToOne
+	@JoinColumn(name = "id_lote")
+	private LoteModel lote;
+	
+	@Column(name = "DATA")
+	private LocalDateTime dataCriacao = LocalDateTime.now();
+	
 	public MovimentacaoDeEstoqueModel() {
 	}
 
-	public MovimentacaoDeEstoqueModel(String id, double valor_unitario, int quantidade, StatusTransacao status) {
+	public MovimentacaoDeEstoqueModel(String id, double valor_unitario, int quantidade, boolean status) {
 		this.id = id;
 		this.valor_unitario = valor_unitario;
 		this.quantidade = quantidade;
 		this.status = status;
 	}
 
-	public final String getId() {
+	public LoteModel getLote() {
+		return lote;
+	}
+
+	public void setLote(LoteModel lote) {
+		this.lote = lote;
+	}
+
+	public LocalDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(LocalDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public final void setId(String id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public final double getValor_unitario() {
+	public double getValor_unitario() {
 		return valor_unitario;
 	}
 
-	public final void setValor_unitario(double valor_unitario) {
+	public void setValor_unitario(double valor_unitario) {
 		this.valor_unitario = valor_unitario;
 	}
 
-	public final int getQuantidade() {
+	public int getQuantidade() {
 		return quantidade;
 	}
 
-	public final void setQuantidade(int quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
-	public final StatusTransacao getStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
-	public final void setStatus(StatusTransacao status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 	
