@@ -35,9 +35,10 @@ export class ServiceLoginService {
       (data) => {
         if(data.login != null){
           this.router.navigateByUrl("/home");
-
+          this.storageService.setLocalUser(login)
+          console.log(this.storageService.getLocalUser())
         }else{
-          alert("Usuario ou senha incorreta");
+          alert("Erro")
         }
       }
     );
@@ -46,9 +47,10 @@ export class ServiceLoginService {
   isAutenticado() {
 
     let localUser: LocalUserModel = this.storageService.getLocalUser();
+    console.log(localUser)
     if (localUser == null) {
       this.isAuth = false;
-    } else if (this.isAdmin() == true) {
+    } else  {
       this.isAuth = true;
     }
     //console.log(localUser);
