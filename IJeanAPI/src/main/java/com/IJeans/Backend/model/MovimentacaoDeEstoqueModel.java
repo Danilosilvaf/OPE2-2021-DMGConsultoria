@@ -18,6 +18,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.IJeans.Backend.controller.dto.EstoqueDto;
+import com.IJeans.Backend.controller.dto.ProdutoDto;
 
 @Entity
 @Table(name = "movimentacao")
@@ -66,6 +67,14 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 		this.valor_unitario = valor_unitario;
 		this.quantidade = quantidade;
 		this.status = status;
+	}
+
+	public MovimentacaoDeEstoqueModel(ProdutoDto produto,LoteModel lote) {
+		this.valor_unitario = produto.getPrecoCompra();
+		this.quantidade = produto.getProduto().getQuantidade_estoque();
+		this.status = produto.isStatus();
+		this.lote = lote;
+		this.dataTransacao= LocalDateTime.now();
 	}
 
 	public LoteModel getLote() {

@@ -57,18 +57,18 @@ public class MovimentacaoDeEstoqueController {
 	public ResponseEntity<EstoqueDto> registrarTransacao(@Valid @RequestBody EstoqueDto transacao) throws Exception {
 		if(transacao.isStatus()) {
 			estoqueService.registrarTransacao(transacao);
-//			movimentacaoService.registrarTransacao(transacao);
 		}
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
 	@PostMapping(value = "/novoProduto")
-	public Optional<ProdutoDto> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
+	public  ResponseEntity<ProdutoModel> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
 		Optional<ProdutoModel> prod = produtosService.findByNomeContaining(produto.getProduto().getNome());
 		
 		if(prod.isPresent()) {
 			throw new ProdutoExistenteException("Produto já cadastrado no sistema.");
 		}
-		return produtosService.cadastrarNovoProduto(produto);
+		 produtosService.cadastrarNovoProduto(produto);
+		 return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 }

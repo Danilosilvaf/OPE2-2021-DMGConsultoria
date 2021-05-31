@@ -8,6 +8,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.IJeans.Backend.controller.dto.EstoqueDto;
+import com.IJeans.Backend.controller.dto.ProdutoDto;
 
 
 @Entity
@@ -50,6 +51,14 @@ public class LoteModel {
 		this.fornecedor = fornecedor;
 	}
 	
+	public LoteModel(ProdutoDto produto2) {
+		this.quantidade = produto2.getProduto().getQuantidade_estoque();
+		this.precoCompra = produto2.getPrecoCompra();
+		this.produto = produto2.getProduto();
+		this.fornecedor = produto2.getFornecedor();
+	}
+		
+
 	public int getId() {
 		return id;
 	}

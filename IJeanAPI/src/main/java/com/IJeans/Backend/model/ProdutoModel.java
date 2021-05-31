@@ -25,18 +25,15 @@ public class ProdutoModel implements Serializable {
 	private String id;
 	
 	@Column(name = "nome")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 3, max = 25)
+	@NotNull
 	private String nome;
 	
 	@Column(name = "preco_atual")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 1, max = 5)
+	@NotNull 
 	private double preco_atual;
 	
 	@Column(name = "quantidade_estoque")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 1, max = 10)
+	@NotNull
 	private int quantidade_estoque;
 
 	@OneToOne

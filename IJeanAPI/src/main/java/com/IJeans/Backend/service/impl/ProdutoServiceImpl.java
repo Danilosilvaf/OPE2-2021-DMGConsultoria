@@ -8,7 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.IJeans.Backend.controller.dto.ProdutoDto;
+import com.IJeans.Backend.model.LoteModel;
+import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
 import com.IJeans.Backend.model.ProdutoModel;
+import com.IJeans.Backend.repositories.LoteRepository;
+import com.IJeans.Backend.repositories.MovimentacaoDeEstoqueRepository;
 import com.IJeans.Backend.repositories.ProdutoRepository;
 import com.IJeans.Backend.service.ProdutosService;
 
@@ -17,6 +21,12 @@ public class ProdutoServiceImpl implements ProdutosService {
 
 	@Autowired
 	private ProdutoRepository produtoRepository;
+
+	@Autowired
+	private LoteRepository loteRepository;
+
+	@Autowired
+	private MovimentacaoDeEstoqueRepository movimentacaoRepository;
 
 	@Override
 	public List<ProdutoModel> findAll() {
@@ -30,10 +40,15 @@ public class ProdutoServiceImpl implements ProdutosService {
 
 	@Override
 	public void cadastrarNovoProduto(ProdutoDto produto) {
-		
-		
-			
-		 produtoRepository.save(produto.getProduto());
+
+		produtoRepository.save(produto.getProduto());
+		LoteModel lote = new LoteModel(produto);
+
+		loteRepository.save(lote);
+
+		MovimentacaoDeEstoqueModel movimentacao = new MovimentacaoDeEstoqueModel(produto, lote);
+
+		movimentacaoRepository.save(movimentacao);
 	}
 
 	@Override
@@ -58,6 +73,5 @@ public class ProdutoServiceImpl implements ProdutosService {
 		}
 
 	}
-
 
 }

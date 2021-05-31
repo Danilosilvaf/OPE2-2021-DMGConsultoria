@@ -21,6 +21,9 @@ import { EstoqueService } from "./service/estoque.service";
       });
     }
 
+    cadastrarProduto() {
+      this.router.navigateByUrl('cadastroproduto')
+    }
 
     realizarEntrada(id){
       this.router.navigateByUrl('entrada/'+id)
