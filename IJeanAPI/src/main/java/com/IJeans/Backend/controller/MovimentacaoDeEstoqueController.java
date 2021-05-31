@@ -62,13 +62,13 @@ public class MovimentacaoDeEstoqueController {
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 	
-	@PostMapping(value = "/novoProduto")
-	public Optional<ProdutoDto> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
-		Optional<ProdutoModel> prod = produtosService.findByNomeContaining(produto.getProduto().getNome());
-		
-		if(prod.isPresent()) {
-			throw new ProdutoExistenteException("Produto já cadastrado no sistema.");
-		}
-		return produtosService.cadastrarNovoProduto(produto);
-	}
+//	@PostMapping(value = "/novoProduto")
+//	public Optional<ProdutoDto> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
+//		Optional<ProdutoModel> prod = produtosService.findByNomeContaining(produto.getProduto().getNome());
+//		
+//		if(prod.isPresent()) {
+//			throw new ProdutoExistenteException("Produto já cadastrado no sistema.");
+//		}
+//		return produtosService.cadastrarNovoProduto(produto);
+//	}
 }
