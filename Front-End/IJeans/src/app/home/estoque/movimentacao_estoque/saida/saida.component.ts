@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ProdutoService } from "src/app/home/produto/service/service-produto.service";
+import { AlertModalService } from "src/app/shared/services/alert-modal.service";
+import { EstoqueService } from "../../service/estoque.service";
 
 
 
@@ -17,7 +19,7 @@ export class SaidaComponent {
   cadastraProdutoForm: FormGroup;
   
 
-  constructor(private formBuilder: FormBuilder, private service: ProdutoService, private router: Router,  private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder,private alertService:AlertModalService, private service: ProdutoService, private router: Router,  private route: ActivatedRoute,private serviceEstoque: EstoqueService) {
   }
 
   produtoNome;
@@ -37,7 +39,6 @@ export class SaidaComponent {
     
     if(this.id != null || this.id != undefined || this.id != ""){
        this.service.findById(this.id).subscribe(data => {
-         console.log(data)
         this.produtoNome=data['nome'];
         this.produtoQuantidade;
         this.produtoMarca=data['marca']['nome'];
@@ -54,7 +55,6 @@ export class SaidaComponent {
       valor: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')]],
       quantidade: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')],],
     });
-
   }
 
  
@@ -67,18 +67,22 @@ export class SaidaComponent {
       if( this.cadastraProdutoForm.get('quantidade').value >0 && this.cadastraProdutoForm.get('valor').value >0){
         let movimentacao = {
           quantidade: this.cadastraProdutoForm.get('quantidade').value,
-          status: true,
+          status: false,
           preco: this.cadastraProdutoForm.get('valor').value,
-          produto: this.produto
-          // fornecedor: this.fornecedor,
+          produto: this.produto,
+          fornecedor: null,
         }
-  
-        console.log(movimentacao)
-      }
-  }}
-
-
-
+        
+       this.serviceEstoque.cadastrarEstoqueJaExistente(movimentacao).subscribe(data =>{
+         if(data == null){
+           this.alertService.showSucess('Registro de saida de produto realizada com sucesso!')
+         }
+      })
+  }else{
+    this.alertService.showAlertDanger('Campos invalidos')
+  }
+}
+  }
   voltarHome() {
     this.router.navigateByUrl("home")
   }

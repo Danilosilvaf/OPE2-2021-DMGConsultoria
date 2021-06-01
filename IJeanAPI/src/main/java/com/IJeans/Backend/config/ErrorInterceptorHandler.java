@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException.BadRequest;
 import org.springframework.web.client.HttpClientErrorException.NotFound;
 
+import com.IJeans.Backend.exception.NumeroNegativoException;
+import com.IJeans.Backend.exception.ProdutoExistenteException;
 import com.IJeans.Backend.exception.StandardError;
 
 @RestControllerAdvice
@@ -28,6 +30,25 @@ public class ErrorInterceptorHandler {
 	public StandardError handle(NotFound e){
 		System.out.println(e.toString());
 		StandardError error = new StandardError( 404,e.toString()
+				, e.getMessage() );
+		
+		return error;
+	}
+	
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	@ExceptionHandler(ProdutoExistenteException.class)
+	public StandardError handle(ProdutoExistenteException e){
+		System.out.println(e.toString());
+		StandardError error = new StandardError( 404,e.toString()
+				, e.getMessage() );
+		
+		return error;
+	}
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(NumeroNegativoException.class)
+	public StandardError handle(NumeroNegativoException e){
+		System.out.println(e.toString());
+		StandardError error = new StandardError( 400,e.toString()
 				, e.getMessage() );
 		
 		return error;
