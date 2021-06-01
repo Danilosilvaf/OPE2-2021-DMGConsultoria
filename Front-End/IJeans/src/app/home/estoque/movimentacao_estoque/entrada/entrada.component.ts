@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { FornecedorService } from "src/app/home/fornecedor/service/fornecedor.service";
 import { ProdutoService } from "src/app/home/produto/service/service-produto.service";
 import { FornecedorModel } from "src/app/shared/model/fornecedor.model";
+import { AlertModalService } from "src/app/shared/services/alert-modal.service";
 import { EstoqueService } from "../../service/estoque.service";
 
 
@@ -19,7 +20,7 @@ export class EntradaComponent {
   cadastraProdutoForm: FormGroup;
   id;
 
-  constructor(private formBuilder: FormBuilder, private service: ProdutoService,private serviceEstoque: EstoqueService, private router: Router,  private route: ActivatedRoute,private serviceFornecedor:FornecedorService) {
+  constructor(private formBuilder: FormBuilder,private alertService:AlertModalService ,private service: ProdutoService,private serviceEstoque: EstoqueService, private router: Router,  private route: ActivatedRoute,private serviceFornecedor:FornecedorService) {
   }
 
  
@@ -74,7 +75,6 @@ export class EntradaComponent {
   
 
   onSubmit() {
-    
     if (
       (this.cadastraProdutoForm.get('valor').valid &&
       this.cadastraProdutoForm.get('quantidade').valid) 
@@ -89,11 +89,16 @@ export class EntradaComponent {
           fornecedor: this.fornecedor
         }
   
-        console.log(movimentacao)
-        this.serviceEstoque.cadastrarEstoqueJaExistente(movimentacao).subscribe(data => console.log(data))
+        this.serviceEstoque.cadastrarEstoqueJaExistente(movimentacao).subscribe((data) =>  {
+          if(data == null){
+            this.alertService.showSucess("Entrada de produto cadastrada com sucesso")
+            this.router.navigateByUrl('home')
+          }
+        })
       }
+    }else{
+      this.alertService.showAlertDanger("Dados Incorretos")
     }
-    alert("Dados Incorretos")
   }
 
 
@@ -105,5 +110,5 @@ export class EntradaComponent {
     return (!this.cadastraProdutoForm.get(nomeCampo).valid && this.cadastraProdutoForm.get(nomeCampo).touched);
   }
 }
-
+  
 

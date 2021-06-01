@@ -121,9 +121,17 @@ export class CadastrarProdutosComponent {
         tipo_produto: this.tipoProduto,
         tamanho: this.tamanho
       }
-      console.log(produto)
-      console.log(this.fornecedor)
-      console.log(this.cadastraProdutoForm.value.valorCompra)
+
+     
+
+
+      let movimentacao ={
+        status:true,
+        precoCompra:this.cadastraProdutoForm.value.valorCompra,
+        produto:produto,
+        fornecedor:this.fornecedor     
+      }
+      this.service.cadastrarProduto(movimentacao).subscribe(data => console.log(data))
       // this.service.cadastrarProduto(produto).subscribe(data => {
       //   if (data.id != null) {
       //     this.alertService.showSucess("produto cadastrado com sucesso")

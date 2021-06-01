@@ -40,7 +40,6 @@ export class ServiceLoginService {
           this.storageService.setLocalUser(login)
           console.log(this.storageService.getLocalUser())
         }else{
-          // alert("Erro")
           this.alertService.showAlertDanger("Erro")
         }
       }

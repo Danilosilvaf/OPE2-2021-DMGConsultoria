@@ -23,7 +23,7 @@ export class ProdutoService {
     return this.http.get<ProdutoModel>("http://localhost:8080/produtos/"+id);
   }
   cadastrarProduto(body){
-    return this.http.post<ProdutoModel>("http://localhost:8080/produtos",body);
+    return this.http.post("http://localhost:8080/estoque/novoProduto",body);
   }
   findByTipoProduto(tipo){
     return this.http.get<Array<TamanhoModel>>("http://localhost:8080/tamanhos/"+tipo)
