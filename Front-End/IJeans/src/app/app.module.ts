@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -20,9 +18,9 @@ import { EntradaModule } from './home/estoque/movimentacao_estoque/entrada/entra
 import { SaidaModule } from './home/estoque/movimentacao_estoque/saida/saida.module';
 import { ToastrModule } from 'ngx-toastr';
 import { GuardsModule } from './shared/guards/guards.module';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
 
-
-
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -47,7 +45,8 @@ import { GuardsModule } from './shared/guards/guards.module';
     ToastrModule.forRoot(),
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgxMaskModule.forRoot(options)
   ],
   providers: [],
   bootstrap: [AppComponent]
