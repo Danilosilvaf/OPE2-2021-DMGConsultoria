@@ -10,6 +10,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { BrowserModule } from "@angular/platform-browser";
 import { MarcaComponent } from "./marca/marca.component";
 import { EstoqueComponent } from "./estoque/estoque.component";
+import { NgxMaskModule } from "ngx-mask";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { EstoqueComponent } from "./estoque/estoque.component";
         MatSelectModule,      
         ReactiveFormsModule,
         BrowserModule,
-        FormsModule
+        FormsModule,
+        NgxMaskModule
     ],
 
     providers: []

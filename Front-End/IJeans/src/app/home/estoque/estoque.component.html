@@ -25,7 +25,7 @@
                 <td class="table-align">{{produto.nome}}</td>
                 <td>{{produto.marca.nome}}</td>
                 <td>{{produto.tamanho.id}}</td>
-                <td>{{produto.preco_atual}}</td>
+                <td>R$ {{produto.preco_atual}}</td>
                 <td>{{produto.quantidade_estoque}}</td>
                 <button class="btn up fas fa-sign-in-alt icons fa-2x" title="Entrada" (click)="realizarEntrada(produto.id)"></button>
                 <button class="btn down fas fa-sign-out-alt icons fa-2x" title="Saída" (click)="realizarVenda(produto.id)"></button>

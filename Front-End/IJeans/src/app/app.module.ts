@@ -46,7 +46,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    NgxMaskModule.forRoot(options)
+    NgxMaskModule.forRoot(options),
+    NgxMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -29,7 +29,7 @@
                 <td *ngIf="fornecedor.id != EditRowId">{{fornecedor.email}}</td>
                 <td *ngIf="fornecedor.id === EditRowId"><input type="text" value="{{fornecedor.email}}"
                         formControlName="emailFornecedor"></td>
-                <td *ngIf="fornecedor.id != EditRowId">{{fornecedor.telefone}}</td>
+                <td *ngIf="fornecedor.id != EditRowId">{{fornecedor.telefone | mask: '(00) 00000-0000'}}</td>
                 <td *ngIf="fornecedor.id === EditRowId"><input type="text" value="{{fornecedor.telefone}}"
                         formControlName="telefoneFornecedor"></td>
                 <td *ngIf="fornecedor.id === EditRowId"><button class="btn fas fa-times-circle fa-lg"
