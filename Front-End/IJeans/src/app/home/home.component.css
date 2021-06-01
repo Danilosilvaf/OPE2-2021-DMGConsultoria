@@ -26,6 +26,10 @@
     color: #ffff;
 }
 
+.logout-btn {
+    margin-top: 120%;
+}
+
 .icons {
     padding-right: 5%;
     text-align: left;

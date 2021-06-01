@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { ServiceLoginService } from "../login/service/service-login.service";
 
 @Component({
     selector: 'app-home',
@@ -8,7 +9,7 @@ import { Router } from "@angular/router";
   })
 
 export class HomeComponent {
-    constructor(private router: Router) {
+    constructor(private router: Router, private serviceLogin: ServiceLoginService) {
         
     }
     
@@ -53,5 +54,9 @@ export class HomeComponent {
       this.displayFuncionario='none'
       this.displayMarca = 'none'
       this. displayEstoque='block'
+    }
+    logout(){
+      this.serviceLogin.logout();
+      this.router.navigateByUrl('');
     }
 }
