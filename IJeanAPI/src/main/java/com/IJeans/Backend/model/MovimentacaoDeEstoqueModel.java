@@ -1,6 +1,7 @@
 package com.IJeans.Backend.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -11,10 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.IJeans.Backend.controller.dto.EstoqueDto;
@@ -48,8 +47,8 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 	private LoteModel lote;
 	
 	@Column(name = "DATA")
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	private LocalDateTime dataTransacao = LocalDateTime.now();
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataTransacao = LocalDate.now();
 	
 	public MovimentacaoDeEstoqueModel() {
 	}
@@ -59,7 +58,7 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 		this.quantidade = estoque.getQuantidade();
 		this.status = estoque.isStatus();
 		this.lote = lote;
-		this.dataTransacao= LocalDateTime.now();
+		this.dataTransacao= LocalDate.now();
 	}
 
 	public MovimentacaoDeEstoqueModel(String id, double valor_unitario, int quantidade, boolean status) {
@@ -74,7 +73,7 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 		this.quantidade = produto.getProduto().getQuantidade_estoque();
 		this.status = produto.isStatus();
 		this.lote = lote;
-		this.dataTransacao= LocalDateTime.now();
+		this.dataTransacao= LocalDate.now();
 	}
 
 	public LoteModel getLote() {
@@ -85,11 +84,11 @@ public class MovimentacaoDeEstoqueModel implements Serializable{
 		this.lote = lote;
 	}
 
-	public LocalDateTime getDataTransacao() {
+	public LocalDate getDataTransacao() {
 		return dataTransacao;
 	}
 
-	public void setDataTransacao(LocalDateTime dataTransacao) {
+	public void setDataTransacao(LocalDate dataTransacao) {
 		this.dataTransacao = dataTransacao;
 	}
 

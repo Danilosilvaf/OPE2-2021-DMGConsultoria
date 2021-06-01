@@ -8,4 +8,6 @@ public interface EstoqueService {
 
 	void registrarTransacao(@Valid EstoqueDto transacao) throws Exception;
 
+	void registrarVenda(@Valid EstoqueDto transacao) throws Exception;
+
 }
