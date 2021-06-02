@@ -94,6 +94,8 @@ export class EntradaComponent {
             this.alertService.showSucess("Entrada de produto cadastrada com sucesso")
             this.router.navigateByUrl('home')
           }
+        },err =>{
+          this.alertService.showAlertDanger(err.error.message)
         })
       }
     }else{

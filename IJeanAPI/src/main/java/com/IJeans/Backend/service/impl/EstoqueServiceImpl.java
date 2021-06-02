@@ -53,6 +53,7 @@ public class EstoqueServiceImpl implements EstoqueService{
 		 */
 		Optional<List<LoteModel>> lote =loteRepository.findByIdProduto(transacao.getProduto().getId());
 		
+		int valor = transacao.getQuantidade();
 		if(lote.isPresent()) {
 			List<LoteModel> lstLote = lote.get();
 			int totalqtd =0;
@@ -77,9 +78,9 @@ public class EstoqueServiceImpl implements EstoqueService{
 					break;
 				}
 					if((transacao.getQuantidade() -lotec.getQuantidade()) > 0 ) {
+						transacao.setQuantidade(transacao.getQuantidade() -lotec.getQuantidade());
 						lotec.setQuantidade(0);
 						loteRepository.save(lotec);
-						transacao.setQuantidade(transacao.getQuantidade() -lotec.getQuantidade());
 						movimentacaoRepository.save(new MovimentacaoDeEstoqueModel(transacao,lotec));
 						continue;
 					}
@@ -88,7 +89,7 @@ public class EstoqueServiceImpl implements EstoqueService{
 				
 			}
 			
-			transacao.getProduto().setQuantidade_estoque(transacao.getProduto().getQuantidade_estoque() - transacao.getQuantidade());
+			transacao.getProduto().setQuantidade_estoque(transacao.getProduto().getQuantidade_estoque() - valor);
 			produtoRepository.save(transacao.getProduto());
 			
 		}else {

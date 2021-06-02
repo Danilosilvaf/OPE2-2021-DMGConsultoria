@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FornecedorModel } from 'src/app/shared/model/fornecedor.model';
+import { AlertModalService } from 'src/app/shared/services/alert-modal.service';
 import { FornecedorService } from './service/fornecedor.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { FornecedorService } from './service/fornecedor.service';
 })
 export class FornecedorComponent implements OnInit {
 
-  constructor(private service:FornecedorService,private router:Router, private formBuilder: FormBuilder) { }
+  constructor(private service:FornecedorService,private router:Router, private formBuilder: FormBuilder,private alertService:AlertModalService) { }
 
   EditRowId: any = '';
   fornecedorForm: FormGroup;
@@ -52,10 +53,13 @@ export class FornecedorComponent implements OnInit {
     fornecedor.telefone = this.fornecedorForm.get('telefoneFornecedor').value
 
     this.service.updatefornecedor(fornecedor).subscribe(data => {
-      console.log(data)
       this.EditRowId = -2
       this.fornecedorForm.get('nomeFornecedor').setValue("");
       this.fornecedorForm.get('precoFornecedor').setValue("");
+      this.alertService.showSucess('Alterado com sucesso');
+      this.ngOnInit()
+    },err =>{
+      this.alertService.showAlertDanger(err.error.message)
     })
   }
 }

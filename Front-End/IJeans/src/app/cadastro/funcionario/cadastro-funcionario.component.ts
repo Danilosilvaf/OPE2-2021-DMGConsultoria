@@ -54,6 +54,8 @@ export class CadastrarFuncionarioComponent{
             }else{
               this.alertService.showAlertDanger('funcionario ja cadastrado')
             }
+          },err =>{
+            this.alertService.showAlertDanger(err.error.message)
           })
         }
       }else{

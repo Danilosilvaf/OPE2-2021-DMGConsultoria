@@ -119,7 +119,8 @@ export class CadastrarProdutosComponent {
         quantidade_estoque: this.cadastraProdutoForm.value.quantidade,
         marca: this.marca,
         tipo_produto: this.tipoProduto,
-        tamanho: this.tamanho
+        tamanho: this.tamanho,
+        status:true
       }
 
      
@@ -131,7 +132,16 @@ export class CadastrarProdutosComponent {
         produto:produto,
         fornecedor:this.fornecedor     
       }
-      this.service.cadastrarProduto(movimentacao).subscribe(data => console.log(data))
+      this.service.cadastrarProduto(movimentacao).subscribe(data => {
+        if(data == null){
+          this.alertService.showSucess("Entrada de produto cadastrada com sucesso")
+          this.router.navigateByUrl('home')
+        }
+
+      },err =>{
+        this.alertService.showAlertDanger(err.error.message)
+      }
+        )
       // this.service.cadastrarProduto(produto).subscribe(data => {
       //   if (data.id != null) {
       //     this.alertService.showSucess("produto cadastrado com sucesso")

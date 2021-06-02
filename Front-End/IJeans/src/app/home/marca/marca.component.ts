@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { MarcaModel } from "src/app/shared/model/marca.model";
+import { AlertModalService } from "src/app/shared/services/alert-modal.service";
 import { MarcaService } from "./service/marca-service";
 
 @Component({
@@ -19,7 +20,7 @@ import { MarcaService } from "./service/marca-service";
     EditRowId: any = '';
 marcaForm: FormGroup;
   
-    constructor(private service: MarcaService,private router:Router,private formBuilder: FormBuilder) { }
+    constructor(private service: MarcaService,private router:Router,private formBuilder: FormBuilder,private alertService:AlertModalService) { }
     
     ngOnInit(): void {
         this.service.findAll().subscribe(data => {
@@ -54,8 +55,10 @@ marcaForm: FormGroup;
       this.service.alterar(marca).subscribe(data => {
         this.EditRowId = -2
         this.marcaForm.get('nomeMarca').setValue("");
-        
-        
+        this.alertService.showSucess('Alterado com sucesso')
+        this.ngOnInit()
+      },err =>{
+        this.alertService.showAlertDanger(err.error.message)
       })
     }
   

@@ -42,6 +42,8 @@ export class CadastroFornecedorComponent {
       this.service.cadastrarFornecedor(fornecedor).subscribe(data => {
           this.alertService.showSucess('Fornecedor Cadastrado')
           this.router.navigateByUrl('home');
+      },err =>{
+        this.alertService.showAlertDanger(err.error.message)
       });
     }else{
       this.alertService.showAlertDanger('Dados Incorretos')

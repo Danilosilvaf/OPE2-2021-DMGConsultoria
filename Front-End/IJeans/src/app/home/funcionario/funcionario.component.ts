@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FuncionarioModel } from 'src/app/shared/model/funcionario.model';
+import { AlertModalService } from 'src/app/shared/services/alert-modal.service';
 import { FuncionarioService } from './service/funcionario.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class FuncionarioComponent implements OnInit {
 EditRowId: any = '';
 funcionarioForm: FormGroup;
 
-  constructor(private service: FuncionarioService, private router:Router,private formBuilder: FormBuilder) { }
+  constructor(private service: FuncionarioService, private router:Router,private formBuilder: FormBuilder,private alertService:AlertModalService) { }
 
   
   funcionarios:Array<FuncionarioModel>;
@@ -65,7 +66,10 @@ funcionarioForm: FormGroup;
       this.funcionarioForm.get('nomeFuncionario').setValue("");
       this.funcionarioForm.get('loginFuncionario').setValue("");
       this.funcionarioForm.get('emailFuncionario').setValue("");
-      
+      this.alertService.showSucess('Alterado com sucesso')
+      this.ngOnInit()
+    },err =>{
+      this.alertService.showAlertDanger(err.error.message)
     })
   }
 

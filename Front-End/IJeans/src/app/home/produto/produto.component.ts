@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProdutoModel } from 'src/app/shared/model/produto.model';
+import { AlertModalService } from 'src/app/shared/services/alert-modal.service';
 import { ProdutoService } from './service/service-produto.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class ProdutoComponent implements OnInit {
 
   EditRowId: any = '';
   produtoForm: FormGroup;
-  constructor(private service: ProdutoService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private service: ProdutoService, private router: Router, private formBuilder: FormBuilder,private alertService:AlertModalService) { }
   produtos: Array<ProdutoModel>;
 
   ngOnInit(): void {
@@ -50,6 +51,10 @@ export class ProdutoComponent implements OnInit {
       this.EditRowId = -2
       this.produtoForm.get('nomeProduto').setValue("");
       this.produtoForm.get('precoProduto').setValue("");
+      this.alertService.showSucess('Alterado com sucesso')
+      this.ngOnInit()
+    },err =>{
+      this.alertService.showAlertDanger(err.error.message)
     })
   }
   edit(produto: ProdutoModel) {

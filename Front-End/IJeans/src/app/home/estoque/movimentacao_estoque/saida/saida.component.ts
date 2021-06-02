@@ -77,6 +77,8 @@ export class SaidaComponent {
          if(data == null){
            this.alertService.showSucess('Registro de saida de produto realizada com sucesso!')
          }
+      },err =>{
+        this.alertService.showAlertDanger(err.error.message)
       })
   }else{
     this.alertService.showAlertDanger('Campos invalidos')
