@@ -19,13 +19,14 @@ import { SaidaModule } from './home/estoque/movimentacao_estoque/saida/saida.mod
 import { ToastrModule } from 'ngx-toastr';
 import { GuardsModule } from './shared/guards/guards.module';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { CadastroMarcaModule } from './cadastro/marca/cadastro-marca.module';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
     AppComponent
-     ],
+  ],
   imports: [
     BrowserModule,
     CommonModule,
@@ -37,6 +38,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     HomeModule,
     CadastroFornecedorModule,
     CadastroProdutoModule,
+    CadastroMarcaModule,
     BrowserAnimationsModule,
     EntradaModule,
     SaidaModule,

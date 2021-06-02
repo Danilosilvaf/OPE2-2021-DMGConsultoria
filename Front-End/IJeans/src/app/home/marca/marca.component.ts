@@ -32,8 +32,8 @@ export class MarcaComponent implements OnInit {
     });
   }
 
-  CadastrarMarca() {
-
+  cadastrarMarca(){
+    this.router.navigateByUrl('cadastromarca')
   }
 
   delete(marca: MarcaModel) {
