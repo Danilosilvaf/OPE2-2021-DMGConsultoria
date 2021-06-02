@@ -7,13 +7,11 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,8 +47,8 @@ public class ProdutosController {
 	}
 	
 	@GetMapping(value = "/nome/{nomeBusca}")
-	public ResponseEntity<Optional<ProdutoModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
-		Optional<ProdutoModel> nome = produtoService.findByNomeContaining(nomeBusca);
+	public ResponseEntity<Optional<List<ProdutoModel>>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
+		Optional<List<ProdutoModel>> nome = produtoService.findByNomeContaining(nomeBusca);
 		if(!nome.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}

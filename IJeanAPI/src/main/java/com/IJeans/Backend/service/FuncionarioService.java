@@ -17,5 +17,5 @@ public interface FuncionarioService {
 
 	void deletar(FuncionarioModel funcionario);
 
-	Optional<FuncionarioModel> findByNomeContaining(String nomeBusca);
+	Optional<List<FuncionarioModel>> findByNomeContaining(String nomeBusca);
 }

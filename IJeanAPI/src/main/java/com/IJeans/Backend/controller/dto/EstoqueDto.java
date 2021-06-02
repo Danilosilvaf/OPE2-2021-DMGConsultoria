@@ -2,7 +2,6 @@ package com.IJeans.Backend.controller.dto;
 
 import com.IJeans.Backend.exception.NumeroNegativoException;
 import com.IJeans.Backend.model.FornecedorModel;
-import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
 import com.IJeans.Backend.model.ProdutoModel;
 
 public class EstoqueDto {
