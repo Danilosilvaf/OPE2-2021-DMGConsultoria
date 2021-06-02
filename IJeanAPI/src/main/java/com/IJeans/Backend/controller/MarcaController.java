@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.model.MarcaModel;
 import com.IJeans.Backend.service.MarcaService;
+import com.IJeans.Backend.service.RelatorioService;
 
 @RestController
 @RequestMapping(value = "/marcas")
@@ -28,6 +29,9 @@ public class MarcaController {
 
 	@Autowired
 	private MarcaService marcaService;
+	
+	@Autowired
+	private RelatorioService relatorio;
 
 	@GetMapping
 	public ResponseEntity<List<MarcaModel>> getAll() {
