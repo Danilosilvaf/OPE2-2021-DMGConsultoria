@@ -62,4 +62,12 @@ export class FornecedorComponent implements OnInit {
       this.alertService.showAlertDanger(err.error.message)
     })
   }
+
+  buscarFornecedor(nome) {
+    console.log(nome)
+    this.service.findByNome(nome).subscribe(data => {
+      console.log(data)
+      this.fornecedores = data
+    })
+  }
 }

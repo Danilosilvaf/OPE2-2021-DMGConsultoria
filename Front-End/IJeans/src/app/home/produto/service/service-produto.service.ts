@@ -45,4 +45,8 @@ export class ProdutoService {
     return this.http.delete<TipoProduto>("http://localhost:8080/produtos/"+id)
   }
 
+  findByNome(nome){
+    return this.http.get<Array<ProdutoModel>>("http://localhost:8080/produtos/nome/" + nome);
+  }
+
 }

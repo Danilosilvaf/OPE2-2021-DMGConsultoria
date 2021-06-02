@@ -47,7 +47,7 @@
         </div>
         
         <label class="label-title">Valor de Compra</label><br>
-        <input type="text" formControlName="valorCompra"><br>
+        <input type="text" suffix="$" mask="0000" formControlName="valorCompra"><br>
 
         <app-msg-erro [isError]="isErrorCampo('valorCompra')" mensagem="Campo incorreto"></app-msg-erro>
             

@@ -25,5 +25,8 @@ export class FornecedorService {
   removerFornecedor(fornecedor){
     return this.http.delete<FornecedorModel>('http://localhost:8080/fornecedor/'+fornecedor);
   }
-  
+
+  findByNome(nome){
+    return this.http.get<Array<FornecedorModel>>("http://localhost:8080/fornecedor/nome/" + nome);
+  } 
 }

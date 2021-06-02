@@ -31,4 +31,12 @@ import { EstoqueService } from "./service/estoque.service";
     realizarVenda(id){
       this.router.navigateByUrl('saida/'+id)
     }
+
+    buscarProduto(nome) {
+      console.log(nome)
+      this.service.findByNome(nome).subscribe(data => {
+        console.log(data)
+        this.produtos = data
+      })
+    }
 }

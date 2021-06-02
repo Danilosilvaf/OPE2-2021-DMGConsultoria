@@ -76,4 +76,12 @@ funcionarioForm: FormGroup;
   edit(funcionario:FuncionarioModel){
     this.EditRowId = funcionario.id
   }
+
+  buscarFuncionario(nome) {
+    console.log(nome)
+    this.service.findByNome(nome).subscribe(data => {
+      console.log(data)
+      this.funcionarios = data
+    })
+  }
 }

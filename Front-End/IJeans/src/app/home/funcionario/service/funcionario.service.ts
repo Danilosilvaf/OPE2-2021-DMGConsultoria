@@ -25,5 +25,8 @@ export class FuncionarioService {
   alteraFuncionario(funcionario){
     return this.http.put<FuncionarioModel>("http://localhost:8080/funcionarios",funcionario);
   }
-  
+
+  findByNome(nome){
+    return this.http.get<Array<FuncionarioModel>>("http://localhost:8080/fornecedor/nome/" + nome);
+  }
 }
