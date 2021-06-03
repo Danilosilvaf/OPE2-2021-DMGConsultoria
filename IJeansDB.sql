@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.fornecedor: ~0 rows (approximately)
+-- Dumping data for table IJeans.fornecedor: ~1 rows (approximately)
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
 INSERT INTO `fornecedor` (`id`, `nome`, `email`, `telefone`, `STATUS`) VALUES
 	(22, 'queridao2', 'queridao@queridao.com', '1199999999', 1);
@@ -48,7 +48,10 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
 -- Dumping data for table IJeans.funcionario: ~1 rows (approximately)
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
 INSERT INTO `funcionario` (`id`, `login`, `senha`, `nome`, `email`, `nivel_func`) VALUES
-	(24, 'admin', 'admin', 'admin', 'admin@admin.com', 1);
+	(24, 'admin', 'admin', 'admin', 'admin@admin.com', 1),
+	(33, 'queridao', 'queridao', 'queridao', 'queridao21@queridao.com', 0),
+	(35, 'queridao123', 'queridao', 'queridao123', 'queridao@dasasd.com.br', 0),
+	(38, 'queridao134232', 'queridao134232', 'queridao', 'queridao134232@dasda.com', 0);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.lote
@@ -80,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `marca` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.marca: ~2 rows (approximately)
+-- Dumping data for table IJeans.marca: ~3 rows (approximately)
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
 INSERT INTO `marca` (`id`, `nome`, `STATUS`) VALUES
 	(5, 'Adidas', 1),
@@ -101,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `movimentacao` (
   CONSTRAINT `movimentacao_ibfk_1` FOREIGN KEY (`id_lote`) REFERENCES `lote` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.movimentacao: ~4 rows (approximately)
+-- Dumping data for table IJeans.movimentacao: ~5 rows (approximately)
 /*!40000 ALTER TABLE `movimentacao` DISABLE KEYS */;
 INSERT INTO `movimentacao` (`id`, `quantidade`, `valor_unitario`, `tipo_transacao`, `id_lote`, `DATA`) VALUES
 	(32, 30, 1000, 1, 37, '2021-06-02'),
