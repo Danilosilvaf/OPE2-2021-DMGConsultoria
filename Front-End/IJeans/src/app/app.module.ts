@@ -20,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { GuardsModule } from './shared/guards/guards.module';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { CadastroMarcaModule } from './cadastro/marca/cadastro-marca.module';
+import { RelatorioModule } from './cadastro/relatorio/relatorio.module';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -41,6 +42,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CadastroMarcaModule,
     BrowserAnimationsModule,
     EntradaModule,
+    RelatorioModule,
     SaidaModule,
     GuardsModule,
     AppRoutingModule,

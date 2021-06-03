@@ -29,7 +29,7 @@ import { NgxMaskModule } from "ngx-mask";
         ReactiveFormsModule,
         BrowserModule,
         FormsModule,
-        NgxMaskModule
+        NgxMaskModule,
     ],
 
     providers: []

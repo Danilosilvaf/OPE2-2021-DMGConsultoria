@@ -6,37 +6,40 @@ import { ProdutoService } from "../produto/service/service-produto.service";
 import { EstoqueService } from "./service/estoque.service";
 
 @Component({
-    selector: 'app-estoque',
-    templateUrl: './estoque.component.html',
-    styleUrls: ['./estoque.component.css']
-  })
-  export class EstoqueComponent implements OnInit {
- 
+  selector: 'app-estoque',
+  templateUrl: './estoque.component.html',
+  styleUrls: ['./estoque.component.css']
+})
+export class EstoqueComponent implements OnInit {
 
-    produtos: Array<ProdutoModel>;
-    constructor(private service: ProdutoService, private router: Router, private formBuilder: FormBuilder){}
-    ngOnInit(): void {
-      this.service.findAll().subscribe(data => {
-        this.produtos = data
-      });
-    }
 
-    cadastrarProduto() {
-      this.router.navigateByUrl('cadastroproduto')
-    }
+  produtos: Array<ProdutoModel>;
+  constructor(private service: ProdutoService, private router: Router, private formBuilder: FormBuilder) { }
+  ngOnInit(): void {
+    this.service.findAll().subscribe(data => {
+      this.produtos = data
+    });
+  }
+  enviaRelatorio() {
+    this.router.navigateByUrl('envioRelatorio')
 
-    realizarEntrada(id){
-      this.router.navigateByUrl('entrada/'+id)
-    }
-    realizarVenda(id){
-      this.router.navigateByUrl('saida/'+id)
-    }
+  }
+  cadastrarProduto() {
+    this.router.navigateByUrl('cadastroproduto')
+  }
 
-    buscarProduto(nome) {
-      console.log(nome)
-      this.service.findByNome(nome).subscribe(data => {
-        console.log(data)
-        this.produtos = data
-      })
-    }
+  realizarEntrada(id) {
+    this.router.navigateByUrl('entrada/' + id)
+  }
+  realizarVenda(id) {
+    this.router.navigateByUrl('saida/' + id)
+  }
+
+  buscarProduto(nome) {
+    console.log(nome)
+    this.service.findByNome(nome).subscribe(data => {
+      console.log(data)
+      this.produtos = data
+    })
+  }
 }

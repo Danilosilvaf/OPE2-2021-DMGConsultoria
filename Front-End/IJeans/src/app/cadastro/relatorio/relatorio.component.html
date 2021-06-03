@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<div class="main">
+    <button class="botao-voltar fas fa-chevron-circle-left fa-2x" (click)="voltarHome()"></button>
+    <label class="titulo">Gerar Relatorio</label>
+
+    <form [formGroup]="cadastraMarcaForm" (ngSubmit)="onSubmit()" style="margin-top: 50px;">
+        <label class="label-title">Email</label><br>
+        <input type="text" formControlName="nome">
+
+        <!-- Mensagem de erro para quando os campos não são preenchidos corretamente -->
+        <app-msg-erro [isError]="isErrorCampo('nome')" mensagem="Campo incorreto"></app-msg-erro>
+
+        <input type="button" class="botao-cadastrar" type="submit" id="cadastrar" name="cadastrar" value="Enviar">
+    </form>
+</div>

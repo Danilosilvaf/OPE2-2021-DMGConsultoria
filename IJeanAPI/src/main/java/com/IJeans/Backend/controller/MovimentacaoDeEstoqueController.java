@@ -48,7 +48,7 @@ public class MovimentacaoDeEstoqueController {
 	@Autowired
 	private SendMail emailService;
 	
-	
+	@CrossOrigin(origins = "*")
 	@GetMapping
 	public ResponseEntity<List<MovimentacaoDeEstoqueModel>> getAll() {
 		List<MovimentacaoDeEstoqueModel> transacoes = movimentacaoService.findAll();
@@ -63,6 +63,7 @@ public class MovimentacaoDeEstoqueController {
 		return ResponseEntity.ok().body(movimentacaoService.findById(id));
 	}
 	
+	@CrossOrigin(origins = "*")
 	@PostMapping
 	public ResponseEntity<EstoqueDto> registrarTransacao(@Valid @RequestBody EstoqueDto transacao) throws Exception {
 		if(transacao.isStatus()) {
@@ -74,7 +75,7 @@ public class MovimentacaoDeEstoqueController {
 	}
 	
 	
-	
+	@CrossOrigin(origins = "*")
 	@PostMapping(value = "/novoProduto")
 	public  ResponseEntity<List<ProdutoModel>> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
 		Optional<List<ProdutoModel>> prod = produtosService.findByNomeContaining(produto.getProduto().getNome());
@@ -86,12 +87,12 @@ public class MovimentacaoDeEstoqueController {
 		 produtosService.cadastrarNovoProduto(produto);
 		 return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
-	
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "/relatorio/{email}")
 	public  ResponseEntity<String> relatorio(@PathVariable("email") String email)  {
 		geraRelatorio.criaArquivo();
 		emailService.sendMail(new File(geraRelatorio.CSV_PATH), email);
 		
-		return ResponseEntity.ok().body("OK");
+		return ResponseEntity.status(HttpStatus.CREATED).build();
 	}
 }
