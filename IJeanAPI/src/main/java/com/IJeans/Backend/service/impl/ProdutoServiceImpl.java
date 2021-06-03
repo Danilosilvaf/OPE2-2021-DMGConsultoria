@@ -34,7 +34,7 @@ public class ProdutoServiceImpl implements ProdutosService {
 	}
 
 	@Override
-	public Optional<ProdutoModel> findByNomeContaining(String nomeBusca) {
+	public Optional<List<ProdutoModel>> findByNomeContaining(String nomeBusca) {
 		return produtoRepository.findByNomeContaining(nomeBusca);
 	}
 

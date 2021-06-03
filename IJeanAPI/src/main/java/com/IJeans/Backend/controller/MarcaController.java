@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.model.MarcaModel;
 import com.IJeans.Backend.service.MarcaService;
+import com.IJeans.Backend.service.RelatorioService;
 
 @RestController
 @RequestMapping(value = "/marcas")
@@ -28,6 +29,9 @@ public class MarcaController {
 
 	@Autowired
 	private MarcaService marcaService;
+	
+	@Autowired
+	private RelatorioService relatorio;
 
 	@GetMapping
 	public ResponseEntity<List<MarcaModel>> getAll() {
@@ -39,8 +43,8 @@ public class MarcaController {
 	}
 	
 	@GetMapping(value = "/nome/{nomeBusca}")
-	public ResponseEntity<Optional<MarcaModel>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
-		Optional<MarcaModel> nome = marcaService.findByNomeContaining(nomeBusca);
+	public ResponseEntity<Optional<List<MarcaModel>>> findByNome(@PathVariable("nomeBusca") String nomeBusca){
+		Optional<List<MarcaModel>> nome = marcaService.findByNomeContaining(nomeBusca);
 		if(!nome.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}

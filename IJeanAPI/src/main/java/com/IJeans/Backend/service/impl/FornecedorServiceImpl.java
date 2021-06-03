@@ -41,7 +41,7 @@ public class FornecedorServiceImpl implements FornecedorService {
 	}
 
 	@Override
-	public Optional<FornecedorModel> findByNomeContaining(String nomeBusca) {
+	public Optional<List<FornecedorModel>> findByNomeContaining(String nomeBusca) {
 		return fornecedorRepository.findByNomeContaining(nomeBusca);
 	}
 

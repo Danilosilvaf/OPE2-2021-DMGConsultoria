@@ -43,7 +43,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	}
 
 	@Override
-	public Optional<FuncionarioModel> findByNomeContaining(String nomeBusca) {
+	public Optional<List<FuncionarioModel>> findByNomeContaining(String nomeBusca) {
 		return funcionarioRepository.findByNomeContaining(nomeBusca);
 	}
 }

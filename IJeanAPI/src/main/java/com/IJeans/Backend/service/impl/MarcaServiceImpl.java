@@ -43,7 +43,7 @@ public class MarcaServiceImpl implements MarcaService {
 	}
 
 	@Override
-	public Optional<MarcaModel> findByNomeContaining(String nomeBusca) {
+	public Optional<List<MarcaModel>> findByNomeContaining(String nomeBusca) {
 		return marcaRepository.findByNomeContaining(nomeBusca);
 	}
 

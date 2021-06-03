@@ -1,5 +1,6 @@
 package com.IJeans.Backend.controller;
 
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.IJeans.Backend.controller.dto.EstoqueDto;
 import com.IJeans.Backend.controller.dto.ProdutoDto;
+import com.IJeans.Backend.email.SendMail;
 import com.IJeans.Backend.exception.ProdutoExistenteException;
+import com.IJeans.Backend.job.GeraRelatorio;
 import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
 import com.IJeans.Backend.model.ProdutoModel;
 import com.IJeans.Backend.service.EstoqueService;
@@ -38,6 +41,13 @@ public class MovimentacaoDeEstoqueController {
 	
 	@Autowired
 	private ProdutosService produtosService;
+	
+	@Autowired
+	private GeraRelatorio geraRelatorio;
+	
+	@Autowired
+	private SendMail emailService;
+	
 	
 	@GetMapping
 	public ResponseEntity<List<MovimentacaoDeEstoqueModel>> getAll() {
@@ -66,8 +76,8 @@ public class MovimentacaoDeEstoqueController {
 	
 	
 	@PostMapping(value = "/novoProduto")
-	public  ResponseEntity<ProdutoModel> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
-		Optional<ProdutoModel> prod = produtosService.findByNomeContaining(produto.getProduto().getNome());
+	public  ResponseEntity<List<ProdutoModel>> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
+		Optional<List<ProdutoModel>> prod = produtosService.findByNomeContaining(produto.getProduto().getNome());
 		
 		if(prod.isPresent()) {
 			throw new ProdutoExistenteException("Produto já cadastrado no sistema.");
@@ -75,5 +85,13 @@ public class MovimentacaoDeEstoqueController {
 		produto.setStatus(true);
 		 produtosService.cadastrarNovoProduto(produto);
 		 return ResponseEntity.status(HttpStatus.CREATED).build();
+	}
+	
+	@GetMapping(value = "/relatorio/{email}")
+	public  ResponseEntity<String> relatorio(@PathVariable("email") String email)  {
+		geraRelatorio.criaArquivo();
+		emailService.sendMail(new File(geraRelatorio.CSV_PATH), email);
+		
+		return ResponseEntity.ok().body("OK");
 	}
 }
