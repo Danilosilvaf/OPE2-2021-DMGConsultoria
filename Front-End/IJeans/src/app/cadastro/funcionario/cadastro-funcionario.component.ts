@@ -42,18 +42,13 @@ export class CadastrarFuncionarioComponent{
          
           let funcionario = {
               login: this.cadastraFuncionarioForm.value.login ,
-              nivel_func:1,
               senha: this.cadastraFuncionarioForm.value.senha,
               nome: this.cadastraFuncionarioForm.value.nome,
               email: this.cadastraFuncionarioForm.value.email
           }
           this.service.cadastraFuncionario(funcionario).subscribe(data =>{
-            if(data.id != null  ){
               this.alertService.showSucess('funcionario cadastrada com sucesso');
               this.router.navigateByUrl('home');
-            }else{
-              this.alertService.showAlertDanger('funcionario ja cadastrado')
-            }
           },err =>{
             this.alertService.showAlertDanger(err.error.message)
           })
@@ -61,9 +56,6 @@ export class CadastrarFuncionarioComponent{
       }else{
         this.alertService.showAlertDanger('Dados incorretos')
       }
-
-    
-
   }
 
   voltarHome() {

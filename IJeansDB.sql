@@ -24,14 +24,12 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
   `telefone` varchar(11) NOT NULL,
   `STATUS` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.fornecedor: ~3 rows (approximately)
+-- Dumping data for table IJeans.fornecedor: ~0 rows (approximately)
 /*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
 INSERT INTO `fornecedor` (`id`, `nome`, `email`, `telefone`, `STATUS`) VALUES
-	(19, 'queridao', 'queridao@queridao', '11999999999', 1),
-	(20, 'Gui', 'gui@alunoimpacta.com', '1188888888', 1),
-	(21, 'Edna', 'edna@henrique.com', '11777777777', 1);
+	(22, 'queridao2', 'queridao@queridao.com', '1199999999', 1);
 /*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.funcionario
@@ -45,13 +43,12 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `login` (`login`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.funcionario: ~2 rows (approximately)
+-- Dumping data for table IJeans.funcionario: ~1 rows (approximately)
 /*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
 INSERT INTO `funcionario` (`id`, `login`, `senha`, `nome`, `email`, `nivel_func`) VALUES
-	(24, 'admin', 'admin123', 'admin', 'admin@admin.com', 0),
-	(25, 'queridao', 'queridao', 'queridao', 'queridao@queridao.com', 0);
+	(24, 'admin', 'admin', 'admin', 'admin@admin.com', 1);
 /*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.lote
@@ -66,17 +63,13 @@ CREATE TABLE IF NOT EXISTS `lote` (
   KEY `id_fornecedor` (`id_fornecedor`),
   CONSTRAINT `lote_iprodutobfk_1` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`),
   CONSTRAINT `lote_iprodutobfk_2` FOREIGN KEY (`id_fornecedor`) REFERENCES `fornecedor` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.lote: ~3 rows (approximately)
+-- Dumping data for table IJeans.lote: ~2 rows (approximately)
 /*!40000 ALTER TABLE `lote` DISABLE KEYS */;
 INSERT INTO `lote` (`id`, `quantidade`, `preco_compra`, `id_produto`, `id_fornecedor`) VALUES
-	(25, 0, 1000, 44, 19),
-	(26, 12, 1000, 45, 21),
-	(27, 12, 100, 46, 21),
-	(28, 11, 1000, 44, 20),
-	(29, 50, 1000, 44, 19),
-	(30, 5, 200, 47, 21);
+	(37, 0, 1000, 50, 22),
+	(38, 0, 1000, 50, 22);
 /*!40000 ALTER TABLE `lote` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.marca
@@ -85,13 +78,14 @@ CREATE TABLE IF NOT EXISTS `marca` (
   `nome` varchar(200) NOT NULL,
   `STATUS` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table IJeans.marca: ~2 rows (approximately)
 /*!40000 ALTER TABLE `marca` DISABLE KEYS */;
 INSERT INTO `marca` (`id`, `nome`, `STATUS`) VALUES
-	(1, 'Nike', 1),
-	(2, 'Adidas', 1);
+	(5, 'Adidas', 1),
+	(6, 'Nike', 1),
+	(7, 'Adasd', 0);
 /*!40000 ALTER TABLE `marca` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.movimentacao
@@ -105,20 +99,16 @@ CREATE TABLE IF NOT EXISTS `movimentacao` (
   PRIMARY KEY (`id`),
   KEY `id_lote` (`id_lote`),
   CONSTRAINT `movimentacao_ibfk_1` FOREIGN KEY (`id_lote`) REFERENCES `lote` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.movimentacao: ~6 rows (approximately)
+-- Dumping data for table IJeans.movimentacao: ~4 rows (approximately)
 /*!40000 ALTER TABLE `movimentacao` DISABLE KEYS */;
 INSERT INTO `movimentacao` (`id`, `quantidade`, `valor_unitario`, `tipo_transacao`, `id_lote`, `DATA`) VALUES
-	(8, 12, 1000, 1, 25, '2021-05-31'),
-	(9, 12, 1000, 1, 26, '2021-05-31'),
-	(10, 12, 100, 1, 27, '2021-05-31'),
-	(11, 4, 1400, 0, 25, '2021-05-31'),
-	(12, 9, 1400, 0, 25, '2021-05-31'),
-	(13, 8, 1400, 0, 25, '2021-05-31'),
-	(14, 11, 1000, 1, 28, '2021-05-31'),
-	(15, 50, 1000, 1, 29, '2021-05-31'),
-	(16, 5, 200, 1, 30, '2021-05-31');
+	(32, 30, 1000, 1, 37, '2021-06-02'),
+	(33, 30, 1000, 1, 38, '2021-06-02'),
+	(34, 20, 1500, 0, 37, '2021-06-02'),
+	(35, 20, 1500, 0, 38, '2021-06-02'),
+	(36, 10, 1500, 0, 38, '2021-06-02');
 /*!40000 ALTER TABLE `movimentacao` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.produto
@@ -139,15 +129,12 @@ CREATE TABLE IF NOT EXISTS `produto` (
   CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id`),
   CONSTRAINT `produto_ibfk_2` FOREIGN KEY (`id_tipo`) REFERENCES `tipoproduto` (`id`),
   CONSTRAINT `produto_ibfk_3` FOREIGN KEY (`id_tamanho`) REFERENCES `tamanho` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
--- Dumping data for table IJeans.produto: ~3 rows (approximately)
+-- Dumping data for table IJeans.produto: ~1 rows (approximately)
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 INSERT INTO `produto` (`id`, `nome`, `preco_atual`, `quantidade_estoque`, `id_marca`, `id_tipo`, `id_tamanho`, `STATUS`) VALUES
-	(44, 'Air Jordan 1', 1100, 65, 1, 2, '42', 1),
-	(45, 'Ari Jordan 1', 1100, 12, 2, 2, '43', 1),
-	(46, 'Camiseta a', 150, 12, 2, 1, 'XL', 1),
-	(47, 'Camiseta Adidas X7', 300, 5, 2, 1, 'P', 0);
+	(50, 'Air jordan 12312312', 1290.9, 0, 6, 2, '36', 1);
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
 -- Dumping structure for table IJeans.tamanho

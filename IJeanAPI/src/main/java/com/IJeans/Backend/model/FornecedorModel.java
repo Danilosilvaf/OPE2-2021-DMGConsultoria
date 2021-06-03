@@ -25,18 +25,15 @@ public class FornecedorModel implements Serializable{
 	
 	
 	@Column(name = "nome")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 3, max = 25)
+	@NotNull 
 	private String nome;
 	
 	@Column(name = "email")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@Email @NotNull
+	 @NotNull
 	private String email;
 	
 	@Column(name = "telefone")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 10, max = 11)
+	@NotNull 
 	private String telefone;
 	
 	@Column(name = "status")
