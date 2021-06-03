@@ -21,28 +21,23 @@ public class FuncionarioModel {
 	private String id;
 
 	@Column(name = "login")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 6)
+	@NotNull 
 	private String login;
 
 	@Column(name = "senha")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 6)
+	@NotNull
 	private String senha;
 
 	@Column(name = "nome")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 3, max = 30)
+	@NotNull
 	private String nome;
 
 	@Column(name = "email")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@Email @NotNull
+	@NotNull
 	private String email;
 
 	@Column(name = "nivel_func")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(max = 1)
+	@NotNull 
 	private int nivelFunc;
 
 	public FuncionarioModel() {

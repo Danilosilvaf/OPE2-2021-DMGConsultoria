@@ -45,14 +45,13 @@ export class CadastrarFuncionarioComponent{
               nivel_func:1,
               senha: this.cadastraFuncionarioForm.value.senha,
               nome: this.cadastraFuncionarioForm.value.nome,
-              email: this.cadastraFuncionarioForm.value.email
+              email: this.cadastraFuncionarioForm.value.email,
+              status:true
           }
           this.service.cadastraFuncionario(funcionario).subscribe(data =>{
-            if(data.id != null  ){
+            if(data == null){
               this.alertService.showSucess('funcionario cadastrada com sucesso');
               this.router.navigateByUrl('home');
-            }else{
-              this.alertService.showAlertDanger('funcionario ja cadastrado')
             }
           },err =>{
             this.alertService.showAlertDanger(err.error.message)

@@ -76,6 +76,7 @@ export class SaidaComponent {
        this.serviceEstoque.cadastrarEstoqueJaExistente(movimentacao).subscribe(data =>{
          if(data == null){
            this.alertService.showSucess('Registro de saida de produto realizada com sucesso!')
+           this.router.navigateByUrl('home')
          }
       },err =>{
         this.alertService.showAlertDanger(err.error.message)

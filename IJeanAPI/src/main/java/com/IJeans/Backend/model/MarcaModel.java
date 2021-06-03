@@ -23,8 +23,7 @@ public class MarcaModel implements Serializable{
 	private String id;
 	
 	@Column(name = "nome")
-	@NotEmpty(message = "Preenchimento obrigatório")
-	@NotNull @Size(min = 3, max = 25)
+	@NotNull 
 	private String nome;
 
 	@Column(name = "status")

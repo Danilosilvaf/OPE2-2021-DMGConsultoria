@@ -29,7 +29,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 	@Override
 	@Transactional
 	public void deletar(FuncionarioModel funcionario) {
-		this.funcionarioRepository.save(funcionario);
+		this.funcionarioRepository.delete(funcionario);
 	}
 
 	@Override

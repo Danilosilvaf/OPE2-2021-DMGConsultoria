@@ -42,8 +42,10 @@ funcionarioForm: FormGroup;
   }
   delete(funcionario:FuncionarioModel){
     this.service.delete(funcionario).subscribe(data => {
-      console.log(data)
+      this.alertService.showSucess("Deletado com sucesso")
       this.ngOnInit();
+    },err =>{
+      this.alertService.showAlertDanger(err.error.message)
     })
 
   }

@@ -21,6 +21,14 @@ import { EstoqueService } from "./service/estoque.service";
       });
     }
 
+    verificarProduto(produto:ProdutoModel){
+      if(produto.quantidade_estoque > 0){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
     cadastrarProduto() {
       this.router.navigateByUrl('cadastroproduto')
     }
