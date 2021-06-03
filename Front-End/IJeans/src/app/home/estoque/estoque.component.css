@@ -4,3 +4,12 @@
     margin-top: 100px;
     width: 70%;
 }
+
+.relatorio {
+    /* background-color: #c9c9c9; */
+    border: solid;
+    border-color: #017EEC;
+    border-width: thin;
+    margin-top: 5%;
+    float: right;
+}
