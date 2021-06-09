@@ -1,13 +1,17 @@
 package com.IJeans.Backend.service.impl;
 
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.ConstraintViolationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.IJeans.Backend.controller.dto.ProdutoDto;
+import com.IJeans.Backend.exception.ProdutoJaCadastradoException;
 import com.IJeans.Backend.model.LoteModel;
 import com.IJeans.Backend.model.MovimentacaoDeEstoqueModel;
 import com.IJeans.Backend.model.ProdutoModel;
@@ -39,8 +43,10 @@ public class ProdutoServiceImpl implements ProdutosService {
 	}
 
 	@Override
-	public void cadastrarNovoProduto(ProdutoDto produto) {
-
+	public void cadastrarNovoProduto(ProdutoDto produto) throws ProdutoJaCadastradoException  {
+		
+		try {
+			
 		produtoRepository.save(produto.getProduto());
 		LoteModel lote = new LoteModel(produto);
 
@@ -49,6 +55,9 @@ public class ProdutoServiceImpl implements ProdutosService {
 		MovimentacaoDeEstoqueModel movimentacao = new MovimentacaoDeEstoqueModel(produto, lote);
 
 		movimentacaoRepository.save(movimentacao);
+		}catch(Exception e) {
+			throw new ProdutoJaCadastradoException(e.getMessage());
+		}
 	}
 
 	@Override

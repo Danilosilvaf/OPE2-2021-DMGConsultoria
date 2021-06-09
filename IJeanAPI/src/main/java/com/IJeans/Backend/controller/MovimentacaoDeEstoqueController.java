@@ -78,11 +78,7 @@ public class MovimentacaoDeEstoqueController {
 	@CrossOrigin(origins = "*")
 	@PostMapping(value = "/novoProduto")
 	public  ResponseEntity<List<ProdutoModel>> cadastrarNovoProduto(@Valid @RequestBody ProdutoDto produto) throws Exception {
-////		Optional<List<ProdutoModel>> prod = produtosService.findByNomeContaining(produto.getProduto().getNome());
-//		
-//		if(prod.isPresent()) {
-//			throw new ProdutoExistenteException("Produto já cadastrado no sistema.");
-//		}
+
 		produto.setStatus(true);
 		 produtosService.cadastrarNovoProduto(produto);
 		 return ResponseEntity.status(HttpStatus.CREATED).build();

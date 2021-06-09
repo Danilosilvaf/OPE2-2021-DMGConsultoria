@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FuncionarioModel } from 'src/app/shared/model/funcionario.model';
 import { AlertModalService } from 'src/app/shared/services/alert-modal.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 import { FuncionarioService } from './service/funcionario.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class FuncionarioComponent implements OnInit {
 EditRowId: any = '';
 funcionarioForm: FormGroup;
 
-  constructor(private service: FuncionarioService, private router:Router,private formBuilder: FormBuilder,private alertService:AlertModalService) { }
+  constructor(private service: FuncionarioService, private router:Router,private formBuilder: FormBuilder,private alertService:AlertModalService,private localStorage:StorageService) { }
 
   
   funcionarios:Array<FuncionarioModel>;
@@ -41,10 +42,14 @@ funcionarioForm: FormGroup;
     this.router.navigateByUrl('cadastrofuncionario')
   }
   delete(funcionario:FuncionarioModel){
-    this.service.delete(funcionario).subscribe(data => {
-      console.log(data)
-      this.ngOnInit();
-    })
+
+    if(this.localStorage.getLocalUser().login == "admin"){
+      this.service.delete(funcionario).subscribe(data => {
+        this.ngOnInit();
+      })
+    }else{
+      this.alertService.showAlertDanger("Usuário sem permissão.")
+    }
 
   }
 
@@ -56,6 +61,7 @@ funcionarioForm: FormGroup;
   }
 
   editCorrect(funcionario: FuncionarioModel) {
+    
     funcionario.nome = this.funcionarioForm.get('nomeFuncionario').value
     funcionario.login = this.funcionarioForm.get('loginFuncionario').value
     funcionario.email = this.funcionarioForm.get('emailFuncionario').value
@@ -74,7 +80,11 @@ funcionarioForm: FormGroup;
   }
 
   edit(funcionario:FuncionarioModel){
+    if(this.localStorage.getLocalUser().login == "admin"){
     this.EditRowId = funcionario.id
+    }else{
+      this.alertService.showAlertDanger("Usuário sem permissão.")
+    }
   }
 
   buscarFuncionario(nome) {

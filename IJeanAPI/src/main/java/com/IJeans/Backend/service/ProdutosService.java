@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.IJeans.Backend.controller.dto.ProdutoDto;
+import com.IJeans.Backend.exception.ProdutoJaCadastradoException;
 import com.IJeans.Backend.model.ProdutoModel;
 
 public interface ProdutosService {
@@ -19,6 +20,6 @@ public interface ProdutosService {
 
 	Optional<List<ProdutoModel>> findByNomeContaining(String nomeBusca);
 
-	void cadastrarNovoProduto(ProdutoDto produto);
+	void cadastrarNovoProduto(ProdutoDto produto) throws ProdutoJaCadastradoException;
 	
 }

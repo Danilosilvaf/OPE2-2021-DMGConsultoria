@@ -10,6 +10,7 @@ import org.springframework.web.client.HttpClientErrorException.NotFound;
 
 import com.IJeans.Backend.exception.NumeroNegativoException;
 import com.IJeans.Backend.exception.ProdutoExistenteException;
+import com.IJeans.Backend.exception.ProdutoJaCadastradoException;
 import com.IJeans.Backend.exception.StandardError;
 
 @RestControllerAdvice
@@ -44,6 +45,25 @@ public class ErrorInterceptorHandler {
 		
 		return error;
 	}
+	
+	
+	
+	
+	
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(ProdutoJaCadastradoException.class)
+	public StandardError handle(ProdutoJaCadastradoException e){
+		StandardError error = new StandardError( 400,""
+				, "Produto Ja Cadastrado" );
+		
+		return error;
+	}
+	
+	
+	
+	
+	
+	
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(NumeroNegativoException.class)
 	public StandardError handle(NumeroNegativoException e){
