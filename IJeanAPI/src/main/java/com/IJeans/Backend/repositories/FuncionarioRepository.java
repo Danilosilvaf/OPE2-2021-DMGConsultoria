@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.IJeans.Backend.model.FuncionarioModel;
 
@@ -21,4 +22,9 @@ public interface FuncionarioRepository  extends JpaRepository <FuncionarioModel,
 	void deleteById(String id);
 
 	Optional<List<FuncionarioModel>> findByNomeContaining(String nomeBusca);
+
+	@Query(
+			value="use ijeans",
+			nativeQuery=true)
+	void useDatabase();
 }

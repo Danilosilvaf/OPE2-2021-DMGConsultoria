@@ -21,7 +21,12 @@ public interface FornecedorRepository extends JpaRepository<FornecedorModel, Int
 	public void deleteById(int id);
 
 	public Optional<FornecedorModel> findById(String id);
-
+	
+	
+	
+	@Query(
+			value="SELECT * FROM fornecedor WHERE STATUS <> false",
+			nativeQuery=true)
 	public Optional<List<FornecedorModel>> findByNomeContaining(String nomeBusca);
 
 }

@@ -30,4 +30,10 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 	
 		}
 	}
+
+
+	@Override
+	public void useDatabase() {
+		repository.useDatabase();
+	}
 }
