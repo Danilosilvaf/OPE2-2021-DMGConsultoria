@@ -12,6 +12,6 @@ export class RelatorioService{
 
 
     realizarEnvio(email){
-       return this.http.get<String>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/estoque/relatorio/"+email);
+       return this.http.get<String>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comestoque/relatorio/"+email);
     }
 }

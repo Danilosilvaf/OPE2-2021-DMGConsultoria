@@ -17,36 +17,36 @@ export class ProdutoService {
   constructor(private http: HttpClient) {}
 
   findAll(){
-    return this.http.get<Array<ProdutoModel>>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/produtos");
+    return this.http.get<Array<ProdutoModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comprodutos");
   }
   findById(id){
-    return this.http.get<ProdutoModel>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/produtos/"+id);
+    return this.http.get<ProdutoModel>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comprodutos/"+id);
   }
   cadastrarProduto(body){
-    return this.http.post("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/estoque/novoProduto",body);
+    return this.http.post("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comestoque/novoProduto",body);
   }
   findByTipoProduto(tipo){
-    return this.http.get<Array<TamanhoModel>>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/tamanhos/"+tipo)
+    return this.http.get<Array<TamanhoModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comtamanhos/"+tipo)
   }
   findAllMarcas(){
-    return this.http.get<Array<MarcaModel>>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/marcas/")
+    return this.http.get<Array<MarcaModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.commarcas/")
   }
   findAllTamanhos(){
-    return this.http.get<Array<TamanhoModel>>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/tamanhos")
+    return this.http.get<Array<TamanhoModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comtamanhos")
   }
   findAllTipoProduto(){
-    return this.http.get<Array<TipoProduto>>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/tipoProdutos")
+    return this.http.get<Array<TipoProduto>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comtipoProdutos")
   }
 
   updateProduto(body){
-    return this.http.put<TipoProduto>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/produtos",body)
+    return this.http.put<TipoProduto>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comprodutos",body)
   }
   removeProduto(id){
-    return this.http.delete<TipoProduto>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/produtos/"+id)
+    return this.http.delete<TipoProduto>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comprodutos/"+id)
   }
 
   findByNome(nome){
-    return this.http.get<Array<ProdutoModel>>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/produtos/nome/" + nome);
+    return this.http.get<Array<ProdutoModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comprodutos/nome/" + nome);
   }
 
 }

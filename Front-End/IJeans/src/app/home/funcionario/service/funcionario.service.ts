@@ -14,19 +14,19 @@ export class FuncionarioService {
   constructor(private http: HttpClient) {}
 
   findAll(){
-    return this.http.get<Array<FuncionarioModel>>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/funcionarios");
+    return this.http.get<Array<FuncionarioModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comfuncionarios");
   }
   cadastraFuncionario(funcionario){
-    return this.http.post<FuncionarioModel>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/funcionarios",funcionario);
+    return this.http.post<FuncionarioModel>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comfuncionarios",funcionario);
   }
   delete(funcionario){
-    return this.http.delete<FuncionarioModel>(`http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/funcionarios/${funcionario.id}`);
+    return this.http.delete<FuncionarioModel>(`ec2-18-230-6-253.sa-east-1.compute.amazonaws.comfuncionarios/${funcionario.id}`);
   }
   alteraFuncionario(funcionario){
-    return this.http.put<FuncionarioModel>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/funcionarios",funcionario);
+    return this.http.put<FuncionarioModel>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comfuncionarios",funcionario);
   }
 
   findByNome(nome){
-    return this.http.get<Array<FuncionarioModel>>("http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/fornecedor/nome/" + nome);
+    return this.http.get<Array<FuncionarioModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comfornecedor/nome/" + nome);
   }
 }

@@ -1,5 +1,5 @@
 export const environment = {
-  urlAPI : 'http://ec2-18-230-75-94.sa-east-1.compute.amazonaws.com:8080/',
+  urlAPI : 'ec2-18-230-6-253.sa-east-1.compute.amazonaws.com',
   production: true,
   storageKeysConfig : {
     localUser: 'localUser'
