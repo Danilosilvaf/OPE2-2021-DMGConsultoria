@@ -25,7 +25,7 @@ public interface FornecedorRepository extends JpaRepository<FornecedorModel, Int
 	
 	
 	@Query(
-			value="SELECT * FROM fornecedor WHERE STATUS <> false",
+			value="SELECT * FROM fornecedor WHERE STATUS <> false and nome like %?% ",
 			nativeQuery=true)
 	public Optional<List<FornecedorModel>> findByNomeContaining(String nomeBusca);
 
