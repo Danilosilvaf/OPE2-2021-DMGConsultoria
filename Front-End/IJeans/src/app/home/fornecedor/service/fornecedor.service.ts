@@ -13,23 +13,23 @@ export class FornecedorService {
   constructor(private http: HttpClient) { }
 
   findAll() {
-    return this.http.get<Array<FornecedorModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor");
+    return this.http.get<Array<FornecedorModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:8080/fornecedor");
   }
 
   cadastrarFornecedor(fornecedor) {
-    return this.http.post<FornecedorModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor', fornecedor);
+    return this.http.post<FornecedorModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:8080/fornecedor', fornecedor);
   }
 
   updatefornecedor(fornecedor) {
-    return this.http.put<FornecedorModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor', fornecedor);
+    return this.http.put<FornecedorModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:8080/fornecedor', fornecedor);
   }
 
   removerFornecedor(fornecedor) {
-    return this.http.delete<FornecedorModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor/' + fornecedor);
+    return this.http.delete<FornecedorModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:8080/fornecedor/' + fornecedor);
   }
 
   findByNome(nome) {
-    return this.http.get<Array<FornecedorModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor/nome/" + nome);
+    return this.http.get<Array<FornecedorModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:8080/fornecedor/nome/" + nome);
   }
 
 }
