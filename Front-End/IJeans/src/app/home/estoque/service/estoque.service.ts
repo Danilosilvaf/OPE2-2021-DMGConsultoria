@@ -16,11 +16,11 @@ export class EstoqueService {
 
   
   cadastrarEstoqueJaExistente(estoque){
-    return this.http.post<EstoqueModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.comestoque',estoque);
+    return this.http.post<EstoqueModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/estoque',estoque);
   }
   
   findByNome(nome){
-    return this.http.get<Array<ProdutoModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comfornecedor/nome/" + nome);
+    return this.http.get<Array<ProdutoModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor/nome/" + nome);
   }
   
 }

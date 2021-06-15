@@ -11,23 +11,23 @@ export class MarcaService {
   constructor(private http: HttpClient) { }
 
   findAll() {
-    return this.http.get<Array<MarcaModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.commarcas");
+    return this.http.get<Array<MarcaModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/marcas");
   }
 
   cadastrarMarca(marca) {
-    return this.http.post<MarcaModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.commarcas', marca);
+    return this.http.post<MarcaModel>('ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/marcas', marca);
   }
 
   delete(id) {
-    return this.http.delete<MarcaModel>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.commarcas/" + id)
+    return this.http.delete<MarcaModel>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/marcas/" + id)
   }
 
   alterar(marca) {
-    return this.http.put<MarcaModel>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.commarcas", marca);
+    return this.http.put<MarcaModel>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/marcas", marca);
   }
 
   findByNome(nome) {
-    return this.http.get<Array<MarcaModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.comfornecedor/nome/" + nome);
+    return this.http.get<Array<MarcaModel>>("ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor/nome/" + nome);
   }
 
 }

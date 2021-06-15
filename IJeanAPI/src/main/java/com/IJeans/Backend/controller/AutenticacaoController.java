@@ -23,7 +23,7 @@ public class AutenticacaoController {
 	@Autowired
 	private AutenticacaoService autService;
 	
-	
+	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/autenticacao",method = RequestMethod.POST)
 	public ResponseEntity<FuncionarioModel> validarLogin(@RequestBody FuncionarioModel model) {
 		
