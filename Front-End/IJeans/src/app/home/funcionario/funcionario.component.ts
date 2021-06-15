@@ -23,10 +23,12 @@ funcionarioForm: FormGroup;
 
   
   funcionarios:Array<FuncionarioModel>;
+  funcionariosAtuais:Array<FuncionarioModel>;
 
   ngOnInit(): void {
     this.service.findAll().subscribe(data => {
       this.funcionarios=data
+      this.funcionariosAtuais=data
     });
 
     this.funcionarioForm = this.formBuilder.group({
@@ -88,10 +90,13 @@ funcionarioForm: FormGroup;
   }
 
   buscarFuncionario(nome) {
-    console.log(nome)
-    this.service.findByNome(nome).subscribe(data => {
-      console.log(data)
-      this.funcionarios = data
-    })
+    if (nome === "") {
+      this.funcionariosAtuais = this.funcionarios
+    }
+    else {
+      this.service.findByNome(nome).subscribe(data => {
+        this.funcionariosAtuais = data
+      })
+    }
   }
 }

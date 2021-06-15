@@ -12,14 +12,16 @@ import { FornecedorService } from './service/fornecedor.service';
 })
 export class FornecedorComponent implements OnInit {
 
-  constructor(private service:FornecedorService,private router:Router, private formBuilder: FormBuilder,private alertService:AlertModalService) { }
+  constructor(private service: FornecedorService, private router: Router, private formBuilder: FormBuilder, private alertService: AlertModalService) { }
 
   EditRowId: any = '';
   fornecedorForm: FormGroup;
-  fornecedores:Array<FornecedorModel>
+  fornecedores: Array<FornecedorModel>
+  fornecedoresAtuais: Array<FornecedorModel>;
   ngOnInit(): void {
     this.service.findAll().subscribe(data => {
-      this.fornecedores=data
+      this.fornecedores = data
+      this.fornecedoresAtuais = data
     })
     this.fornecedorForm = this.formBuilder.group({
       nomeFornecedor: ['', [Validators.required]],
@@ -28,17 +30,17 @@ export class FornecedorComponent implements OnInit {
     });
   }
 
-  cadastrarFornecedor(){
+  cadastrarFornecedor() {
     this.router.navigateByUrl('cadastrofornecedor')
   }
 
-  delete(fornecedor:FornecedorModel){
+  delete(fornecedor: FornecedorModel) {
     this.service.removerFornecedor(fornecedor.id).subscribe(data => {
       this.ngOnInit()
     })
-    }
+  }
 
-  edit(fornecedor:FornecedorModel){
+  edit(fornecedor: FornecedorModel) {
     this.EditRowId = fornecedor.id
   }
 
@@ -58,16 +60,21 @@ export class FornecedorComponent implements OnInit {
       this.fornecedorForm.get('precoFornecedor').setValue("");
       this.alertService.showSucess('Alterado com sucesso');
       this.ngOnInit()
-    },err =>{
+    }, err => {
       this.alertService.showAlertDanger(err.error.message)
     })
   }
 
   buscarFornecedor(nome) {
     console.log(nome)
-    this.service.findByNome(nome).subscribe(data => {
-      console.log(data)
-      this.fornecedores = data
-    })
+    if (nome === "") {
+      this.fornecedoresAtuais = this.fornecedores
+    }
+    else {
+      this.service.findByNome(nome).subscribe(data => {
+        console.log(data)
+        this.fornecedoresAtuais = data
+      })
+    }
   }
 }

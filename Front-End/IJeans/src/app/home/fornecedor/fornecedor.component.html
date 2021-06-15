@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col input-group-prepend">
             <span class="input-group-text lupa"><i class="fas fa-search fa-lg"></i></span>
-            <input type="text" class="form-control busca" input = "buscarFornecedor($event.target.value)">
+            <input type="text" class="form-control busca" (input)="buscarFornecedor($event.target.value)">
         </div>
 
         <!-- <button class="btn btn-cadastrar fas fa-plus-circle fa-sm" (click)="CadastrarFornecedor()" > Novo fornecedor</button> -->
@@ -21,7 +21,7 @@
                 <th>E-mail</th>
                 <th>Telefone</th>
             </tr>
-            <tr *ngFor="let fornecedor of fornecedores">
+            <tr *ngFor="let fornecedor of fornecedoresAtuais">
                 <td class="table-align">{{fornecedor.id}}</td>
                 <td *ngIf="fornecedor.id != EditRowId" class="table-align">{{fornecedor.nome}}</td>
                 <td *ngIf="fornecedor.id === EditRowId"><input type="text" value="{{fornecedor.nome}}"

@@ -27,7 +27,7 @@ export class MarcaService {
   }
 
   findByNome(nome) {
-    return this.http.get<Array<MarcaModel>>("http://ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor/nome/" + nome);
+    return this.http.get<Array<MarcaModel>>("http://ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/marcas/nome/" + nome);
   }
 
 }

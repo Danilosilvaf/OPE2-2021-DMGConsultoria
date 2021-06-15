@@ -27,6 +27,6 @@ export class FuncionarioService {
   }
 
   findByNome(nome){
-    return this.http.get<Array<FuncionarioModel>>("http://ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/fornecedor/nome/" + nome);
+    return this.http.get<Array<FuncionarioModel>>("http://ec2-18-230-6-253.sa-east-1.compute.amazonaws.com:5000/funcionarios/nome/" + nome);
   }
 }

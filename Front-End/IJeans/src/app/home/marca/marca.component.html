@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col input-group-prepend">
             <span class="input-group-text lupa"><i class="fas fa-search fa-lg"></i></span>
-            <input type="text" class="form-control busca" input="buscarMarca($event.target.value)">
+            <input type="text" class="form-control busca" (input)="buscarMarca($event.target.value)">
         </div>
 
         <button class="btn btn-cadastrar" (click)="cadastrarMarca()">Nova Marca <a
@@ -19,7 +19,7 @@
                 <th class="table-align">ID</th>
                 <th class="table-align">Nome</th>
             </tr>
-            <tr *ngFor="let marca of marcas">
+            <tr *ngFor="let marca of marcasAtuais">
                 <td class="table-align">{{marca.id}}</td>
                 <td *ngIf="marca.id === EditRowId"><input type="text" value="{{marca.nome}}"
                         formControlName="nomeMarca"></td>

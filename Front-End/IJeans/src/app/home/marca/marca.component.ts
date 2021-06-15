@@ -16,6 +16,7 @@ import { MarcaService } from "./service/marca-service";
 export class MarcaComponent implements OnInit {
 
   marcas: Array<MarcaModel>
+  marcasAtuais: Array<MarcaModel>
 
   EditRowId: any = '';
   marcaForm: FormGroup;
@@ -25,6 +26,7 @@ export class MarcaComponent implements OnInit {
   ngOnInit(): void {
     this.service.findAll().subscribe(data => {
       this.marcas = data;
+      this.marcasAtuais = data;
     })
 
     this.marcaForm = this.formBuilder.group({
@@ -65,11 +67,13 @@ export class MarcaComponent implements OnInit {
   }
 
   buscarMarca(nome) {
-    console.log(nome)
-    this.service.findByNome(nome).subscribe(data => {
-      console.log(data)
-      this.marcas = data
-    })
+    if (nome === "")
+      this.marcasAtuais = this.marcas
+    else {
+      this.service.findByNome(nome).subscribe(data => {
+        this.marcasAtuais = data
+      })
+    }
   }
-
+  
 }

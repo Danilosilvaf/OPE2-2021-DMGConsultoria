@@ -14,10 +14,12 @@ export class EstoqueComponent implements OnInit {
 
 
   produtos: Array<ProdutoModel>;
+  produtosAtuais: Array<ProdutoModel>;
   constructor(private service: ProdutoService, private router: Router, private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     this.service.findAll().subscribe(data => {
       this.produtos = data
+      this.produtosAtuais = data
     });
   }
   enviaRelatorio() {
@@ -37,9 +39,14 @@ export class EstoqueComponent implements OnInit {
 
   buscarProduto(nome) {
     console.log(nome)
-    this.service.findByNome(nome).subscribe(data => {
-      console.log(data)
-      this.produtos = data
-    })
+    if (nome === "") {
+      this.produtosAtuais = this.produtos
+    }
+    else {
+      this.service.findByNome(nome).subscribe(data => {
+        console.log(data)
+        this.produtosAtuais = data
+      })
+    }
   }
 }
