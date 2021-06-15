@@ -15,7 +15,7 @@ import com.opencsv.CSVWriter;
 @Service
 public class GeraRelatorio {
 	
-	public final String CSV_PATH = "/home/ubuntu/arquivo";
+	public final String CSV_PATH = "/home/ubuntu/arquivo/relatorio.csv";
 	
 	
 	@Autowired
