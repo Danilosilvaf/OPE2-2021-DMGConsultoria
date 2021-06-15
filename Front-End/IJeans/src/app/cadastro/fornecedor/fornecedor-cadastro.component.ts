@@ -40,7 +40,7 @@ export class CadastroFornecedorComponent {
       
   
       this.service.cadastrarFornecedor(fornecedor).subscribe(data => {
-          this.alertService.showSucess('Fornecedor Cadastrado')
+          this.alertService.showSucess('Fornecedor Cadastrado com sucesso!')
           this.router.navigateByUrl('home');
       },err =>{
         this.alertService.showAlertDanger(err.error.message)

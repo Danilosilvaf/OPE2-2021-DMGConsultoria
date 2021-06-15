@@ -47,7 +47,7 @@ export class CadastrarFuncionarioComponent{
               email: this.cadastraFuncionarioForm.value.email
           }
           this.service.cadastraFuncionario(funcionario).subscribe(data =>{
-              this.alertService.showSucess('funcionario cadastrada com sucesso');
+              this.alertService.showSucess('Funcionário cadastrado com sucesso!');
               this.router.navigateByUrl('home');
           },err =>{
             this.alertService.showAlertDanger(err.error.message)

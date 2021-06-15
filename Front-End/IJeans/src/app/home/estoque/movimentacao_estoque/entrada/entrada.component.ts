@@ -60,8 +60,8 @@ export class EntradaComponent {
 
     this.cadastraProdutoForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
-      valor: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')]],
-      quantidade: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')],]
+      valor: ['', [Validators.required, Validators.pattern('^?[0-9\.]+$')]],
+      quantidade: ['', [Validators.required, Validators.pattern('^?[0-9\]+$')],]
     });
    
   }
