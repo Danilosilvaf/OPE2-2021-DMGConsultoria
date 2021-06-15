@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.IJeans.Backend.API</groupId>
 	<artifactId>IJeanAPI</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<name>IJeanAPI</name>
 	<description>OPE2</description>
 	<properties>

@@ -15,7 +15,7 @@ import com.opencsv.CSVWriter;
 @Service
 public class GeraRelatorio {
 	
-	public final String CSV_PATH = "C:/Users/PICHAU/Desktop/tccgit/OPE2-2021-DMGConsultoria/IJeanAPI/src/main/resources/Arquivos/relatorio.csv";
+	public final String CSV_PATH = "/home/ubuntu/arquivo";
 	
 	
 	@Autowired
