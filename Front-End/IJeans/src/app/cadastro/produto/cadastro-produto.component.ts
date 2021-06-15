@@ -48,8 +48,8 @@ export class CadastrarProdutosComponent {
     this.cadastraProdutoForm = this.formBuilder.group({
       nome: ['', [Validators.required]],
       valorCompra: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')]],
-      valorVenda: ['', [Validators.required, Validators.pattern('^?[0-9\.]+$')]],
-      quantidade: ['', [Validators.required, Validators.pattern('^?[0-9\]+$')],]
+      valorVenda: ['', [Validators.required, Validators.pattern('^-?[0-9\.]+$')]],
+      quantidade: ['', [Validators.required, Validators.pattern('^-?[0-9\]+$')],]
     });
     this.service.findAllMarcas().subscribe(data => {
       this.marcas = data
