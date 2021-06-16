@@ -22,5 +22,8 @@ public interface MarcaRepository extends JpaRepository<MarcaModel, Integer>{
 	@Transactional
 	public void deleteById(String id);
 
+	@Query(
+			value="SELECT * FROM marca WHERE STATUS <> false and nome like %?% ",
+			nativeQuery=true)
 	public Optional<List<MarcaModel>> findByNomeContaining(String nomeBusca);
 }

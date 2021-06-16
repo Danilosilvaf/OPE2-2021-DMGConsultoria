@@ -30,7 +30,7 @@ export class CadastrarMarcaComponent {
       }
 
       this.service.cadastrarMarca(marca).subscribe(data => {
-        this.alertService.showSucess('Marca Cadastrada')
+        this.alertService.showSucess('Marca Cadastrada com sucesso!')
         this.router.navigateByUrl('home');
       }, err => {
         this.alertService.showAlertDanger(err.error.message)

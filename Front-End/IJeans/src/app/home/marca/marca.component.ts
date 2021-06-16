@@ -40,8 +40,11 @@ export class MarcaComponent implements OnInit {
 
   delete(marca: MarcaModel) {
     this.service.delete(marca.id).subscribe(data => {
+      this.alertService.showSucess("Marca Excluida com sucesso")
       this.ngOnInit();
-    })
+    }),err => {
+      this.alertService.showAlertDanger(err.error.message)
+    }
   }
 
   editIncorrect() {
